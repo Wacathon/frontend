@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Form } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
 
 function Inputs({ inputName, inputValue, setInputValue, inputPlaceholder }) {
 	const onTextChange = (e) => {
