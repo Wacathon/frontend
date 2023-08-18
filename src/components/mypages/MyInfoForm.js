@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { userInfo } from "../cards/UserInfo";
 import { Button, Stack } from "react-bootstrap";
+import Inputs from "../forms/Inputs";
 
 function MyInfoForm() {
 	const [isEdit, setIsEdit] = useState(false);
@@ -12,7 +13,9 @@ function MyInfoForm() {
 	return (
 		<Stack gap={4} className="userForm-container">
 			{isEdit ? (
-				<></>
+				<>
+					<Inputs />
+				</>
 			) : (
 				<>
 					<h5>이름: {userInfo.name}</h5>
