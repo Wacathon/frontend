@@ -2,7 +2,9 @@ import { useState } from "react";
 import AppRouter from "./routes/AppRouter";
 
 function App() {
-	const [isLoggedIn, setIsLoggedIn] = useState(true);
+	const [isLoggedIn, setIsLoggedIn] = useState(
+		localStorage.getItem("accessToken")
+	);
 
 	return (
 		<div className="app-container">
