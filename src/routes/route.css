@@ -4,11 +4,12 @@
 	top: 0;
 	left: 0;
 	bottom: 0;
-	width: 18vw;
+	width: 20%;
 	height: 100vh;
+	/* flex: 0 0 20%; */
 	padding: 25px;
-	background-color: white;
-	border-right: 1px solid black;
+	background-color: rgb(233, 233, 233);
+	/* border-right: 1px solid lightgrey; */
 }
 
 .nav-logo-text {
@@ -58,11 +59,16 @@
 
 .main-wrapper {
 	z-index: 1;
-	position: absolute;
-	left: 18vw;
-	width: 64vw;
+	margin-left: 20%;
+	/* position: absolute; */
+	/* left: 18vw; */
+	/* max-width: 70vw; */
+	width: 80%;
+	/* width: 64vw; */
+	padding: 0 20px;
 	height: 100%;
-	background-color: #f7f9fd;
+	background-color: #fff;
+	/* background-color: #f7f9fd; */
 }
 
 .blank-wrapper {

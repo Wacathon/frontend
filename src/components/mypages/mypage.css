@@ -1,0 +1,17 @@
+.myPage-wrapper {
+	padding: 30px 20px;
+	background-color: #f7f9fd;
+	border-radius: 10px;
+}
+
+.myPage-container {
+	padding: 15px;
+}
+
+.myPage-container-title {
+	color: #5145cf;
+}
+
+.userForm-container h5 {
+	font-weight: normal;
+}

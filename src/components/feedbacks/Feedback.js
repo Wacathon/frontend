@@ -1,5 +1,6 @@
 import React from "react";
 import { Row, Col, Card } from "react-bootstrap";
+import "./feedback.css";
 
 export const feedbackData = [
 	{
@@ -24,7 +25,7 @@ export const feedbackData = [
 const renderFeedbackCards = (feedbackData) => {
 	return feedbackData.map((data) => {
 		return (
-			<Col key={data.id}>
+			<Col key={data.id} className="feedback-max-width">
 				<Card border="secondary">
 					<Card.Header>{data.title}</Card.Header>
 					<Card.Body>{data.comment}</Card.Body>
@@ -37,7 +38,9 @@ const renderFeedbackCards = (feedbackData) => {
 function Feedback() {
 	return (
 		<>
-			<Row className="pt-2 pb-2">{renderFeedbackCards(feedbackData)}</Row>
+			<Row className="pt-2 pb-2 feedback-row">
+				{renderFeedbackCards(feedbackData)}
+			</Row>
 		</>
 	);
 }

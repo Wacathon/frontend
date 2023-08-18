@@ -1,17 +1,25 @@
 .cardPage-wrapper {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	height: 100vh !important;
-	padding: 20px !important;
+	/* justify-content: center;
+	align-items: center; */
+	width: 100%;
+	padding: 15px 25px !important;
+}
+
+.cardPage-user-card-title {
+	padding-left: 0.5rem;
+	width: 100%;
+}
+
+.userCard-max-width {
+	max-width: 800px !important;
 }
 
 .user-card-container {
 	padding: 20px;
-	min-width: 600px;
-	max-width: 800px;
-	background-color: #cfd9ee;
+	width: 100%;
+	background-color: #f7f9fd;
 	border: 1px solid rgb(0, 0, 0, 0.2);
 	border-radius: 10px;
 }

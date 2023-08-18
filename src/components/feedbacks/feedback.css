@@ -1,0 +1,14 @@
+.feedback-container {
+	/* display: flex;
+	flex-direction: column;
+	justify-content: space-between; */
+}
+
+.feedback-max-width {
+	max-width: 21vw !important;
+}
+.feedback-row {
+	display: flex;
+	justify-content: space-between;
+	max-width: 800px;
+}
