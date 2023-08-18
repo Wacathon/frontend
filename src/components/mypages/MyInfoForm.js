@@ -10,9 +10,28 @@ function MyInfoForm() {
 	const [tel, setTel] = useState("");
 	const [email, setEmail] = useState("");
 
-	const onEditClick = () => {
-		// 사용자 개인정보 수정하는 코드
-		setIsEdit((prev) => !prev);
+	const toggleEdit = () => {
+		setIsEdit(true);
+	};
+
+	const onEditClick = async () => {
+		const accessToken = localStorage.getItem("accessToken");
+		await axios.post(
+			"http://43.202.59.248:8080/api/member/introduce",
+			{
+				email: email,
+				introduce: intro,
+				phoneNum: tel,
+			},
+			{
+				headers: {
+					"X-AUTH-TOKEN": `Bearer ${accessToken}`,
+				},
+			}
+		);
+		alert("정보가 수정되었습니다!");
+		setIsEdit(true);
+		window.location.reload();
 	};
 
 	useEffect(() => {
@@ -42,12 +61,7 @@ function MyInfoForm() {
 		<Stack gap={4} className="userForm-container">
 			{isEdit ? (
 				<>
-					<Inputs
-						inputName="이름"
-						inputValue={name}
-						setInputValue={setName}
-						inputPlaceholder="이름을 입력해주세요"
-					/>
+					<h5>이름: {name}</h5>
 					<Inputs
 						inputName="소개"
 						inputValue={intro}
@@ -76,9 +90,11 @@ function MyInfoForm() {
 				</>
 			)}
 			<div className="d-flex justify-content-end">
-				<Button onClick={onEditClick}>
-					{isEdit ? "수정완료" : "수정하기"}
-				</Button>
+				{isEdit ? (
+					<Button onClick={onEditClick}>수정완료</Button>
+				) : (
+					<Button onClick={toggleEdit}>수정하기</Button>
+				)}
 			</div>
 		</Stack>
 	);

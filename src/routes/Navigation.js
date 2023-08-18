@@ -27,7 +27,6 @@ function Navigation() {
 					name: result.name,
 					email: result.email,
 				});
-				console.log(result);
 			})
 			.catch((err) => {
 				console.log(err);
