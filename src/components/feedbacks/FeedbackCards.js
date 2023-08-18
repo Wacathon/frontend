@@ -34,7 +34,7 @@ function FeedbackCards({ pageType }) {
 			'X-AUTH-TOKEN': 'Bearer ' + accessToken
 		});
 
-		axios.get('http://43.202.59.248:8080/api/feedback?userId=3&pinned=true', {headers})
+		axios.get('http://43.202.59.248:8080/api/feedback?userId=8&pinned=true', {headers})
 		.then((res) => {
 			// console.log(res.data.response);
 			const result = res.data.response;
@@ -54,7 +54,7 @@ function FeedbackCards({ pageType }) {
 					<Card border="secondary">
 						<Card.Header>{data.title}</Card.Header>
 						<Card.Body>{data.comment}</Card.Body>
-						<Card.Footer>나는 마이페이지다....</Card.Footer>
+						{/* <Card.Footer>나는 마이페이지다....</Card.Footer> */}
 					</Card>
 				</Col>
 			);

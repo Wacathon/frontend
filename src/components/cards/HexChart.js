@@ -23,27 +23,27 @@ ChartJS.register(
 export const hexChart_dataset = [
 	{
 		label: "리더십",
-		data: 10,
+		data: 100,
 	},
 	{
 		label: "커뮤니케이션",
-		data: 30,
+		data: 100,
 	},
 	{
 		label: "성실성",
-		data: 90,
-	},
-	{
-		label: "계획성",
-		data: 50,
+		data: 100,
 	},
 	{
 		label: "참여성",
-		data: 70,
+		data: 100,
 	},
 	{
-		label: "전문성",
-		data: 40,
+		label: "열정",
+		data: 100,
+	},
+	{
+		label: "사교성",
+		data: 100,
 	},
 ];
 
