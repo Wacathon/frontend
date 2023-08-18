@@ -5,11 +5,10 @@
 
 :root {
 	--app-primary-color: #3629b7;
+	--app-secondary-color: #6f68b7;
 }
 
 .app-container {
-	/* display: flex;
-	justify-content: center; */
 	width: 100vw;
 	height: 100%;
 }

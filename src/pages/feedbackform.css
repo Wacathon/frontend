@@ -1,0 +1,8 @@
+.formPage-wrapper {
+	padding: 30px !important;
+	background-color: #f7f9fd;
+}
+
+.formPage-wrapper h5 {
+	color: var(--app-secondary-color);
+}

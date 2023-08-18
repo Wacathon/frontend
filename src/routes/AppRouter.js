@@ -30,9 +30,11 @@ function AppRouter({ isLoggedIn }) {
 					<div className="guest-main-wrapper">
 						<Routes>
 							<Route path="/" element={<LoginPage />} />
-							{/* <Route path="/" element={<FeedbackFormPage />} /> */}
-							<Route path="/feedback-form" element={<FeedbackFormPage />} />
-							<Route path="/share-link" element={<LinkPage />} />
+							<Route
+								path="/feedback-form/:userId"
+								element={<FeedbackFormPage />}
+							/>
+							<Route path="/*" element={<LoginPage />} />
 						</Routes>
 					</div>
 				</div>
