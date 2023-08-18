@@ -1,15 +1,13 @@
 .cardPage-wrapper {
 	display: flex;
 	flex-direction: column;
-	/* justify-content: center;
-	align-items: center; */
+	justify-content: center;
 	width: 100%;
-	padding: 15px 25px !important;
 }
 
 .cardPage-user-card-title {
 	padding-left: 0.5rem;
-	width: 100%;
+	color: var(--app-primary-color);
 }
 
 .userCard-max-width {

@@ -22,7 +22,7 @@ function CardPage() {
 				</Col>
 			</Row>
 			<div className="mt-4 feedback-container">
-				<h4>📌 Pinned Feedbacks</h4>
+				<h4 className="cardPage-user-card-title">📌 Pinned Feedbacks</h4>
 				<Feedback />
 			</div>
 		</Container>

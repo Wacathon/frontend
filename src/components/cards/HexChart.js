@@ -19,12 +19,39 @@ ChartJS.register(
 	Legend
 );
 
+export const hexChart_dataset = [
+	{
+		label: "리더십",
+		data: 10,
+	},
+	{
+		label: "커뮤니케이션",
+		data: 30,
+	},
+	{
+		label: "성실성",
+		data: 90,
+	},
+	{
+		label: "계획성",
+		data: 50,
+	},
+	{
+		label: "참여성",
+		data: 70,
+	},
+	{
+		label: "전문성",
+		data: 40,
+	},
+];
+
 export const data = {
-	labels: ["리더십", "커뮤니케이션", "성실성", "계획성", "참여성", "전문성"],
+	labels: hexChart_dataset.map((item) => item.label),
 	datasets: [
 		{
-			label: `익명의 역량 지표`,
-			data: [10, 30, 90, 50, 70, 40],
+			label: "익명의 역량 지표",
+			data: hexChart_dataset.map((item) => item.data),
 			backgroundColor: "rgba(255, 99, 132, 0.2)",
 			borderColor: "rgba(255, 99, 132, 1)",
 			borderWidth: 1,

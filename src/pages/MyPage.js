@@ -7,7 +7,7 @@ import "../components/mypages/mypage.css";
 
 function MyPage() {
 	return (
-		<Container fluid className="cardPage-wrapper myPage-background">
+		<Container fluid>
 			<Row className="mt-4">
 				<Col>
 					<h4>🧑‍💻 마이페이지</h4>
@@ -20,9 +20,16 @@ function MyPage() {
 						<MyInfoForm />
 					</div>
 					<hr />
-					<div>
+					<h5 className="myPage-container-title pt-3">
+						💙 나를 표현하는 육각형
+					</h5>
+					<div className="myPage-container d-flex justify-content-center">
 						<MyHexChart />
 					</div>
+					<hr />
+					<h5 className="myPage-container-title pt-3">💙 내가 만드는 질문</h5>
+					<hr />
+					<h5 className="myPage-container-title pt-3">💙 내가 받은 피드백</h5>
 				</Col>
 			</Row>
 		</Container>

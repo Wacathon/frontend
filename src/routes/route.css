@@ -18,7 +18,7 @@
 }
 
 .nav-link-container #nav-link-container {
-	color: #5145cf;
+	color: var(--app-primary-color);
 }
 .nav-link-container a {
 	color: #838383;
@@ -58,13 +58,12 @@
 }
 
 .main-wrapper {
+	display: flex;
+	align-items: center;
 	z-index: 1;
 	margin-left: 20%;
-	/* position: absolute; */
-	/* left: 18vw; */
-	/* max-width: 70vw; */
 	width: 80%;
-	/* width: 64vw; */
+	min-height: 100vh;
 	padding: 0 20px;
 	height: 100%;
 	background-color: #fff;

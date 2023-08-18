@@ -10,7 +10,7 @@
 }
 
 .myPage-container-title {
-	color: #5145cf;
+	color: var(--app-primary-color);
 }
 
 .userForm-container h5 {

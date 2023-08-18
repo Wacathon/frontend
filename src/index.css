@@ -3,6 +3,10 @@
 	word-break: break-word;
 }
 
+:root {
+	--app-primary-color: #3629b7;
+}
+
 .app-container {
 	width: 100vw;
 	height: 100%;

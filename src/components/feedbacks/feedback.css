@@ -5,7 +5,7 @@
 }
 
 .feedback-max-width {
-	max-width: 21vw !important;
+	/* max-width: 21vw !important; */
 }
 .feedback-row {
 	display: flex;

@@ -5,6 +5,7 @@ import Navigation from "./Navigation";
 import MyPage from "../pages/MyPage";
 
 import "./route.css";
+import LinkPage from "../pages/LinkPage";
 
 function AppRouter() {
 	return (
@@ -16,6 +17,7 @@ function AppRouter() {
 				<Routes>
 					<Route path="/" element={<CardPage />} />
 					<Route path="/mypage" element={<MyPage />} />
+					<Route path="/share-link" element={<LinkPage />} />
 				</Routes>
 			</div>
 		</div>
