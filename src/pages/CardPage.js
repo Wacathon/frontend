@@ -4,7 +4,7 @@ import { userInfo } from "../components/cards/UserInfo";
 
 import { Container, Row, Col } from "react-bootstrap";
 import "../components/cards/cards.css";
-import Feedback from "../components/feedbacks/Feedback";
+import FeedbackCards from "../components/feedbacks/FeedbackCards";
 
 function CardPage() {
 	return (
@@ -23,7 +23,7 @@ function CardPage() {
 			</Row>
 			<div className="mt-4 feedback-container">
 				<h4 className="cardPage-user-card-title">📌 Pinned Feedbacks</h4>
-				<Feedback />
+				<FeedbackCards pageType="cardpage" />
 			</div>
 		</Container>
 	);

@@ -70,8 +70,9 @@
 	/* background-color: #f7f9fd; */
 }
 
-.blank-wrapper {
-	z-index: 0;
-	width: 18vw;
-	background-color: lightskyblue;
+.guest-main-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 80%;
 }

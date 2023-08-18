@@ -19,7 +19,7 @@ function MyHexChart() {
 		<div className="d-flex flex-row">
 			<Stack
 				gap={4}
-				style={{ minWidth: "300px" }}
+				// style={{ minWidth: "300px" }}
 				className="d-flex justify-content-center"
 			>
 				{renderLabels()}

@@ -2,13 +2,7 @@ import React from "react";
 
 import { Form } from "react-bootstrap";
 
-function Inputs({
-	inputValue,
-	setInputValue,
-	inputType,
-	inputPlaceholder,
-	onSubmitInputValue,
-}) {
+function Inputs({ inputName, inputValue, setInputValue, inputPlaceholder }) {
 	const onTextChange = (e) => {
 		const {
 			target: { value },
@@ -16,23 +10,16 @@ function Inputs({
 		setInputValue(value);
 	};
 
-	const onPressEnterKey = async (e) => {
-		if (e.key === "Enter") {
-			await e.preventDefault();
-			if (inputType !== "auth") {
-				await onSubmitInputValue();
-			}
-		}
-	};
-
 	return (
-		<Form.Control
-			type="text"
-			placeholder={inputPlaceholder}
-			value={inputValue}
-			onChange={onTextChange}
-			onKeyDown={onPressEnterKey}
-		/>
+		<div>
+			<Form.Label>{inputName}</Form.Label>
+			<Form.Control
+				type="text"
+				placeholder={inputPlaceholder}
+				value={inputValue}
+				onChange={onTextChange}
+			/>
+		</div>
 	);
 }
 

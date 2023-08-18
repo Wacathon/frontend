@@ -1,4 +1,9 @@
 .myPage-wrapper {
+	width: 100%;
+	padding: 0;
+}
+
+.myPage-info-wrapper {
 	max-width: 800px;
 	padding: 30px 20px;
 	background-color: #f7f9fd;
