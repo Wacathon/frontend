@@ -3,9 +3,9 @@ import axios from "axios";
 import { Stack } from "react-bootstrap";
 
 export const userInfo = {
-	name: "오지훈",
+	name: "강경수",
 	intro: "현명한 관리자",
-	email: "kimgachon@ac.gachon.kr",
+	email: "kscodebase@gmail.com",
 	tel: "010-1234-5678",
 };
 
@@ -26,7 +26,7 @@ function UserInfo() {
 			const result = res.data.response;
 			setUserInfo2({
 				name: result.name,
-				intro: "현명한 관리자",
+				intro: result.introduce || "현명한 관리자",
 				email: result.email,
 				tel: result.phoneNum
 			})

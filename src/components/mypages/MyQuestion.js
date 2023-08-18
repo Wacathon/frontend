@@ -1,11 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, CloseButton, Form, InputGroup, Stack } from "react-bootstrap";
+import axios from "axios";
 
 const questionData = ["1.....", "2............."];
 
 function MyQuestion() {
 	const [question, setQuestion] = useState("");
 	const [questionList, setQuestionList] = useState(questionData);
+
+	useEffect(() => {
+		axios.get('http://43.202.59.248:8080/api/question/8')
+		.then((res) => {
+			const result = res.data.response;
+			setQuestionList(result.map((item) => {
+				return item.title;
+			}))
+		})
+		.catch((err) => {
+			console.log(err);
+		})
+	}, [])
 
 	const onTextChange = (e) => {
 		const {
