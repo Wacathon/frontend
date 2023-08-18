@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {
 	Chart as ChartJS,
 	RadialLinearScale,
@@ -8,6 +8,7 @@ import {
 	Tooltip,
 	Legend,
 } from "chart.js";
+import axios from "axios";
 import { Radar } from "react-chartjs-2";
 
 ChartJS.register(
@@ -82,9 +83,45 @@ export const options = {
 };
 
 function HexChart() {
+	const [userData, setUserData] = useState(data);
+	useEffect(() => {
+		const accessToken = localStorage.getItem("accessToken");
+		
+		const headers = ({
+			'Content-type': 'application/json; charset=UTF-8',
+			'Accept': '*/*',
+			'X-AUTH-TOKEN': 'Bearer ' + accessToken
+		});
+
+		axios.get('http://43.202.59.248:8080/api/indicator', {headers})
+		.then((res) => {
+			const result = res.data.response;
+			const dataSet = result.map((item) => {
+				return { label: item.tagName, data: item.avrgTagScore }
+			})
+			const userScoreData = {
+				labels: dataSet.map((item) => item.label),
+				datasets: [
+					{
+						label: "익명의 역량 지표",
+						data: dataSet.map((item) => item.data),
+						backgroundColor: "rgba(255, 99, 132, 0.2)",
+						borderColor: "rgba(255, 99, 132, 1)",
+						borderWidth: 1,
+					},
+				],
+			};
+
+			setUserData(userScoreData);
+		})
+		.catch((err) => {
+			console.log(err);
+		})
+	}, [])
+
 	return (
 		<div>
-			<Radar data={data} options={options} />
+			<Radar data={userData} options={options} />
 		</div>
 	);
 }
