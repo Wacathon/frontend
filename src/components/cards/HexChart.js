@@ -1,8 +1,23 @@
 import React from "react";
-import { Chart as ChartJS, RadialLinearScale } from "chart.js";
+import {
+	Chart as ChartJS,
+	RadialLinearScale,
+	PointElement,
+	LineElement,
+	Filler,
+	Tooltip,
+	Legend,
+} from "chart.js";
 import { Radar } from "react-chartjs-2";
 
-ChartJS.register(RadialLinearScale);
+ChartJS.register(
+	RadialLinearScale,
+	PointElement,
+	LineElement,
+	Filler,
+	Tooltip,
+	Legend
+);
 
 export const data = {
 	labels: ["리더십", "커뮤니케이션", "성실성", "계획성", "참여성", "전문성"],
@@ -13,7 +28,6 @@ export const data = {
 			backgroundColor: "rgba(255, 99, 132, 0.2)",
 			borderColor: "rgba(255, 99, 132, 1)",
 			borderWidth: 1,
-			borderAlign: "inner",
 		},
 	],
 };
@@ -24,19 +38,13 @@ export const options = {
 		r: {
 			suggestedMin: 0,
 			suggestedMax: 100,
-			grid: {
-				display: false, // 세로선, 가로선 숨김
-				drawBorder: false, // 바깥선 그리기
-			},
-			gridLines: {
-				// grid line 설정
-				display: true,
-				drawBorder: false,
-				color: "#3c3d40",
-			},
-			angleLines: {
-				display: false, // 각도 라인 숨김
-			},
+			// grid: {
+			// 	display: false,
+			// 	drawBorder: false, // 바깥선 그리기
+			// },
+			// angleLines: {
+			// 	display: false,
+			// },
 		},
 	},
 	plugins: {

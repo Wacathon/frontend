@@ -1,6 +1,6 @@
 import React from "react";
 import HexChart from "./HexChart";
-import { Row, Col, Card } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import UserInfo from "./UserInfo";
 
 function UserCard() {
@@ -11,7 +11,7 @@ function UserCard() {
 					<UserInfo />
 				</Col>
 				<Col className="d-flex justify-content-center align-items-center">
-					{/* <HexChart /> */}
+					<HexChart />
 				</Col>
 			</Row>
 		</div>

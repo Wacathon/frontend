@@ -1,0 +1,72 @@
+.nav-wrapper {
+	z-index: 2;
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	width: 18vw;
+	height: 100vh;
+	padding: 25px;
+	background-color: white;
+	border-right: 1px solid black;
+}
+
+.nav-logo-text {
+	font-size: 1.25rem;
+	font-weight: 700;
+}
+
+.nav-link-container #nav-link-container {
+	color: #5145cf;
+}
+.nav-link-container a {
+	color: #838383;
+}
+.nav-link-container a:hover {
+	color: #454545;
+}
+
+.nav-user-info-container {
+	display: inline-flex;
+	align-items: center;
+	position: absolute;
+	bottom: 5vh;
+}
+
+.nav-user-icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-right: 0.25rem;
+}
+.nav-user-icon svg {
+	width: 30px;
+	height: 30px;
+}
+
+.nav-user-info {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+.nav-user-info #name {
+	font-size: 0.75rem;
+}
+.nav-user-info #email {
+	font-size: 0.5rem;
+}
+
+.main-wrapper {
+	z-index: 1;
+	position: absolute;
+	left: 18vw;
+	width: 64vw;
+	height: 100%;
+	background-color: #f7f9fd;
+}
+
+.blank-wrapper {
+	z-index: 0;
+	width: 18vw;
+	background-color: lightskyblue;
+}
