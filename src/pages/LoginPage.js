@@ -18,8 +18,8 @@ function LoginPage() {
         const { accessToken, refreshToken } = response
         localStorage.setItem("accessToken", accessToken)
         localStorage.setItem("refreshToken", refreshToken)
+        navigator('/')
       }
-      console.log()
     } catch (e) {
       console.error(e)
     }
