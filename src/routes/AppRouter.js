@@ -3,9 +3,10 @@ import { Route, Routes } from "react-router-dom";
 import CardPage from "../pages/CardPage";
 import Navigation from "./Navigation";
 import MyPage from "../pages/MyPage";
+import LoginPage from "../pages/LoginPage";
+import LinkPage from "../pages/LinkPage";
 
 import "./route.css";
-import LinkPage from "../pages/LinkPage";
 
 function AppRouter() {
 	return (
@@ -16,6 +17,7 @@ function AppRouter() {
 			<div className="main-wrapper">
 				<Routes>
 					<Route path="/" element={<CardPage />} />
+					<Route path="/login" element={<LoginPage />} />
 					<Route path="/mypage" element={<MyPage />} />
 					<Route path="/share-link" element={<LinkPage />} />
 				</Routes>
