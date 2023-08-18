@@ -1,0 +1,21 @@
+import React from "react";
+import HexChart from "./HexChart";
+import { Row, Col, Card } from "react-bootstrap";
+import UserInfo from "./UserInfo";
+
+function UserCard() {
+	return (
+		<div className="user-card-container">
+			<Row>
+				<Col className="d-flex justify-content-center align-items-center">
+					<UserInfo />
+				</Col>
+				<Col className="d-flex justify-content-center align-items-center">
+					{/* <HexChart /> */}
+				</Col>
+			</Row>
+		</div>
+	);
+}
+
+export default UserCard;

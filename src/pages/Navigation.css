@@ -1,0 +1,13 @@
+.nav-wrapper {
+	width: 300px;
+	height: 100vh;
+	padding: 20px;
+	border-right: 1px solid black;
+}
+
+.nav-link-container a {
+	color: #535353;
+}
+.nav-link-container a:hover {
+	color: #838383;
+}
