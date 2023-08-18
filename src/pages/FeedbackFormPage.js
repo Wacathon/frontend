@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { Col, Container, Form, Row, Button } from "react-bootstrap";
 import { InputNumber, Slider } from "antd";
 import "./feedbackform.css";
 
 const relationEnum = [
+	{ name: "관계를 선택해주세요.", type: "" },
 	{ name: "학교 동기, 선후배", type: "SCHOOL_COLLEAGUE" },
 	{ name: "직장 동료", type: "COMPANY_COLLEAGUE" },
 	{ name: "친구", type: "FRIEND" },
@@ -15,6 +16,7 @@ const relationEnum = [
 
 function FeedbackFormPage() {
 	const userId = useParams();
+	const navigate = useNavigate();
 	const [userName, setUSerName] = useState("강경수");
 	const [relationData, setRelationData] = useState("");
 	const [indicateDatas, setIndicateDatas] = useState([]);
@@ -167,6 +169,7 @@ function FeedbackFormPage() {
 			//   }
 			// }
 		);
+		navigate(`/feedback-form/${userId.userId}/result`, { replace: true });
 	};
 
 	return (

@@ -9,39 +9,39 @@ export const userInfo = {
 	tel: "010-1234-5678",
 };
 
-
 function UserInfo() {
-	const [ userInfo2, setUserInfo2 ] = useState({});
+	const [userInfo, setUserInfo] = useState({});
 	useEffect(() => {
 		const accessToken = localStorage.getItem("accessToken");
-		
-		const headers = ({
-			'Content-type': 'application/json; charset=UTF-8',
-			'Accept': '*/*',
-			'X-AUTH-TOKEN': 'Bearer ' + accessToken
-		});
 
-		axios.get('http://43.202.59.248:8080/api/member/myProfile', {headers})
-		.then((res) => {
-			const result = res.data.response;
-			setUserInfo2({
-				name: result.name,
-				intro: result.introduce || "현명한 관리자",
-				email: result.email,
-				tel: result.phoneNum
+		const headers = {
+			"Content-type": "application/json; charset=UTF-8",
+			Accept: "*/*",
+			"X-AUTH-TOKEN": "Bearer " + accessToken,
+		};
+
+		axios
+			.get("http://43.202.59.248:8080/api/member/myProfile", { headers })
+			.then((res) => {
+				const result = res.data.response;
+				setUserInfo({
+					name: result.name,
+					intro: result.introduce || "현명한 관리자",
+					email: result.email,
+					tel: result.phoneNum,
+				});
 			})
-		})
-		.catch((err) => {
-			console.log(err);
-		})
-	}, [])
-	
+			.catch((err) => {
+				console.log(err);
+			});
+	}, []);
+
 	return (
 		<Stack className="max-width-200">
-			<h5>{userInfo2.intro}</h5>
-			<h1>{userInfo2.name}</h1>
-			<h6>Phone: {userInfo2.tel}</h6>
-			<h6>Email: {userInfo2.email}</h6>
+			<h5>{userInfo.intro}</h5>
+			<h1>{userInfo.name}</h1>
+			<h6>Phone: {userInfo.tel}</h6>
+			<h6>Email: {userInfo.email}</h6>
 		</Stack>
 	);
 }

@@ -1,13 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Nav } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { userInfo } from "../components/cards/UserInfo";
+import axios from "axios";
 
-import logo from "../components/img/js_icon.png";
+import logo from "../components/img/app_logo.png";
 import { UserOutlined } from "@ant-design/icons";
 import "./route.css";
 
 function Navigation() {
+	const [userInfo, setUserInfo] = useState({});
+
+	useEffect(() => {
+		const accessToken = localStorage.getItem("accessToken");
+
+		const headers = {
+			"Content-type": "application/json; charset=UTF-8",
+			Accept: "*/*",
+			"X-AUTH-TOKEN": "Bearer " + accessToken,
+		};
+
+		axios
+			.get("http://43.202.59.248:8080/api/member/myProfile", { headers })
+			.then((res) => {
+				const result = res.data.response;
+				setUserInfo({
+					name: result.name,
+					email: result.email,
+				});
+				console.log(result);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}, []);
 	const navigate = useNavigate();
 
 	const gotoCardPage = () => {

@@ -7,14 +7,12 @@ export const dummyFeedbackData = [
 	{
 		id: 1,
 		title: "개쩌는 커뮤니케이션",
-		comment:
-			"",
+		comment: "",
 	},
 	{
 		id: 2,
 		title: "계획성 최고",
-		comment:
-			"",
+		comment: "",
 	},
 	{
 		id: 3,
@@ -27,25 +25,33 @@ function FeedbackCards({ pageType }) {
 	const [feedbackData, setFeedbackData] = useState(dummyFeedbackData);
 	useEffect(() => {
 		const accessToken = localStorage.getItem("accessToken");
-		
-		const headers = ({
-			'Content-type': 'application/json; charset=UTF-8',
-			'Accept': '*/*',
-			'X-AUTH-TOKEN': 'Bearer ' + accessToken
-		});
 
-		axios.get('http://43.202.59.248:8080/api/feedback?userId=8&pinned=true', {headers})
-		.then((res) => {
-			// console.log(res.data.response);
-			const result = res.data.response;
-			setFeedbackData(result.map((item) => {
-				return {id: item.answerId, title: item.title, comment: item.content}
-			}));
-		})
-		.catch((err) => {
-			console.log(err);
-		})
-	}, [])
+		const headers = {
+			"Content-type": "application/json; charset=UTF-8",
+			Accept: "*/*",
+			"X-AUTH-TOKEN": "Bearer " + accessToken,
+		};
+
+		axios
+			.get("http://43.202.59.248:8080/api/feedback?userId=8&pinned=true", {
+				headers,
+			})
+			.then((res) => {
+				const result = res.data.response;
+				setFeedbackData(
+					result.map((item) => {
+						return {
+							id: item.answerId,
+							title: item.title,
+							comment: item.content,
+						};
+					})
+				);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}, []);
 
 	const renderFeedbackCards = (feedbackData) => {
 		return feedbackData.map((data) => {

@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { userInfo } from "../cards/UserInfo";
 import { Button, Stack } from "react-bootstrap";
 import Inputs from "../forms/Inputs";
 import axios from "axios";
 
 function MyInfoForm() {
 	const [isEdit, setIsEdit] = useState(false);
-	const [name, setName] = useState(userInfo.name);
-	const [intro, setIntro] = useState(userInfo.intro);
-	const [tel, setTel] = useState(userInfo.tel);
-	const [email, setEmail] = useState(userInfo.email);
+	const [name, setName] = useState("");
+	const [intro, setIntro] = useState("");
+	const [tel, setTel] = useState("");
+	const [email, setEmail] = useState("");
 
 	const onEditClick = () => {
 		// 사용자 개인정보 수정하는 코드
@@ -18,25 +17,26 @@ function MyInfoForm() {
 
 	useEffect(() => {
 		const accessToken = localStorage.getItem("accessToken");
-		
-		const headers = ({
-			'Content-type': 'application/json; charset=UTF-8',
-			'Accept': '*/*',
-			'X-AUTH-TOKEN': 'Bearer ' + accessToken
-		});
 
-		axios.get('http://43.202.59.248:8080/api/member/myProfile', {headers})
-		.then((res) => {
-			const result = res.data.response;
-			setName(result.name);
-			setIntro(result.introduce);
-			setEmail(result.email);
-			setTel(result.phoneNum);
-		})
-		.catch((err) => {
-			console.log(err);
-		})
-	}, [])
+		const headers = {
+			"Content-type": "application/json; charset=UTF-8",
+			Accept: "*/*",
+			"X-AUTH-TOKEN": "Bearer " + accessToken,
+		};
+
+		axios
+			.get("http://43.202.59.248:8080/api/member/myProfile", { headers })
+			.then((res) => {
+				const result = res.data.response;
+				setName(result.name);
+				setIntro(result.introduce);
+				setEmail(result.email);
+				setTel(result.phoneNum);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}, []);
 
 	return (
 		<Stack gap={4} className="userForm-container">
