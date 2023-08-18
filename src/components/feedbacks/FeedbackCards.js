@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col, Card } from "react-bootstrap";
+import axios from "axios";
 import "./feedback.css";
 
 export const dummyFeedbackData = [
@@ -7,23 +8,44 @@ export const dummyFeedbackData = [
 		id: 1,
 		title: "개쩌는 커뮤니케이션",
 		comment:
-			"ㅈ덕로댜ㅕㅓ휻휺ㄴㅎ뉴ㅓㅎㄴ윻넣너ㄴ엏ㄴ후ㄴㅇ러ㅝㄴㅇ허ㅜㄴㅇ허ㅜㄴㅇ후ㅏㄴ앟ㄴ아훈아ㅜ한ㅇ훈아훈아훈아ㅜㅎㄴ아훈ㅇ한ㅇ하ㅜㅇㄴ훈아훈ㅇ한ㅇ후ㅏㄴ웋ㄴ아ㅜ히ㅏㄴ웋낳ㄴㄴ아훈아훈ㅇ훈ㅇ훈ㄴ아훈웅ㅎㄴㄴㄴ",
+			"",
 	},
 	{
 		id: 2,
 		title: "계획성 최고",
 		comment:
-			"ㅈ덕로댜ㅕㅓ휻휺ㄴㅎ뉴ㅓㅎㄴ윻넣너ㄴ엏ㄴ후ㄴㅇ러ㅝㄴㅇ허ㅜㄴㅇ허ㅜㄴㅇ후ㅏㄴ앟ㄴ아훈아ㅜ한ㅇ훈아훈아훈아ㅜㅎㄴ아훈ㅇ한ㅇ하ㅜㅇㄴ훈아훈ㅇ한ㅇ후ㅏㄴ웋ㄴ아ㅜ히ㅏㄴ",
+			"",
 	},
 	{
 		id: 3,
 		title: "성실함이 뛰어남",
-		comment: "나는 성실의 왕이다...",
+		comment: "",
 	},
 ];
 
 function FeedbackCards({ pageType }) {
 	const [feedbackData, setFeedbackData] = useState(dummyFeedbackData);
+	useEffect(() => {
+		const accessToken = localStorage.getItem("accessToken");
+		
+		const headers = ({
+			'Content-type': 'application/json; charset=UTF-8',
+			'Accept': '*/*',
+			'X-AUTH-TOKEN': 'Bearer ' + accessToken
+		});
+
+		axios.get('http://43.202.59.248:8080/api/feedback?userId=3&pinned=true', {headers})
+		.then((res) => {
+			// console.log(res.data.response);
+			const result = res.data.response;
+			setFeedbackData(result.map((item) => {
+				return {id: item.answerId, title: item.title, comment: item.content}
+			}));
+		})
+		.catch((err) => {
+			console.log(err);
+		})
+	}, [])
 
 	const renderFeedbackCards = (feedbackData) => {
 		return feedbackData.map((data) => {
