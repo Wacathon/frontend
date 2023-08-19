@@ -12,9 +12,10 @@ function MyQuestion() {
 			.get(`http://43.202.59.248:8080/api/question/${userId}`)
 			.then((res) => {
 				const result = res.data.response;
+				console.log(res.data);
 				setQuestionList(
 					result.map((item) => {
-						return item.title;
+						return { questionId: item.questionId, title: item.title };
 					})
 				);
 			})
@@ -65,11 +66,11 @@ function MyQuestion() {
 		console.log("question delete");
 	};
 
-	const renderQuestionList = () => {
+	const RenderQuestionList = () => {
 		return questionList.map((idx) => {
 			return (
-				<div key={idx} className="d-flex justify-content-between">
-					<span>{idx}</span>
+				<div key={idx.questionId} className="d-flex justify-content-between">
+					<span>{idx.title}</span>
 					<CloseButton onClick={onDeleteQuestion} />
 				</div>
 			);
@@ -88,7 +89,7 @@ function MyQuestion() {
 				<Button onClick={onAddQuestion}>추가</Button>
 			</InputGroup>
 			<Stack gap={2} className="mt-3 px-3">
-				{renderQuestionList()}
+				<RenderQuestionList />
 			</Stack>
 		</div>
 	);
