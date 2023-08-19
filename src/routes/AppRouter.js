@@ -9,6 +9,7 @@ import LinkPage from "../pages/LinkPage";
 import "./route.css";
 import FeedbackFormPage from "../pages/FeedbackFormPage";
 import ResultPage from "../pages/ResultPage";
+import MyCardPage from "../pages/MyCardPage";
 
 function AppRouter({ isLoggedIn }) {
 	return (
@@ -39,6 +40,7 @@ function AppRouter({ isLoggedIn }) {
 								path="/feedback-form/:userId/result"
 								element={<ResultPage />}
 							/>
+							<Route path="/card/:userId" element={<MyCardPage />} />
 							<Route path="/*" element={<LoginPage />} />
 						</Routes>
 					</div>

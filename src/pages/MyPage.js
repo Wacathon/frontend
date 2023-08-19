@@ -2,12 +2,17 @@ import React from "react";
 import MyInfoForm from "../components/mypages/MyInfoForm";
 import MyHexChart from "../components/mypages/MyHexChart";
 
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import "../components/mypages/mypage.css";
 import MyQuestion from "../components/mypages/MyQuestion";
 import FeedbackCards from "../components/feedbacks/FeedbackCards";
 
 function MyPage() {
+	const onLogout = () => {
+		window.localStorage.removeItem("accessToken");
+		window.localStorage.removeItem("refreshToken");
+		window.location.reload();
+	};
 	return (
 		<Container fluid className="myPage-wrapper">
 			<Row className="mt-4">
@@ -35,10 +40,18 @@ function MyPage() {
 					</div>
 					<hr />
 					<h5 className="myPage-container-title pt-3">💙 내가 받은 피드백</h5>
-					<div>
+					<div className="mb-3">
 						<FeedbackCards pageType="mypage" />
 					</div>
 				</Col>
+				<hr />
+				<Row>
+					<Col className="d-flex justify-content-end">
+						<Button bg="outline-danger" onClick={onLogout}>
+							로그아웃
+						</Button>
+					</Col>
+				</Row>
 			</Row>
 		</Container>
 	);

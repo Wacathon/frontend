@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import {
 	Chart as ChartJS,
 	RadialLinearScale,
@@ -66,13 +66,6 @@ export const options = {
 		r: {
 			suggestedMin: 0,
 			suggestedMax: 100,
-			// grid: {
-			// 	display: false,
-			// 	drawBorder: false, // 바깥선 그리기
-			// },
-			// angleLines: {
-			// 	display: false,
-			// },
 		},
 	},
 	plugins: {
@@ -86,38 +79,38 @@ function HexChart() {
 	const [userData, setUserData] = useState(data);
 	useEffect(() => {
 		const accessToken = localStorage.getItem("accessToken");
-		
-		const headers = ({
-			'Content-type': 'application/json; charset=UTF-8',
-			'Accept': '*/*',
-			'X-AUTH-TOKEN': 'Bearer ' + accessToken
-		});
 
-		axios.get('http://43.202.59.248:8080/api/indicator', {headers})
-		.then((res) => {
-			const result = res.data.response;
-			const dataSet = result.map((item) => {
-				return { label: item.tagName, data: item.avrgTagScore }
+		const headers = {
+			"Content-type": "application/json; charset=UTF-8",
+			Accept: "*/*",
+			"X-AUTH-TOKEN": "Bearer " + accessToken,
+		};
+
+		axios
+			.get("http://43.202.59.248:8080/api/indicator", { headers })
+			.then((res) => {
+				const result = res.data.response;
+				const dataSet = result.map((item) => {
+					return { label: item.tagName, data: item.tagScore };
+				});
+				const userScoreData = {
+					labels: dataSet.map((item) => item.label),
+					datasets: [
+						{
+							label: "익명의 역량 지표",
+							data: dataSet.map((item) => item.data),
+							backgroundColor: "rgba(255, 99, 132, 0.2)",
+							borderColor: "rgba(255, 99, 132, 1)",
+							borderWidth: 1,
+						},
+					],
+				};
+				setUserData(userScoreData);
 			})
-			const userScoreData = {
-				labels: dataSet.map((item) => item.label),
-				datasets: [
-					{
-						label: "익명의 역량 지표",
-						data: dataSet.map((item) => item.data),
-						backgroundColor: "rgba(255, 99, 132, 0.2)",
-						borderColor: "rgba(255, 99, 132, 1)",
-						borderWidth: 1,
-					},
-				],
-			};
-
-			setUserData(userScoreData);
-		})
-		.catch((err) => {
-			console.log(err);
-		})
-	}, [])
+			.catch((err) => {
+				console.log(err);
+			});
+	}, []);
 
 	return (
 		<div>

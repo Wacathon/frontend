@@ -12,7 +12,6 @@ function MyQuestion() {
 			.get(`http://43.202.59.248:8080/api/question/${userId}`)
 			.then((res) => {
 				const result = res.data.response;
-				console.log(res.data);
 				setQuestionList(
 					result.map((item) => {
 						return { questionId: item.questionId, title: item.title };
@@ -25,27 +24,32 @@ function MyQuestion() {
 	}, []);
 
 	const onAddQuestion = async () => {
-		const accessToken = localStorage.getItem("accessToken");
-		await axios.post(
-			"http://43.202.59.248:8080/api/question",
-			{
-				title: question,
-			},
-			{
-				headers: {
-					"X-AUTH-TOKEN": `Bearer ${accessToken}`,
+		try {
+			const accessToken = localStorage.getItem("accessToken");
+			await axios.post(
+				"http://43.202.59.248:8080/api/question",
+				{
+					title: question,
 				},
-			}
-		);
+				{
+					headers: {
+						"X-AUTH-TOKEN": `Bearer ${accessToken}`,
+					},
+				}
+			);
+		} catch (err) {
+			console.log(err);
+		}
+
 		alert("정보가 수정되었습니다!");
 
-		axios
+		await axios
 			.get(`http://43.202.59.248:8080/api/question/${userId}`)
 			.then((res) => {
 				const result = res.data.response;
 				setQuestionList(
 					result.map((item) => {
-						return item.title;
+						return { questionId: item.questionId, title: item.title };
 					})
 				);
 			})
@@ -61,17 +65,35 @@ function MyQuestion() {
 		setQuestion(value);
 	};
 
-	const onDeleteQuestion = () => {
-		// 피드백 질문 지우는 코드
-		console.log("question delete");
+	const onDeleteQuestion = async (id) => {
+		const accessToken = localStorage.getItem("accessToken");
+		await axios.delete(`http://43.202.59.248:8080/api/question/${id}`, {
+			headers: {
+				"X-AUTH-TOKEN": `Bearer ${accessToken}`,
+			},
+		});
+		alert("질문이 삭제되었습니다!");
+		axios
+			.get(`http://43.202.59.248:8080/api/question/${userId}`)
+			.then((res) => {
+				const result = res.data.response;
+				setQuestionList(
+					result.map((item) => {
+						return { questionId: item.questionId, title: item.title };
+					})
+				);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 	};
 
 	const RenderQuestionList = () => {
-		return questionList.map((idx) => {
+		return questionList.map((item) => {
 			return (
-				<div key={idx.questionId} className="d-flex justify-content-between">
-					<span>{idx.title}</span>
-					<CloseButton onClick={onDeleteQuestion} />
+				<div key={item.questionId} className="d-flex justify-content-between">
+					<span>{item.title}</span>
+					<CloseButton onClick={() => onDeleteQuestion(item.questionId)} />
 				</div>
 			);
 		});
