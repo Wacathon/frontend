@@ -77,6 +77,7 @@ export const options = {
 
 function HexChart() {
 	const [userData, setUserData] = useState(data);
+
 	useEffect(() => {
 		const accessToken = localStorage.getItem("accessToken");
 

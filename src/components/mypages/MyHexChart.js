@@ -7,6 +7,10 @@ function MyHexChart() {
 	const renderLabels = () => {
 		return hexChart_dataset.map((item, idx) => {
 			return (
+				// <div key={idx}>
+				// 	<span>{item.label}</span>
+				// 	<span>({item.data})</span>
+				// </div>
 				<Row key={idx}>
 					<Col>{item.label}</Col>
 					<Col>({item.data})</Col>
@@ -16,7 +20,8 @@ function MyHexChart() {
 	};
 
 	return (
-		<div className="d-flex flex-row">
+		<div className="myChart-wrapper">
+			{/* <div>{renderLabels()}</div> */}
 			<Stack
 				gap={4}
 				// style={{ minWidth: "300px" }}
@@ -24,7 +29,7 @@ function MyHexChart() {
 			>
 				{renderLabels()}
 			</Stack>
-			<div>
+			<div className="myChart-chart-container">
 				<HexChart />
 			</div>
 		</div>

@@ -1,21 +1,28 @@
 .myPage-wrapper {
-	width: 100%;
-	padding: 0;
-}
-
-.myPage-info-wrapper {
-	max-width: 800px;
-	padding: 30px 20px;
-	background-color: #f7f9fd;
-	border-radius: 10px;
+	margin: 0 auto;
+	overflow: auto;
+	padding: 30px;
 }
 
 .myPage-container {
-	padding: 15px;
+	display: flex;
+	flex-direction: column;
+	margin-top: 15px;
+	padding: 20px;
+	background-color: #f7f9fd;
+	border-radius: 15px;
 }
 
 .myPage-container-title {
 	color: var(--app-primary-color);
+}
+
+.myChart-wrapper {
+	width: 100%;
+}
+
+.myChart-chart-container {
+	max-width: 300px;
 }
 
 .userForm-container h5 {

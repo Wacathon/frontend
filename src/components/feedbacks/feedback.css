@@ -5,10 +5,10 @@
 }
 
 .feedback-max-width {
-	max-width: 270px !important;
+	/* max-width: 270px !important; */
 }
 .feedback-row {
-	display: flex;
+	/* display: flex; */
 	/* justify-content: space-between; */
-	max-width: 800px;
+	/* max-width: 800px; */
 }

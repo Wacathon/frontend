@@ -110,9 +110,9 @@ function MyQuestion() {
 				/>
 				<Button onClick={onAddQuestion}>추가</Button>
 			</InputGroup>
-			<Stack gap={2} className="mt-3 px-3">
+			<div className="mt-3 px-3">
 				<RenderQuestionList />
-			</Stack>
+			</div>
 		</div>
 	);
 }

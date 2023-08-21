@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Button, Stack } from "react-bootstrap";
-import Inputs from "../forms/Inputs";
+import Inputs from "../hooks/useInputs";
 import axios from "axios";
+import { userInfo } from "../cards/UserInfo";
 
 function MyInfoForm() {
 	const [isEdit, setIsEdit] = useState(false);
@@ -11,7 +12,7 @@ function MyInfoForm() {
 	const [email, setEmail] = useState("");
 
 	const toggleEdit = () => {
-		setIsEdit(true);
+		setIsEdit((prev) => !prev);
 	};
 
 	const onEditClick = async () => {
@@ -58,45 +59,52 @@ function MyInfoForm() {
 	}, []);
 
 	return (
-		<Stack gap={4} className="userForm-container">
-			{isEdit ? (
-				<>
-					<h5>이름: {name}</h5>
-					<Inputs
-						inputName="소개"
-						inputValue={intro}
-						setInputValue={setIntro}
-						inputPlaceholder="소개를 입력해주세요"
-					/>
-					<Inputs
-						inputName="연락처"
-						inputValue={tel}
-						setInputValue={setTel}
-						inputPlaceholder="연락처를 입력해주세요"
-					/>
-					<Inputs
-						inputName="이메일"
-						inputValue={email}
-						setInputValue={setEmail}
-						inputPlaceholder="이메일을 입력해주세요"
-					/>
-				</>
-			) : (
-				<>
-					<h5>이름: {name}</h5>
-					<h5>소개: {intro}</h5>
-					<h5>연락처: {tel}</h5>
-					<h5>이메일: {email}</h5>
-				</>
-			)}
+		<div className="userForm-container">
+			<>
+				{isEdit ? (
+					<div className="p-2">
+						<h5>이름 : {name}</h5>
+						<Inputs
+							inputName="소개"
+							inputValue={intro}
+							setInputValue={setIntro}
+							inputPlaceholder="소개를 입력해주세요"
+						/>
+						<Inputs
+							inputName="연락처"
+							inputValue={tel}
+							setInputValue={setTel}
+							inputPlaceholder="연락처를 입력해주세요"
+						/>
+						<Inputs
+							inputName="이메일"
+							inputValue={email}
+							setInputValue={setEmail}
+							inputPlaceholder="이메일을 입력해주세요"
+						/>
+					</div>
+				) : (
+					<Stack gap={3} className="pt-2">
+						<h5>이름: {name}</h5>
+						<h5>소개: {intro}</h5>
+						<h5>연락처: {tel}</h5>
+						<h5>이메일: {email}</h5>
+					</Stack>
+				)}
+			</>
 			<div className="d-flex justify-content-end">
 				{isEdit ? (
-					<Button onClick={onEditClick}>수정완료</Button>
+					<>
+						<Button variant="secondary" className="me-2" onClick={toggleEdit}>
+							취소
+						</Button>
+						<Button onClick={onEditClick}>수정완료</Button>
+					</>
 				) : (
 					<Button onClick={toggleEdit}>수정하기</Button>
 				)}
 			</div>
-		</Stack>
+		</div>
 	);
 }
 

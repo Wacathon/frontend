@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import logo from "../components/img/app_logo.png";
-import { UserOutlined } from "@ant-design/icons";
 import "./route.css";
 
 function Navigation() {
@@ -47,7 +46,7 @@ function Navigation() {
 	};
 
 	return (
-		<div className="d-flex flex-column">
+		<aside className="d-flex flex-column nav-wrapper p-4">
 			<div className="mt-3 mb-5">
 				<Nav.Link onClick={gotoCardPage} className="d-flex align-items-center">
 					<img
@@ -55,9 +54,9 @@ function Navigation() {
 						src={logo}
 						width="30"
 						height="30"
-						className="d-inline-block align-top me-2"
+						className="d-inline-block align-top me-1"
 					/>
-					<span className="nav-logo-text">개쩌는 명함</span>
+					<span className="nav-logo-text">IM</span>
 				</Nav.Link>
 			</div>
 			<div>
@@ -72,15 +71,13 @@ function Navigation() {
 				</Nav>
 			</div>
 			<div className="nav-user-info-container">
-				<div className="nav-user-icon">
-					<UserOutlined />
-				</div>
+				<div className="nav-user-icon me-1">👤</div>
 				<div className="nav-user-info">
 					<span id="name">{userInfo.name}</span>
 					<span id="email">{userInfo.email}</span>
 				</div>
 			</div>
-		</div>
+		</aside>
 	);
 }
 
