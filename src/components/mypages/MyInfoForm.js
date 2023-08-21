@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Button, Stack } from "react-bootstrap";
 import Inputs from "../hooks/useInputs";
 import axios from "axios";
-import { userInfo } from "../cards/UserInfo";
 
 function MyInfoForm() {
 	const [isEdit, setIsEdit] = useState(false);
