@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Button, Stack } from "react-bootstrap";
 import Inputs from "../hooks/useInputs";
-import axios from "axios";
+import { getUserProfile, updateUserInfo } from "../hooks/useAxiosUsers";
 
 function MyInfoForm() {
 	const [isEdit, setIsEdit] = useState(false);
 	const [name, setName] = useState("");
-	const [intro, setIntro] = useState("");
-	const [tel, setTel] = useState("");
+	const [introduce, setIntroduce] = useState("");
+	const [phoneNum, setPhoneNum] = useState("");
 	const [email, setEmail] = useState("");
 
 	const toggleEdit = () => {
@@ -15,46 +15,23 @@ function MyInfoForm() {
 	};
 
 	const onEditClick = async () => {
-		const accessToken = localStorage.getItem("accessToken");
-		await axios.post(
-			"http://43.202.59.248:8080/api/member/introduce",
-			{
-				email: email,
-				introduce: intro,
-				phoneNum: tel,
-			},
-			{
-				headers: {
-					"X-AUTH-TOKEN": `Bearer ${accessToken}`,
-				},
-			}
-		);
+		if (email === "" || introduce === "" || phoneNum === "") {
+			alert("정보를 입력해주세요!");
+			return;
+		}
+		await updateUserInfo(email, introduce, phoneNum);
 		alert("정보가 수정되었습니다!");
 		setIsEdit(true);
 		window.location.reload();
 	};
 
 	useEffect(() => {
-		const accessToken = localStorage.getItem("accessToken");
-
-		const headers = {
-			"Content-type": "application/json; charset=UTF-8",
-			Accept: "*/*",
-			"X-AUTH-TOKEN": "Bearer " + accessToken,
-		};
-
-		axios
-			.get("http://43.202.59.248:8080/api/member/myProfile", { headers })
-			.then((res) => {
-				const result = res.data.response;
-				setName(result.name);
-				setIntro(result.introduce);
-				setEmail(result.email);
-				setTel(result.phoneNum);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+		getUserProfile().then((data) => {
+			setName(data.name);
+			setIntroduce(data.introduce);
+			setEmail(data.email);
+			setPhoneNum(data.phoneNum);
+		});
 	}, []);
 
 	return (
@@ -65,14 +42,14 @@ function MyInfoForm() {
 						<h5>이름 : {name}</h5>
 						<Inputs
 							inputName="소개"
-							inputValue={intro}
-							setInputValue={setIntro}
+							inputValue={introduce}
+							setInputValue={setIntroduce}
 							inputPlaceholder="소개를 입력해주세요"
 						/>
 						<Inputs
 							inputName="연락처"
-							inputValue={tel}
-							setInputValue={setTel}
+							inputValue={phoneNum}
+							setInputValue={setPhoneNum}
 							inputPlaceholder="연락처를 입력해주세요"
 						/>
 						<Inputs
@@ -85,8 +62,8 @@ function MyInfoForm() {
 				) : (
 					<Stack gap={3} className="pt-2">
 						<h5>이름: {name}</h5>
-						<h5>소개: {intro}</h5>
-						<h5>연락처: {tel}</h5>
+						<h5>소개: {introduce}</h5>
+						<h5>연락처: {phoneNum}</h5>
 						<h5>이메일: {email}</h5>
 					</Stack>
 				)}

@@ -1,35 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Nav } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
-import logo from "../components/img/app_logo.png";
 import "./route.css";
+import logo from "../components/img/app_logo.png";
+import { getUserProfile } from "../components/hooks/useAxiosUsers";
 
 function Navigation() {
 	const [userInfo, setUserInfo] = useState({});
 
 	useEffect(() => {
-		const accessToken = localStorage.getItem("accessToken");
-
-		const headers = {
-			"Content-type": "application/json; charset=UTF-8",
-			Accept: "*/*",
-			"X-AUTH-TOKEN": "Bearer " + accessToken,
-		};
-
-		axios
-			.get("http://43.202.59.248:8080/api/member/myProfile", { headers })
-			.then((res) => {
-				const result = res.data.response;
-				setUserInfo({
-					name: result.name,
-					email: result.email,
-				});
+		getUserProfile().then((data) =>
+			setUserInfo({
+				name: data.name,
+				email: data.email,
 			})
-			.catch((err) => {
-				console.log(err);
-			});
+		);
 	}, []);
 	const navigate = useNavigate();
 

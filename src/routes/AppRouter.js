@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import CardPage from "../pages/CardPage";
 import Navigation from "./Navigation";
 import MyPage from "../pages/MyPage";
-import LoginPage from "../pages/LoginPage";
+import AuthPage from "../pages/AuthPage";
 import LinkPage from "../pages/LinkPage";
 
 import "./route.css";
@@ -43,8 +43,9 @@ function AppRouter({ isLoggedIn }) {
 				<div className="d-flex justify-content-center">
 					<div className="guest-main-wrapper">
 						<Routes>
-							<Route path="/" element={<LoginPage />} />
-							<Route path="/login" element={<LoginPage />} />
+							<Route path="/" element={<AuthPage />} />
+							<Route path="/login" element={<AuthPage />} />
+							<Route path="/signup" element={<AuthPage />} />
 							<Route
 								path="/feedback-form/:userId"
 								element={<FeedbackFormPage />}
@@ -54,7 +55,7 @@ function AppRouter({ isLoggedIn }) {
 								element={<ResultPage />}
 							/>
 							<Route path="/card/:userId" element={<MyCardPage />} />
-							<Route path="/*" element={<LoginPage />} />
+							<Route path="/*" element={<AuthPage />} />
 						</Routes>
 					</div>
 				</div>

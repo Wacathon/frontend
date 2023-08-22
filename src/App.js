@@ -3,7 +3,7 @@ import AppRouter from "./routes/AppRouter";
 
 function App() {
 	const [isLoggedIn, setIsLoggedIn] = useState(
-		localStorage.getItem("accessToken")
+		localStorage.getItem("accessToken") ? true : false
 	);
 
 	return (

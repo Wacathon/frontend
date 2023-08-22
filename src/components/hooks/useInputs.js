@@ -2,7 +2,13 @@ import React from "react";
 
 import Form from "react-bootstrap/Form";
 
-function Inputs({ inputName, inputValue, setInputValue, inputPlaceholder }) {
+function Inputs({
+	inputName,
+	inputType,
+	inputValue,
+	setInputValue,
+	inputPlaceholder,
+}) {
 	const onTextChange = (e) => {
 		const {
 			target: { value },
@@ -14,7 +20,7 @@ function Inputs({ inputName, inputValue, setInputValue, inputPlaceholder }) {
 		<div>
 			<Form.Label>{inputName}</Form.Label>
 			<Form.Control
-				type="text"
+				type={inputType || "text"}
 				placeholder={inputPlaceholder}
 				value={inputValue}
 				onChange={onTextChange}
