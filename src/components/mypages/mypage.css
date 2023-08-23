@@ -18,7 +18,8 @@
 }
 
 .myChart-wrapper {
-	width: 100%;
+	display: flex;
+	flex-direction: row;
 }
 
 .myChart-chart-container {

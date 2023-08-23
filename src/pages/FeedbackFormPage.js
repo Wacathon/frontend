@@ -6,6 +6,10 @@ import { Col, Container, Form, Row, Button } from "react-bootstrap";
 import { InputNumber, Slider } from "antd";
 import "./feedbackform.css";
 import { postFeedbackAnswer } from "../components/hooks/useAxiosFeedbacks";
+import {
+	getMyNamecardInfo,
+	getUserIndicators,
+} from "../components/hooks/useAxiosIndicator";
 
 const relationEnum = [
 	{ name: "관계를 선택해주세요.", type: "" },
@@ -18,7 +22,7 @@ const relationEnum = [
 function FeedbackFormPage() {
 	const userId = useParams();
 	const navigate = useNavigate();
-	const [userName, setUserName] = useState("강경수");
+	const [userName, setUserName] = useState("");
 	const [relationData, setRelationData] = useState("");
 	const [indicateDatas, setIndicateDatas] = useState([]);
 	const [questionDatas, setQuestionDatas] = useState([]);
@@ -26,14 +30,13 @@ function FeedbackFormPage() {
 	useEffect(() => {
 		axios
 			.all([
-				axios.get(
-					`http://43.202.59.248:8080/api/indicator/answer/${userId.userId}`
-				),
+				getUserIndicators(userId.userId),
 				axios.get(`http://43.202.59.248:8080/api/question/${userId.userId}`),
+				getMyNamecardInfo(userId.userId),
 			])
 			.then(
-				axios.spread((res1, res2) => {
-					const tags = res1.data.response.map((el) => {
+				axios.spread((res1, res2, res3) => {
+					const tags = res1.map((el) => {
 						return {
 							tagId: el.tagId,
 							label: el.tagName,
@@ -47,6 +50,7 @@ function FeedbackFormPage() {
 						content: "",
 					}));
 					setQuestionDatas(questions);
+					setUserName(res3.userName);
 				})
 			);
 	}, []);
@@ -168,7 +172,7 @@ function FeedbackFormPage() {
 				</Col>
 			</Row>
 			<Row className="px-2">
-				<h5>✔️ {userName}님와 나와의 관계</h5>
+				<h5>✔️ {userName}님과 나와의 관계</h5>
 				<Row>
 					<Col md={{ span: 4 }}>
 						<Form.Select onChange={onRelationChange}>

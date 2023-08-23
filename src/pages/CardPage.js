@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import UserCard from "../components/cards/UserCard";
 import axios from "axios";
-
-import { Container, Row, Col } from "react-bootstrap";
-import "../components/cards/cards.css";
-import FeedbackCards from "../components/feedbacks/FeedbackCards";
+import UserCard from "../components/cards/UserCard";
 import PinnedFeedbackList from "../components/feedbacks/PinnedFeedbackList";
+
+import "../components/cards/cards.css";
 
 function CardPage() {
 	const [userName, setUserName] = useState("");
@@ -30,22 +28,20 @@ function CardPage() {
 	}, []);
 
 	return (
-		<Container fluid className="cardPage-wrapper">
-			<Row>
-				<Col>
-					<h4 className="cardPage-user-card-title">📇 {userName}님의 명함</h4>
-				</Col>
-			</Row>
-			<Row>
-				<Col className="userCard-max-width">
+		<div className="cardPage-wrapper">
+			<div className="d-flex flex-column justify-content-center align-items-center p-2">
+				<div className="d-flex flex-column align-items-start userCard-max-width">
+					<h4 className="cardPage-user-card-title ps-2">
+						📇 {userName}님의 명함
+					</h4>
 					<UserCard />
-				</Col>
-			</Row>
-			<div className="mt-5 feedback-container">
+				</div>
+			</div>
+			<div className="p-2">
 				<h4 className="cardPage-user-card-title">📌 Pinned Feedbacks</h4>
 				<PinnedFeedbackList />
 			</div>
-		</Container>
+		</div>
 	);
 }
 

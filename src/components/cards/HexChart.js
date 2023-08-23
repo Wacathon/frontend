@@ -10,6 +10,7 @@ import {
 } from "chart.js";
 import axios from "axios";
 import { Radar } from "react-chartjs-2";
+import { getMyNamecardInfo } from "../hooks/useAxiosIndicator";
 
 ChartJS.register(
 	RadialLinearScale,
@@ -75,8 +76,8 @@ export const options = {
 	},
 };
 
-function HexChart() {
-	const userId = 3;
+function HexChart({ userId }) {
+	// const userId = 3;
 	const [userData, setUserData] = useState(data);
 
 	useEffect(() => {
@@ -88,10 +89,9 @@ function HexChart() {
 			"X-AUTH-TOKEN": "Bearer " + accessToken,
 		};
 
-		axios
-			.get(`http://43.202.59.248:8080/api/indicator/${userId}`, { headers })
+		getMyNamecardInfo(userId)
 			.then((res) => {
-				const result = res.data.response.scoreList;
+				const result = res.scoreList;
 				const dataSet = result.map((item) => {
 					return { label: item.tagName, data: item.tagScore };
 				});
