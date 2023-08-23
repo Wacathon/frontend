@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-
-import { Col, Container, Form, Row, Button } from "react-bootstrap";
-import { InputNumber, Slider } from "antd";
-import "./feedbackform.css";
 import { postFeedbackAnswer } from "../components/hooks/useAxiosFeedbacks";
 import {
 	getMyNamecardInfo,
 	getUserIndicators,
 } from "../components/hooks/useAxiosIndicator";
+
+import "./feedbackform.css";
+import { Col, Container, Form, Row, Button } from "react-bootstrap";
+import { InputNumber, Slider } from "antd";
 
 const relationEnum = [
 	{ name: "관계를 선택해주세요.", type: "" },
