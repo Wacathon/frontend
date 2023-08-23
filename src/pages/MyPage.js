@@ -1,11 +1,11 @@
 import React from "react";
 import MyInfoForm from "../components/mypages/MyInfoForm";
 import MyHexChart from "../components/mypages/MyHexChart";
-
-import { Button } from "react-bootstrap";
-import "../components/mypages/mypage.css";
 import MyQuestion from "../components/mypages/MyQuestion";
-import FeedbackCards from "../components/feedbacks/FeedbackCards";
+import FeedbackList from "../components/feedbacks/FeedbackList";
+
+import "../components/mypages/mypage.css";
+import { Button } from "react-bootstrap";
 
 function MyPage() {
 	const onLogout = () => {
@@ -35,7 +35,7 @@ function MyPage() {
 				<hr />
 				<div className="p-2">
 					<h5 className="myPage-container-title">💙 내가 받은 피드백</h5>
-					<FeedbackCards pageType="mypage" />
+					<FeedbackList />
 				</div>
 				<hr />
 				<div className="d-flex justify-content-end">

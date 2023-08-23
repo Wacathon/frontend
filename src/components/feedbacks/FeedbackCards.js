@@ -1,93 +1,53 @@
-import React, { useEffect, useState } from "react";
-import { Row, Col, Card } from "react-bootstrap";
-import axios from "axios";
+import React from "react";
+
 import "./feedback.css";
+import { Button, Card } from "react-bootstrap";
+import { updatePinnedFeedbacks } from "../hooks/useAxiosFeedbacks";
 
-export const dummyFeedbackData = [
-	{
-		id: 1,
-		title: "개쩌는 커뮤니케이션",
-		comment: "",
-	},
-	{
-		id: 2,
-		title: "계획성 최고",
-		comment: "",
-	},
-	{
-		id: 3,
-		title: "성실함이 뛰어남",
-		comment: "",
-	},
-];
-
-function FeedbackCards({ pageType }) {
-	const [feedbackData, setFeedbackData] = useState(dummyFeedbackData);
-	useEffect(() => {
-		const accessToken = localStorage.getItem("accessToken");
-
-		const headers = {
-			"Content-type": "application/json; charset=UTF-8",
-			Accept: "*/*",
-			"X-AUTH-TOKEN": "Bearer " + accessToken,
-		};
-
-		axios
-			.get("http://43.202.59.248:8080/api/feedback?userId=8&pinned=true", {
-				headers,
-			})
-			.then((res) => {
-				const result = res.data.response;
-				setFeedbackData(
-					result.map((item) => {
-						return {
-							id: item.answerId,
-							title: item.title,
-							comment: item.content,
-						};
-					})
-				);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
-	}, []);
-
-	const renderFeedbackCards = (feedbackData) => {
-		return feedbackData.map((data) => {
-			return (
-				<Col key={data.id} className="feedback-max-width">
-					<Card border="secondary">
-						<Card.Header>{data.title}</Card.Header>
-						<Card.Body>{data.comment}</Card.Body>
-						{/* <Card.Footer>나는 마이페이지다....</Card.Footer> */}
-					</Card>
-				</Col>
+function FeedbackCards({ item, pageType, refreshFeedbackList }) {
+	const onPinClicked = (el) => {
+		if (
+			window.confirm(
+				`${
+					el.isPinned
+						? "피드백을 고정 해제하시겠습니까?"
+						: "피드백을 고정하시겠습니까?"
+				}`
+			)
+		) {
+			updatePinnedFeedbacks(el.id, !el.isPinned).then(() =>
+				refreshFeedbackList()
 			);
-		});
-	};
-
-	const renderPinnedFeedbackCards = (feedbackData) => {
-		return feedbackData.map((data) => {
-			return (
-				<Col key={data.id} className="feedback-max-width">
-					<Card border="secondary">
-						<Card.Header>{data.title}</Card.Header>
-						<Card.Body>{data.comment}</Card.Body>
-					</Card>
-				</Col>
-			);
-		});
+		}
 	};
 
 	return (
-		<>
-			<Row className="pt-2 pb-2 feedback-row">
-				{pageType === "cardpage"
-					? renderPinnedFeedbackCards(feedbackData)
-					: renderFeedbackCards(feedbackData)}
-			</Row>
-		</>
+		<Card border={item.isPinned ? "primary" : "secondary"}>
+			<Card.Header>
+				<div className="d-flex justify-content-between align-items-center">
+					{/* <span>피드백 #{idx + 1}</span> */}
+					{item.isPinned ? (
+						<h5 className="m-0">📌 피드백 #{item.id}</h5>
+					) : (
+						<span>피드백 #{item.id}</span>
+					)}
+					{pageType === "mypage" && (
+						<Button
+							variant="outline-secondary"
+							onClick={() => onPinClicked(item)}
+						>
+							📌
+						</Button>
+					)}
+				</div>
+			</Card.Header>
+			<Card.Body>
+				<Card.Title>{item.questionTitle}</Card.Title>
+				{item.title && <Card.Subtitle>{item.title}</Card.Subtitle>}
+				{item.content && <Card.Text>{item.content}</Card.Text>}
+			</Card.Body>
+		</Card>
 	);
 }
+
 export default FeedbackCards;

@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Col, Container, Form, Row, Button } from "react-bootstrap";
 import { InputNumber, Slider } from "antd";
 import "./feedbackform.css";
+import { postFeedbackAnswer } from "../components/hooks/useAxiosFeedbacks";
 
 const relationEnum = [
 	{ name: "관계를 선택해주세요.", type: "" },
@@ -17,7 +18,7 @@ const relationEnum = [
 function FeedbackFormPage() {
 	const userId = useParams();
 	const navigate = useNavigate();
-	const [userName, setUSerName] = useState("강경수");
+	const [userName, setUserName] = useState("강경수");
 	const [relationData, setRelationData] = useState("");
 	const [indicateDatas, setIndicateDatas] = useState([]);
 	const [questionDatas, setQuestionDatas] = useState([]);
@@ -142,34 +143,19 @@ function FeedbackFormPage() {
 		});
 	};
 
-	const saveFeedbackData = async () => {
+	const saveFeedbackData = () => {
 		if (relationData === "") {
 			alert("피드백을 입력해주세요!");
 			return;
 		}
-		await axios.post(
-			`http://43.202.59.248:8080/api/feedback/${userId.userId}`,
-			{
-				answers: questionDatas.map((el) => {
-					return {
-						questionId: el.questionId,
-						title: el.title,
-						content: el.content,
-					};
-				}),
-				indicators: indicateDatas.map((el) => ({
-					tagId: el.tagId,
-					tagScore: el.data,
-				})),
-				relationship: relationData,
-			}
-			// {
-			//   headers : {
-			//     Authorization: `Bearer ${accessToken}`
-			//   }
-			// }
+		postFeedbackAnswer(
+			userId.userId,
+			questionDatas,
+			indicateDatas,
+			relationData
+		).then(() =>
+			navigate(`/feedback-form/${userId.userId}/result`, { replace: true })
 		);
-		navigate(`/feedback-form/${userId.userId}/result`, { replace: true });
 	};
 
 	return (

@@ -33,7 +33,8 @@
 	bottom: 0;
 	right: 0;
 	width: 10%;
-	background-color: #fff;
+	/* background-color: #fff; */
+	background-color: rgb(233, 233, 233);
 }
 
 .nav-logo-text {

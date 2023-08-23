@@ -76,6 +76,7 @@ export const options = {
 };
 
 function HexChart() {
+	const userId = 3;
 	const [userData, setUserData] = useState(data);
 
 	useEffect(() => {
@@ -88,9 +89,9 @@ function HexChart() {
 		};
 
 		axios
-			.get("http://43.202.59.248:8080/api/indicator", { headers })
+			.get(`http://43.202.59.248:8080/api/indicator/${userId}`, { headers })
 			.then((res) => {
-				const result = res.data.response;
+				const result = res.data.response.scoreList;
 				const dataSet = result.map((item) => {
 					return { label: item.tagName, data: item.tagScore };
 				});

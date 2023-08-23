@@ -5,6 +5,7 @@ import axios from "axios";
 import { Container, Row, Col } from "react-bootstrap";
 import "../components/cards/cards.css";
 import FeedbackCards from "../components/feedbacks/FeedbackCards";
+import PinnedFeedbackList from "../components/feedbacks/PinnedFeedbackList";
 
 function CardPage() {
 	const [userName, setUserName] = useState("");
@@ -42,7 +43,7 @@ function CardPage() {
 			</Row>
 			<div className="mt-5 feedback-container">
 				<h4 className="cardPage-user-card-title">📌 Pinned Feedbacks</h4>
-				<FeedbackCards pageType="cardpage" />
+				<PinnedFeedbackList />
 			</div>
 		</Container>
 	);
