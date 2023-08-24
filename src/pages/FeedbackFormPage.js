@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import { postFeedbackAnswer } from "../components/hooks/useAxiosFeedbacks";
+import { postFeedbackAnswer } from "../hooks/useAxiosFeedbacks";
 import {
 	getMyNamecardInfo,
 	getUserIndicators,
-} from "../components/hooks/useAxiosIndicator";
+} from "../hooks/useAxiosIndicator";
 
 import "./feedbackform.css";
 import { Col, Container, Form, Row, Button } from "react-bootstrap";

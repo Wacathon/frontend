@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Inputs from "../hooks/useInputs";
+import Inputs from "../../hooks/useInputs";
 import { Button, Stack } from "react-bootstrap";
-import { userLogin } from "../hooks/useAxiosUsers";
+import { userLogin } from "../../hooks/useAxiosUsers";
 import { useNavigate } from "react-router-dom";
 
 function UserLogin() {

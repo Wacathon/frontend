@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import HexChart from "../components/cards/HexChart";
 import { useParams } from "react-router-dom";
-import { getMyNamecardInfo } from "../components/hooks/useAxiosIndicator";
+import { getMyNamecardInfo } from "../hooks/useAxiosIndicator";
 
 import { Row, Col, Stack } from "react-bootstrap";
 import "../components/cards/cards.css";

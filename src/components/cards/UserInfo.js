@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Stack } from "react-bootstrap";
-import { getUserProfile } from "../hooks/useAxiosUsers";
+import { getUserProfile } from "../../hooks/useAxiosUsers";
 
 function UserInfo() {
 	const [userInfo, setUserInfo] = useState({});

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import HexChart from "../cards/HexChart";
 
 import { Row, Col, Stack } from "react-bootstrap";
-import { getMyIndicatorInfo } from "../hooks/useAxiosIndicator";
+import { getMyIndicatorInfo } from "../../hooks/useAxiosIndicator";
 
 function MyHexChart() {
 	const [indicatorInfo, setIndicatorData] = useState([]);

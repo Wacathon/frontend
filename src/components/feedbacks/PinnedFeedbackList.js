@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getFeedbackList } from "../hooks/useAxiosFeedbacks";
+import { getFeedbackList } from "../../hooks/useAxiosFeedbacks";
 import FeedbackCards from "./FeedbackCards";
 
 import "./feedback.css";

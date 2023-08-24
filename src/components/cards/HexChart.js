@@ -10,7 +10,7 @@ import {
 } from "chart.js";
 import axios from "axios";
 import { Radar } from "react-chartjs-2";
-import { getMyNamecardInfo } from "../hooks/useAxiosIndicator";
+import { getMyNamecardInfo } from "../../hooks/useAxiosIndicator";
 
 ChartJS.register(
 	RadialLinearScale,

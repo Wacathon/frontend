@@ -2,7 +2,7 @@ import React from "react";
 
 import "./feedback.css";
 import { Button, Card } from "react-bootstrap";
-import { updatePinnedFeedbacks } from "../hooks/useAxiosFeedbacks";
+import { updatePinnedFeedbacks } from "../../hooks/useAxiosFeedbacks";
 
 function FeedbackCards({ item, pageType, refreshFeedbackList }) {
 	const onPinClicked = (el) => {

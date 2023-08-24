@@ -3,10 +3,11 @@ import { Button, InputGroup } from "react-bootstrap";
 import {
 	editUserCustomQuestion,
 	getUserCustomQuestions,
-} from "../hooks/useAxiosQuestions";
-import Inputs from "../hooks/useInputs";
+} from "../../hooks/useAxiosQuestions";
+import Inputs from "../../hooks/useInputs";
 
 function EditQuestion({ question, setIsEdit, setQuestionList }) {
+	const userId = 3;
 	const [editText, setEditText] = useState(question.title);
 
 	const onEditQuestion = () => {
@@ -18,7 +19,7 @@ function EditQuestion({ question, setIsEdit, setQuestionList }) {
 		if (window.confirm("질문을 수정하시겠습니까?")) {
 			editUserCustomQuestion(question.questionId, editText).then((res) => {
 				if (res) {
-					getUserCustomQuestions(3, setQuestionList);
+					getUserCustomQuestions(userId, setQuestionList);
 					alert("질문이 수정되었습니다.");
 				} else {
 					alert("질문 수정에 실패하였습니다.");
@@ -35,7 +36,7 @@ function EditQuestion({ question, setIsEdit, setQuestionList }) {
 				setInputValue={setEditText}
 				inputPlaceholder="질문을 수정해주세요."
 			/>
-			<Button size="sm" onClick={onEditQuestion}>
+			<Button size="sm" variant="secondary" onClick={onEditQuestion}>
 				수정
 			</Button>
 		</InputGroup>

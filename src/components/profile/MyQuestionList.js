@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
 	addUserCustomQuestion,
 	getUserCustomQuestions,
-} from "../hooks/useAxiosQuestions";
+} from "../../hooks/useAxiosQuestions";
 import MyQuestion from "../questions/MyQuestion";
 
 import { Button, Form, InputGroup, Stack } from "react-bootstrap";

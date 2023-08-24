@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Inputs from "../hooks/useInputs";
+import Inputs from "../../hooks/useInputs";
 import { Button, Stack } from "react-bootstrap";
-import { userSignup } from "../hooks/useAxiosUsers";
+import { userSignup } from "../../hooks/useAxiosUsers";
 
 function UserSignup() {
 	const [email, setEmail] = useState("");

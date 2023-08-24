@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {
 	deleteUserCustomQuestion,
 	getUserCustomQuestions,
-} from "../hooks/useAxiosQuestions";
+} from "../../hooks/useAxiosQuestions";
 import EditQuestion from "./EditQuestion";
 
 import { Button, CloseButton } from "react-bootstrap";
@@ -44,8 +44,13 @@ function MyQuestion({ question, setQuestionList }) {
 				<div className="d-flex justify-content-between align-items-center">
 					<span>{question.title}</span>
 					<div className="d-flex align-items-center">
-						<Button size="sm" className="me-2" onClick={onEditClick}>
-							Edit
+						<Button
+							size="sm"
+							variant="secondary"
+							className="me-2"
+							onClick={onEditClick}
+						>
+							수정
 						</Button>
 						<CloseButton
 							onClick={() => onDeleteQuestion(question.questionId)}
