@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import HexChart from "../components/cards/HexChart";
+import HexChart from "../components/charts/HexChart";
 import { useParams } from "react-router-dom";
 import { getMyNamecardInfo } from "../hooks/useAxiosIndicator";
 
 import { Row, Col, Stack } from "react-bootstrap";
-import "../components/cards/cards.css";
+import "../components/namecards/cards.css";
 
-function MyCardPage() {
+function NameCardPage() {
 	const userId = useParams();
 	const [userInfo, setUserInfo] = useState({});
 
@@ -47,4 +47,4 @@ function MyCardPage() {
 	);
 }
 
-export default MyCardPage;
+export default NameCardPage;

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import UserCard from "../components/cards/UserCard";
+import UserCard from "../components/namecards/UserCard";
 import PinnedFeedbackList from "../components/feedbacks/PinnedFeedbackList";
 
-import "../components/cards/cards.css";
+import "../components/namecards/cards.css";
 
 function CardPage() {
 	const [userName, setUserName] = useState("");

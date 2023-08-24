@@ -9,22 +9,29 @@ import { getUserProfile } from "../hooks/useAxiosUsers";
 function Navigation() {
 	const [userInfo, setUserInfo] = useState({});
 
+	const navigate = useNavigate();
+
 	useEffect(() => {
 		getUserProfile().then((data) =>
 			setUserInfo({
+				// id: data.id,
+				id: 3,
 				name: data.name,
 				email: data.email,
 			})
 		);
 	}, []);
-	const navigate = useNavigate();
 
-	const gotoCardPage = () => {
+	const gotoMainPage = () => {
 		navigate("/");
 	};
 
+	const gotoCardPage = () => {
+		navigate(`/name-card/${userInfo.id}`);
+	};
+
 	const gotoMyPage = () => {
-		navigate("/mypage");
+		navigate("/profile");
 	};
 
 	const gotoLinkPage = () => {
@@ -34,7 +41,7 @@ function Navigation() {
 	return (
 		<aside className="d-flex flex-column nav-wrapper p-4">
 			<div className="mt-3 mb-5">
-				<Nav.Link onClick={gotoCardPage} className="d-flex align-items-center">
+				<Nav.Link onClick={gotoMainPage} className="d-flex align-items-center">
 					<img
 						alt="app_icon"
 						src={logo}

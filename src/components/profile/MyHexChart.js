@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import HexChart from "../cards/HexChart";
+import HexChart from "../charts/HexChart";
 
 import { Row, Col, Stack } from "react-bootstrap";
 import { getMyIndicatorInfo } from "../../hooks/useAxiosIndicator";

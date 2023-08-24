@@ -2,15 +2,16 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import CardPage from "../pages/CardPage";
 import Navigation from "./Navigation";
-import MyPage from "../pages/MyPage";
+import ProfilePage from "../pages/ProfilePage";
 import AuthPage from "../pages/AuthPage";
 import LinkPage from "../pages/LinkPage";
-
-import "./route.css";
 import FeedbackFormPage from "../pages/FeedbackFormPage";
 import ResultPage from "../pages/ResultPage";
-import MyCardPage from "../pages/MyCardPage";
+import NameCardPage from "../pages/NameCardPage";
+
+import "./route.css";
 import { Button } from "react-bootstrap";
+import MainPage from "../pages/MainPage";
 
 function AppRouter({ isLoggedIn }) {
 	const scrollToTop = () => {
@@ -24,9 +25,9 @@ function AppRouter({ isLoggedIn }) {
 					<Navigation />
 					<main className="main-wrapper">
 						<Routes>
-							<Route path="/" element={<CardPage />} />
-							{/* <Route path="/:userId" element={<CardPage />} /> */}
-							<Route path="/mypage" element={<MyPage />} />
+							<Route path="/" element={<MainPage />} />
+							<Route path="/name-card/:userId" element={<CardPage />} />
+							<Route path="/profile" element={<ProfilePage />} />
 							<Route path="/share-link" element={<LinkPage />} />
 						</Routes>
 					</main>
@@ -54,7 +55,7 @@ function AppRouter({ isLoggedIn }) {
 								path="/feedback-form/:userId/result"
 								element={<ResultPage />}
 							/>
-							<Route path="/card/:userId" element={<MyCardPage />} />
+							<Route path="/card/:userId" element={<NameCardPage />} />
 							<Route path="/*" element={<AuthPage />} />
 						</Routes>
 					</div>

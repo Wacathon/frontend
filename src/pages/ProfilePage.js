@@ -7,7 +7,7 @@ import FeedbackList from "../components/feedbacks/FeedbackList";
 import "../components/profile/mypage.css";
 import { Button } from "react-bootstrap";
 
-function MyPage() {
+function ProfilePage() {
 	const onLogout = () => {
 		window.localStorage.removeItem("accessToken");
 		window.localStorage.removeItem("refreshToken");
@@ -48,4 +48,4 @@ function MyPage() {
 	);
 }
 
-export default MyPage;
+export default ProfilePage;

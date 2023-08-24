@@ -1,5 +1,5 @@
 import React from "react";
-import HexChart from "./HexChart";
+import HexChart from "../charts/HexChart";
 import { Row, Col } from "react-bootstrap";
 import UserInfo from "./UserInfo";
 
