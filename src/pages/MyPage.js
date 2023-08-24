@@ -1,10 +1,10 @@
 import React from "react";
-import MyInfoForm from "../components/mypages/MyInfoForm";
-import MyHexChart from "../components/mypages/MyHexChart";
-import MyQuestion from "../components/mypages/MyQuestion";
+import MyInfoForm from "../components/profile/MyInfoForm";
+import MyHexChart from "../components/profile/MyHexChart";
+import MyQuestionList from "../components/profile/MyQuestionList";
 import FeedbackList from "../components/feedbacks/FeedbackList";
 
-import "../components/mypages/mypage.css";
+import "../components/profile/mypage.css";
 import { Button } from "react-bootstrap";
 
 function MyPage() {
@@ -30,7 +30,7 @@ function MyPage() {
 				<hr />
 				<div className="p-2">
 					<h5 className="myPage-container-title">💙 내가 만드는 질문</h5>
-					<MyQuestion />
+					<MyQuestionList />
 				</div>
 				<hr />
 				<div className="p-2">

@@ -89,7 +89,7 @@ function HexChart({ userId }) {
 			"X-AUTH-TOKEN": "Bearer " + accessToken,
 		};
 
-		getMyNamecardInfo(userId)
+		getMyNamecardInfo(userId || 3)
 			.then((res) => {
 				const result = res.scoreList;
 				const dataSet = result.map((item) => {
