@@ -10,6 +10,7 @@ import {
 import "./feedbackform.css";
 import { Col, Container, Form, Row, Button } from "react-bootstrap";
 import { InputNumber, Slider } from "antd";
+import { getUserCustomQuestions } from "../hooks/useAxiosQuestions";
 
 const relationEnum = [
 	{ name: "관계를 선택해주세요.", type: "" },
@@ -31,7 +32,7 @@ function FeedbackFormPage() {
 		axios
 			.all([
 				getUserIndicators(userId.userId),
-				axios.get(`http://43.202.59.248:8080/api/question/${userId.userId}`),
+				getUserCustomQuestions(userId.userId, setQuestionDatas),
 				getMyNamecardInfo(userId.userId),
 			])
 			.then(
@@ -44,9 +45,10 @@ function FeedbackFormPage() {
 						};
 					});
 					setIndicateDatas(tags);
-					const questions = res2.data.response.map((el) => ({
+					const questions = res2.map((el) => ({
 						questionId: el.questionId,
-						title: el.title,
+						questionTitle: el.title,
+						title: "",
 						content: "",
 					}));
 					setQuestionDatas(questions);
@@ -81,17 +83,17 @@ function FeedbackFormPage() {
 						<Slider
 							min={0}
 							max={100}
-							onChange={(v) => {
+							value={item.data}
+							onChange={(e) => {
 								const labelIndex = indicateDatas.findIndex(
 									({ label }) => label === item.label
 								);
 								setIndicateDatas([
 									...indicateDatas.slice(0, labelIndex),
-									{ ...indicateDatas[labelIndex], data: v },
+									{ ...indicateDatas[labelIndex], data: e },
 									...indicateDatas.slice(labelIndex + 1, indicateDatas.length),
 								]);
 							}}
-							value={item.data}
 						/>
 					</Col>
 					<Col span={4}>
@@ -101,17 +103,17 @@ function FeedbackFormPage() {
 							style={{
 								margin: "0 16px",
 							}}
-							onChange={(v) => {
+							value={item.data}
+							onChange={(e) => {
 								const labelIndex = indicateDatas.findIndex(({ label }) => {
 									return label === item.label;
 								});
 								setIndicateDatas([
 									...indicateDatas.slice(0, labelIndex),
-									{ ...indicateDatas[labelIndex], data: v },
+									{ ...indicateDatas[labelIndex], data: e },
 									...indicateDatas.slice(labelIndex + 1, indicateDatas.length),
 								]);
 							}}
-							value={item.data}
 						/>
 					</Col>
 				</Row>
@@ -120,16 +122,33 @@ function FeedbackFormPage() {
 	};
 
 	const renderQuestionInputs = () => {
-		return questionDatas.map((item, idx) => {
+		return questionDatas.map((item) => {
 			return (
-				<Row key={idx} className="p-2">
+				<Row key={item.questionId} className="p-2">
 					<Col>
-						<Form.Label>Q. {item.title} (최대 100자)</Form.Label>
+						<Form.Label>Q. {item.questionTitle} (최대 100자)</Form.Label>
+						<Form.Control
+							type="text"
+							placeholder="제목을 입력해주세요."
+							className="mb-2"
+							maxLength={100}
+							value={item.title || ""}
+							onChange={(e) => {
+								const qIdx = questionDatas.findIndex(
+									({ questionId }) => questionId === item.questionId
+								);
+								setQuestionDatas([
+									...questionDatas.slice(0, qIdx),
+									{ ...questionDatas[qIdx], title: e.target.value },
+									...questionDatas.slice(qIdx + 1, questionDatas.length),
+								]);
+							}}
+						/>
 						<Form.Control
 							type="text"
 							placeholder="피드백을 입력해주세요."
 							maxLength={100}
-							value={item.content}
+							value={item.content || ""}
 							onChange={(e) => {
 								const qIdx = questionDatas.findIndex(
 									({ questionId }) => questionId === item.questionId

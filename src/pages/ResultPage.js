@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 function ResultPage() {
-	const [userId, setUserId] = useState(8);
+	const [userId, setUserId] = useState(3);
 	const navigate = useNavigate();
 
 	const gotoNameCardPage = () => {

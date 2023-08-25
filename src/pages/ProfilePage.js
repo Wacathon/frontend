@@ -1,6 +1,6 @@
 import React from "react";
 import MyInfoForm from "../components/profile/MyInfoForm";
-import MyHexChart from "../components/profile/MyHexChart";
+import MyChart from "../components/profile/MyChart";
 import MyQuestionList from "../components/profile/MyQuestionList";
 import FeedbackList from "../components/feedbacks/FeedbackList";
 
@@ -25,7 +25,7 @@ function ProfilePage() {
 				<hr />
 				<div className="p-2">
 					<h5 className="myPage-container-title">💙 나를 표현하는 육각형</h5>
-					<MyHexChart />
+					<MyChart />
 				</div>
 				<hr />
 				<div className="p-2">

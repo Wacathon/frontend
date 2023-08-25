@@ -33,7 +33,7 @@ function FeedbackCards({ item, pageType, refreshFeedbackList }) {
 					)}
 					{pageType === "mypage" && (
 						<Button
-							variant="outline-secondary"
+							variant={item.isPinned ? "outline-primary" : "outline-secondary"}
 							onClick={() => onPinClicked(item)}
 						>
 							📌

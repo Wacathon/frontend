@@ -16,7 +16,7 @@ const getFeedbackList = async (isPinned, userId) => {
 		);
 		const result = await res.data.response;
 		const feedbacks = await result
-			.filter((el) => el.content !== "" || el.title !== "")
+			.filter((el) => el.content !== "" && el.title !== "")
 			.sort((a, b) => a.answerId - b.answerId);
 		return feedbacks;
 	} catch (err) {
