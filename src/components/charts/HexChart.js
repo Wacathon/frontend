@@ -8,7 +8,6 @@ import {
 	Tooltip,
 	Legend,
 } from "chart.js";
-import axios from "axios";
 import { Radar } from "react-chartjs-2";
 import { getMyNamecardInfo } from "../../hooks/useAxiosIndicator";
 
@@ -21,39 +20,39 @@ ChartJS.register(
 	Legend
 );
 
-export const hexChart_dataset = [
+export const initLabel = [
 	{
-		label: "리더십",
-		data: 100,
+		label: "",
+		data: 0,
 	},
 	{
-		label: "커뮤니케이션",
-		data: 100,
+		label: "",
+		data: 0,
 	},
 	{
-		label: "성실성",
-		data: 100,
+		label: "",
+		data: 0,
 	},
 	{
-		label: "참여성",
-		data: 100,
+		label: "",
+		data: 0,
 	},
 	{
-		label: "열정",
-		data: 100,
+		label: "",
+		data: 0,
 	},
 	{
-		label: "사교성",
-		data: 100,
+		label: "",
+		data: 0,
 	},
 ];
 
-export const data = {
-	labels: hexChart_dataset.map((item) => item.label),
+export const initData = {
+	labels: initLabel.map((item) => item.label),
 	datasets: [
 		{
 			label: "익명의 역량 지표",
-			data: hexChart_dataset.map((item) => item.data),
+			data: initLabel.map((item) => item.data),
 			backgroundColor: "rgba(255, 99, 132, 0.2)",
 			borderColor: "rgba(255, 99, 132, 1)",
 			borderWidth: 1,
@@ -78,17 +77,9 @@ export const options = {
 
 function HexChart({ userId }) {
 	// const userId = 3;
-	const [userData, setUserData] = useState(data);
+	const [userData, setUserData] = useState(initData);
 
 	useEffect(() => {
-		const accessToken = localStorage.getItem("accessToken");
-
-		const headers = {
-			"Content-type": "application/json; charset=UTF-8",
-			Accept: "*/*",
-			"X-AUTH-TOKEN": "Bearer " + accessToken,
-		};
-
 		getMyNamecardInfo(userId || 3)
 			.then((res) => {
 				const result = res.scoreList;
@@ -99,7 +90,6 @@ function HexChart({ userId }) {
 					labels: dataSet.map((item) => item.label),
 					datasets: [
 						{
-							label: "익명의 역량 지표",
 							data: dataSet.map((item) => item.data),
 							backgroundColor: "rgba(255, 99, 132, 0.2)",
 							borderColor: "rgba(255, 99, 132, 1)",

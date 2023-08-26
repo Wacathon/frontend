@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { getAllTags } from "../../hooks/useAxiosTags";
-import { getMyIndicatorInfo } from "../../hooks/useAxiosIndicator";
-import HexChart from "../charts/HexChart";
+import {
+	getMyIndicatorInfo,
+	setMyIndicators,
+} from "../../hooks/useAxiosIndicator";
+import DynamicHexChart from "../charts/DynamicHexChart";
+import { initData } from "../charts/HexChart";
 
-import { Form, Stack } from "react-bootstrap";
+import { Button, DropdownButton, Form, Stack } from "react-bootstrap";
 
-function EditMyChart() {
+function EditMyChart({ setIsEdit }) {
+	const userId = 3;
+	const [tagCnt, setTagCnt] = useState(0);
+	const [chartData, setChartData] = useState(initData);
 	const [tagList, setTagList] = useState([]);
 	const [myTagList, setMyTagList] = useState([]);
 
-	useEffect(() => {
+	const setDatas = () => {
 		axios.all([getMyIndicatorInfo(), getAllTags()]).then(
 			axios.spread((res1, res2) => {
 				const indicatorData = res1.map((item) => {
@@ -21,11 +28,30 @@ function EditMyChart() {
 					};
 				});
 				setMyTagList(indicatorData);
-				const tagData = res2.map((item) => {
+				const dataSet = res1.map((item) => {
+					return { label: item.tagName, data: item.avrgTagScore };
+				});
+				const userScoreData = {
+					labels: dataSet.map((item) => item.label),
+					datasets: [
+						{
+							data: dataSet.map((item) => item.data),
+							backgroundColor: "rgba(255, 99, 132, 0.2)",
+							borderColor: "rgba(255, 99, 132, 1)",
+							borderWidth: 1,
+						},
+					],
+				};
+				setChartData(userScoreData);
+				const tagData = res2.map((item, idx) => {
 					const matchedIdx = indicatorData.findIndex(
 						(el) => el.tagId === item.tagId
 					);
+					if (indicatorData[matchedIdx]) {
+						setTagCnt((prev) => prev + 1);
+					}
 					return {
+						idx,
 						tagId: item.tagId,
 						tagName: item.tagName,
 						avrgTagScore: indicatorData[matchedIdx]
@@ -37,34 +63,41 @@ function EditMyChart() {
 				setTagList(tagData);
 			})
 		);
-	}, []);
+	};
 
-	const renderTagList = () => {
-		return tagList.map((item) => {
-			return (
-				<div key={item.tagId}>
-					<Form.Check
-						type="checkbox"
-						id={"tag" + item.tagId}
-						label={`${item.tagName} (${item.avrgTagScore})`}
-						checked={item.isChecked || false}
-						onChange={(e) => {
-							const tagIdx = tagList.findIndex(
-								({ tagId }) => tagId === item.tagId
-							);
-							// if (myTagList.find((el) => el.tagId === item.tagId)) {
-							setTagList([
-								...tagList.slice(0, tagIdx),
-								{ ...tagList[tagIdx], isChecked: e.target.checked },
-								...tagList.slice(tagIdx + 1, tagList.length),
-							]);
-							// }
-							console.log(item.isChecked);
-						}}
-					/>
-				</div>
-			);
+	const onTagSelect = (item) => {
+		if (item.isChecked) {
+			setTagCnt((prev) => prev - 1);
+		} else {
+			if (tagCnt >= 6) {
+				alert("태그는 6개만 선택할 수 있습니다!");
+				return;
+			}
+			setTagCnt((prev) => prev + 1);
+		}
+		const newTagList = [
+			...tagList.slice(0, item.idx),
+			{ ...tagList[item.idx], isChecked: !item.isChecked },
+			...tagList.slice(item.idx + 1, tagList.length),
+		];
+		setTagList(newTagList);
+		const filteredNewTagList = newTagList.filter((item) => item.isChecked);
+		setMyTagList(filteredNewTagList);
+		const dataSet = filteredNewTagList.map((item) => {
+			return { label: item.tagName, data: item.avrgTagScore };
 		});
+		const userScoreData = {
+			labels: dataSet.map((item) => item.label),
+			datasets: [
+				{
+					data: dataSet.map((item) => item.data),
+					backgroundColor: "rgba(255, 99, 132, 0.2)",
+					borderColor: "rgba(255, 99, 132, 1)",
+					borderWidth: 1,
+				},
+			],
+		};
+		setChartData(userScoreData);
 	};
 
 	const renderMyTagList = () => {
@@ -77,12 +110,75 @@ function EditMyChart() {
 		});
 	};
 
+	const renderDropdownItems = () => {
+		return tagList.map((item) => {
+			return (
+				<div key={item.tagId} className="tag-dropdown-item">
+					<Form.Check
+						type="checkbox"
+						id={item.tagId}
+						label={`${item.tagName} (${item.avrgTagScore})`}
+						checked={item.isChecked}
+						onChange={() => onTagSelect(item)}
+					/>
+				</div>
+			);
+		});
+	};
+
+	const closeEdit = () => {
+		setIsEdit(false);
+	};
+
+	const onEditTags = () => {
+		if (tagCnt !== 6) {
+			alert("태그 6개를 모두 선택해주세요!");
+			return;
+		}
+		const tagList = myTagList.map((item) => {
+			return {
+				tagId: item.tagId,
+			};
+		});
+		if (window.confirm("태그 정보를 수정하시겠습니까?")) {
+			setMyIndicators(tagList, userId).then((res) => {
+				if (res) {
+					setDatas();
+					alert("태그 정보가 수정되었습니다.");
+				} else {
+					alert("태그 정보 수정에 실패하였습니다.");
+				}
+			});
+			// setIsEdit(false);
+		} else {
+			setIsEdit(false);
+			return;
+		}
+	};
+
+	useEffect(() => {
+		setTagCnt(0);
+		setDatas();
+		console.log("rerender");
+	}, []);
+
 	return (
-		<div className="d-flex flex-row p-2">
-			<Stack gap={2}>{renderTagList()}</Stack>
-			<div className="d-flex flex-column">
-				<Stack gap={2}>{renderMyTagList()}</Stack>
-				<HexChart />
+		<div className="p-2">
+			<h5>나만의 강점 태그 선택 (6개 선택 필수)</h5>
+			<div className="d-flex flex-row justify-content-between p-2">
+				<DropdownButton title="태그 선택" autoClose="outside">
+					{renderDropdownItems()}
+				</DropdownButton>
+				<div className="d-flex flex-row p-2">
+					<Stack gap={2}>{renderMyTagList()}</Stack>
+					<DynamicHexChart chartData={chartData} />
+				</div>
+			</div>
+			<div className="d-flex justify-content-end">
+				<Button variant="secondary" className="me-2" onClick={closeEdit}>
+					취소
+				</Button>
+				<Button onClick={onEditTags}>수정완료</Button>
 			</div>
 		</div>
 	);

@@ -41,29 +41,22 @@ function MyChart() {
 	return (
 		<div className="myChart-wrapper">
 			{isEdit ? (
-				<EditMyChart />
+				<EditMyChart setIsEdit={setIsEdit} />
 			) : (
-				<div className="d-flex flex-row p-2">
-					<Stack gap={4} className="d-flex justify-content-center">
-						{renderLabels()}
-					</Stack>
-					<div className="myChart-chart-container">
-						<HexChart />
+				<>
+					<div className="d-flex flex-row p-2">
+						<Stack gap={4} className="d-flex justify-content-center">
+							{renderLabels()}
+						</Stack>
+						<div className="myChart-chart-container">
+							<HexChart />
+						</div>
 					</div>
-				</div>
+					<div className="d-flex justify-content-end">
+						<Button onClick={onEditClick}>수정하기</Button>
+					</div>
+				</>
 			)}
-			<div className="d-flex justify-content-end">
-				{isEdit ? (
-					<>
-						<Button variant="secondary" className="me-2" onClick={onEditClick}>
-							취소
-						</Button>
-						<Button onClick={onEditClick}>수정완료</Button>
-					</>
-				) : (
-					<Button onClick={onEditClick}>수정하기</Button>
-				)}
-			</div>
 		</div>
 	);
 }

@@ -26,6 +26,11 @@
 	max-width: 300px;
 }
 
+.tag-dropdown-item {
+	padding: 0.5rem 0.875rem;
+	min-width: 200px;
+}
+
 .userForm-container h5 {
 	font-weight: normal;
 }

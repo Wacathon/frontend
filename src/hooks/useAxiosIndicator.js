@@ -21,7 +21,7 @@ const getMyIndicatorInfo = async () => {
 	}
 };
 
-// POST - 유저 평가정보 설정
+// POST - 유저 태그 정보 설정
 const setMyIndicators = async (tagList, userId) => {
 	try {
 		const res = await axios.post(
@@ -32,7 +32,7 @@ const setMyIndicators = async (tagList, userId) => {
 			},
 			{ headers }
 		);
-		const response = await res.data.response;
+		const response = await res.data.success;
 		return response;
 	} catch (err) {
 		console.log(err);
