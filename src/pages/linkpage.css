@@ -1,5 +1,10 @@
 .linkPage-wrapper {
-	max-width: 800px;
+	margin: 0 auto;
+	overflow: auto;
+	padding: 30px;
+}
+
+.link-card-container {
 	background-color: #f7f9fd;
 	padding: 40px 50px;
 	border: 1px solid lightgrey;

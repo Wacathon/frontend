@@ -1,19 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import {
-	Card,
-	Col,
-	Container,
-	Row,
-	InputGroup,
-	Form,
-	Button,
-} from "react-bootstrap";
+import { Card, InputGroup, Form, Button } from "react-bootstrap";
 import "./linkpage.css";
 
 function LinkPage() {
 	const [userId, setUserId] = useState(3);
 	const [userName, setUserName] = useState("");
+	const url = "http://localhost:3000";
 	const feedbackUrlRef = useRef();
 
 	useEffect(() => {
@@ -45,32 +38,28 @@ function LinkPage() {
 	};
 
 	return (
-		<Container fluid className="linkPage-wrapper">
-			<Row className="mb-2 ps-2">
-				<Col>
-					<h4>{userName} 님의 피드백 링크</h4>
-				</Col>
-			</Row>
-			<Row>
-				<Col>
-					<Card>
-						<Card.Body>
-							<InputGroup>
-								<Form.Control
-									type="text"
-									readOnly
-									ref={feedbackUrlRef}
-									value={`http://localhost:3000/feedback-form/${userId}`}
-								/>
-								<Button variant="secondary" onClick={onShareClick}>
-									링크 복사
-								</Button>
-							</InputGroup>
-						</Card.Body>
-					</Card>
-				</Col>
-			</Row>
-		</Container>
+		<div className="linkPage-wrapper">
+			<div className="mb-2 ps-2">
+				<h4>{userName} 님의 피드백 링크</h4>
+			</div>
+			<div className="link-card-container">
+				<Card>
+					<Card.Body>
+						<InputGroup>
+							<Form.Control
+								type="text"
+								readOnly
+								ref={feedbackUrlRef}
+								value={`${url}/feedback-form/${userId}`}
+							/>
+							<Button variant="secondary" onClick={onShareClick}>
+								링크 복사
+							</Button>
+						</InputGroup>
+					</Card.Body>
+				</Card>
+			</div>
+		</div>
 	);
 }
 
