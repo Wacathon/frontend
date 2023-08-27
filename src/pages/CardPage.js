@@ -30,14 +30,16 @@ function CardPage() {
 	return (
 		<div className="cardPage-wrapper">
 			<div className="d-flex flex-column justify-content-center align-items-center p-2">
-				<div className="d-flex flex-column align-items-start userCard-max-width">
+				<div className="d-flex flex-column align-items-start">
 					<h4 className="cardPage-user-card-title ps-2">
 						📇 {userName}님의 명함
 					</h4>
-					<UserCard />
+					<div>
+						<UserCard />
+					</div>
 				</div>
 			</div>
-			<div className="p-2">
+			<div className="mt-3 p-2">
 				<h4 className="cardPage-user-card-title">📌 Pinned Feedbacks</h4>
 				<PinnedFeedbackList />
 			</div>

@@ -143,10 +143,10 @@ function EditMyChart({ setIsEdit, setIsEdited }) {
 				<DropdownButton title="태그 선택" autoClose="outside">
 					{renderDropdownItems()}
 				</DropdownButton>
-				<div className="d-flex flex-row p-2">
-					<Stack gap={2}>{renderMyTagList()}</Stack>
-					<DynamicHexChart chartData={chartData} />
-				</div>
+				<Stack gap={2} className="mx-4">
+					{renderMyTagList()}
+				</Stack>
+				<DynamicHexChart chartData={chartData} />
 			</div>
 			<div className="d-flex justify-content-end">
 				<Button variant="secondary" className="me-2" onClick={closeEdit}>

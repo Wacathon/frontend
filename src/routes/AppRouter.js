@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import MainPage from "../pages/MainPage";
 import CardPage from "../pages/CardPage";
 import Navigation from "./Navigation";
 import ProfilePage from "../pages/ProfilePage";
@@ -11,7 +12,6 @@ import NameCardPage from "../pages/NameCardPage";
 
 import "./route.css";
 import { Button } from "react-bootstrap";
-import MainPage from "../pages/MainPage";
 
 function AppRouter({ isLoggedIn }) {
 	const scrollToTop = () => {
