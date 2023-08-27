@@ -1,0 +1,17 @@
+.mainPage-wrapper {
+	margin: 0 auto;
+	overflow: auto;
+	padding: 30px;
+}
+
+.main-title {
+	padding-left: 10px;
+	color: #142e5d;
+}
+
+.mainPage-intro {
+	margin-top: 10px;
+	padding: 20px;
+	border: 1px solid rgb(0, 0, 0, 0.2);
+	border-radius: 10px;
+}
