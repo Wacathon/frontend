@@ -6,18 +6,18 @@ import {
 	setMyIndicators,
 } from "../../hooks/useAxiosIndicator";
 import DynamicHexChart from "../charts/DynamicHexChart";
-import { initData } from "../charts/HexChart";
+import { initData, setHexChartData } from "../charts/HexChart";
 
 import { Button, DropdownButton, Form, Stack } from "react-bootstrap";
 
-function EditMyChart({ setIsEdit }) {
+function EditMyChart({ setIsEdit, setIsEdited }) {
 	const userId = 3;
 	const [tagCnt, setTagCnt] = useState(0);
 	const [chartData, setChartData] = useState(initData);
 	const [tagList, setTagList] = useState([]);
 	const [myTagList, setMyTagList] = useState([]);
 
-	const setDatas = () => {
+	const setTagData = () => {
 		axios.all([getMyIndicatorInfo(), getAllTags()]).then(
 			axios.spread((res1, res2) => {
 				const indicatorData = res1.map((item) => {
@@ -28,21 +28,8 @@ function EditMyChart({ setIsEdit }) {
 					};
 				});
 				setMyTagList(indicatorData);
-				const dataSet = res1.map((item) => {
-					return { label: item.tagName, data: item.avrgTagScore };
-				});
-				const userScoreData = {
-					labels: dataSet.map((item) => item.label),
-					datasets: [
-						{
-							data: dataSet.map((item) => item.data),
-							backgroundColor: "rgba(255, 99, 132, 0.2)",
-							borderColor: "rgba(255, 99, 132, 1)",
-							borderWidth: 1,
-						},
-					],
-				};
-				setChartData(userScoreData);
+				const newChartData = setHexChartData(res1);
+				setChartData(newChartData);
 				const tagData = res2.map((item, idx) => {
 					const matchedIdx = indicatorData.findIndex(
 						(el) => el.tagId === item.tagId
@@ -83,21 +70,8 @@ function EditMyChart({ setIsEdit }) {
 		setTagList(newTagList);
 		const filteredNewTagList = newTagList.filter((item) => item.isChecked);
 		setMyTagList(filteredNewTagList);
-		const dataSet = filteredNewTagList.map((item) => {
-			return { label: item.tagName, data: item.avrgTagScore };
-		});
-		const userScoreData = {
-			labels: dataSet.map((item) => item.label),
-			datasets: [
-				{
-					data: dataSet.map((item) => item.data),
-					backgroundColor: "rgba(255, 99, 132, 0.2)",
-					borderColor: "rgba(255, 99, 132, 1)",
-					borderWidth: 1,
-				},
-			],
-		};
-		setChartData(userScoreData);
+		const newChartData = setHexChartData(filteredNewTagList);
+		setChartData(newChartData);
 	};
 
 	const renderMyTagList = () => {
@@ -143,13 +117,14 @@ function EditMyChart({ setIsEdit }) {
 		if (window.confirm("태그 정보를 수정하시겠습니까?")) {
 			setMyIndicators(tagList, userId).then((res) => {
 				if (res) {
-					setDatas();
+					setTagData();
+					setIsEdited(true);
 					alert("태그 정보가 수정되었습니다.");
 				} else {
 					alert("태그 정보 수정에 실패하였습니다.");
 				}
 			});
-			// setIsEdit(false);
+			setIsEdit(false);
 		} else {
 			setIsEdit(false);
 			return;
@@ -158,8 +133,7 @@ function EditMyChart({ setIsEdit }) {
 
 	useEffect(() => {
 		setTagCnt(0);
-		setDatas();
-		console.log("rerender");
+		setTagData();
 	}, []);
 
 	return (

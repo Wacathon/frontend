@@ -75,6 +75,24 @@ export const options = {
 	},
 };
 
+export const setHexChartData = (tagList) => {
+	const dataSet = tagList.map((item) => {
+		return { label: item.tagName, data: item.avrgTagScore };
+	});
+	const chartData = {
+		labels: dataSet.map((item) => item.label),
+		datasets: [
+			{
+				data: dataSet.map((item) => item.data),
+				backgroundColor: "rgba(255, 99, 132, 0.2)",
+				borderColor: "rgba(255, 99, 132, 1)",
+				borderWidth: 1,
+			},
+		],
+	};
+	return chartData;
+};
+
 function HexChart({ userId }) {
 	// const userId = 3;
 	const [userData, setUserData] = useState(initData);
@@ -83,21 +101,8 @@ function HexChart({ userId }) {
 		getMyNamecardInfo(userId || 3)
 			.then((res) => {
 				const result = res.scoreList;
-				const dataSet = result.map((item) => {
-					return { label: item.tagName, data: item.tagScore };
-				});
-				const userScoreData = {
-					labels: dataSet.map((item) => item.label),
-					datasets: [
-						{
-							data: dataSet.map((item) => item.data),
-							backgroundColor: "rgba(255, 99, 132, 0.2)",
-							borderColor: "rgba(255, 99, 132, 1)",
-							borderWidth: 1,
-						},
-					],
-				};
-				setUserData(userScoreData);
+				const newChartData = setHexChartData(result);
+				setUserData(newChartData);
 			})
 			.catch((err) => {
 				console.log(err);

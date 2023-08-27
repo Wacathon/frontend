@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
-import HexChart from "../charts/HexChart";
-
-import { Row, Col, Stack, Button } from "react-bootstrap";
+import { initData, setHexChartData } from "../charts/HexChart";
 import { getMyIndicatorInfo } from "../../hooks/useAxiosIndicator";
 import EditMyChart from "./EditMyChart";
+import DynamicHexChart from "../charts/DynamicHexChart";
+
+import { Row, Col, Stack, Button } from "react-bootstrap";
 
 function MyChart() {
 	const [indicatorInfo, setIndicatorData] = useState([]);
+	const [chartData, setChartData] = useState(initData);
 	const [isEdit, setIsEdit] = useState(false);
+	const [isEdited, setIsEdited] = useState(false);
 
 	useEffect(() => {
-		getMyIndicatorInfo().then((data) =>
+		getMyIndicatorInfo().then((data) => {
 			setIndicatorData(
 				data.map((item) => {
 					return {
@@ -19,9 +22,12 @@ function MyChart() {
 						avrgTagScore: Number(item.avrgTagScore).toFixed(1),
 					};
 				})
-			)
-		);
-	}, []);
+			);
+			const newChartData = setHexChartData(data);
+			setChartData(newChartData);
+		});
+		setIsEdited(false);
+	}, [isEdited]);
 
 	const onEditClick = () => {
 		setIsEdit((prev) => !prev);
@@ -41,7 +47,7 @@ function MyChart() {
 	return (
 		<div className="myChart-wrapper">
 			{isEdit ? (
-				<EditMyChart setIsEdit={setIsEdit} />
+				<EditMyChart setIsEdit={setIsEdit} setIsEdited={setIsEdited} />
 			) : (
 				<>
 					<div className="d-flex flex-row p-2">
@@ -49,7 +55,7 @@ function MyChart() {
 							{renderLabels()}
 						</Stack>
 						<div className="myChart-chart-container">
-							<HexChart />
+							<DynamicHexChart chartData={chartData} />
 						</div>
 					</div>
 					<div className="d-flex justify-content-end">
