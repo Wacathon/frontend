@@ -1,5 +1,8 @@
 import axios from "axios";
 
+const SERVER_FEEDBACK_URL =
+	process.env.REACT_APP_SERVER_BASE_URL + "/api/feedback";
+
 const accessToken = localStorage.getItem("accessToken");
 
 const headers = {
@@ -12,7 +15,7 @@ const headers = {
 const getFeedbackList = async (isPinned, userId) => {
 	try {
 		const res = await axios.get(
-			`http://43.202.59.248:8080/api/feedback?pinned=${isPinned}&userId=${userId}`
+			`${SERVER_FEEDBACK_URL}?pinned=${isPinned}&userId=${userId}`
 		);
 		const result = await res.data.response;
 		const feedbacks = await result
@@ -32,23 +35,20 @@ const postFeedbackAnswer = async (
 	relationData
 ) => {
 	try {
-		const res = await axios.post(
-			`http://43.202.59.248:8080/api/feedback/${userId}`,
-			{
-				answers: questionDatas.map((el) => {
-					return {
-						questionId: el.questionId,
-						title: el.title,
-						content: el.content,
-					};
-				}),
-				indicators: indicateDatas.map((el) => ({
-					tagId: el.tagId,
-					tagScore: el.data,
-				})),
-				relationship: relationData,
-			}
-		);
+		const res = await axios.post(`${SERVER_FEEDBACK_URL}/${userId}`, {
+			answers: questionDatas.map((el) => {
+				return {
+					questionId: el.questionId,
+					title: el.title,
+					content: el.content,
+				};
+			}),
+			indicators: indicateDatas.map((el) => ({
+				tagId: el.tagId,
+				tagScore: el.data,
+			})),
+			relationship: relationData,
+		});
 		const response = await res.data.response;
 		return response;
 	} catch (err) {
@@ -60,7 +60,7 @@ const postFeedbackAnswer = async (
 const updatePinnedFeedbacks = async (answerId, isPinned) => {
 	try {
 		const res = await axios.post(
-			"http://43.202.59.248:8080/api/feedback/pinned",
+			`${SERVER_FEEDBACK_URL}/pinned`,
 			{ answerId, pinned: isPinned },
 			{ headers }
 		);

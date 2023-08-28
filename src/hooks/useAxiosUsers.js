@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const SERVER_MEMBER_URL = process.env.REACT_APP_SERVER_BASE_URL + "/api/member";
+
 const accessToken = localStorage.getItem("accessToken");
 
 const headers = {
@@ -13,7 +15,7 @@ const userLogin = async (email, passwd, navigator) => {
 	try {
 		const {
 			data: { response, success },
-		} = await axios.post("http://43.202.59.248:8080/api/member/login", {
+		} = await axios.post(`${SERVER_MEMBER_URL}/login`, {
 			email,
 			passwd,
 		});
@@ -34,7 +36,7 @@ const userSignup = async (email, introduce, name, passwd, phoneNum) => {
 	try {
 		const {
 			data: { success, error },
-		} = await axios.post("http://43.202.59.248:8080/api/member/join", {
+		} = await axios.post(`${SERVER_MEMBER_URL}/join`, {
 			email,
 			introduce,
 			name,
@@ -54,10 +56,7 @@ const userSignup = async (email, introduce, name, passwd, phoneNum) => {
 // GET - 유저 프로필 조회
 const getUserProfile = async () => {
 	try {
-		const res = await axios.get(
-			"http://43.202.59.248:8080/api/member/myProfile",
-			{ headers }
-		);
+		const res = await axios.get(`${SERVER_MEMBER_URL}/myProfile`, { headers });
 		const userInfo = await res.data.response;
 		return userInfo;
 	} catch (err) {
@@ -69,7 +68,7 @@ const getUserProfile = async () => {
 const updateUserInfo = async (email, introduce, phoneNum) => {
 	try {
 		await axios.post(
-			"http://43.202.59.248:8080/api/member/introduce",
+			`${SERVER_MEMBER_URL}/introduce`,
 			{ email: email, introduce: introduce, phoneNum: phoneNum },
 			{ headers }
 		);

@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const SERVER_TAG_URL = process.env.REACT_APP_SERVER_BASE_URL + "/api/tag";
+
 const accessToken = localStorage.getItem("accessToken");
 
 const headers = {
@@ -11,7 +13,7 @@ const headers = {
 // GET - 모든 지표들 조회
 const getAllTags = async () => {
 	try {
-		const res = await axios.get("http://43.202.59.248:8080/api/tag");
+		const res = await axios.get(SERVER_TAG_URL);
 		const response = await res.data.response;
 		return response;
 	} catch (err) {
@@ -22,7 +24,7 @@ const getAllTags = async () => {
 // POST - 지표 추가
 const addTag = async (tagName) => {
 	try {
-		const res = await axios.post("http://43.202.59.248:8080/api/tag", {
+		const res = await axios.post(SERVER_TAG_URL, {
 			tagName: tagName,
 		});
 		const response = await res.data.response;

@@ -1,5 +1,8 @@
 import axios from "axios";
 
+const SERVER_INDICATOR_URL =
+	process.env.REACT_APP_SERVER_BASE_URL + "/api/indicator";
+
 const accessToken = localStorage.getItem("accessToken");
 
 const headers = {
@@ -11,7 +14,7 @@ const headers = {
 // GET - 유저 평가정보 조회
 const getMyIndicatorInfo = async () => {
 	try {
-		const res = await axios.get("http://43.202.59.248:8080/api/indicator", {
+		const res = await axios.get(SERVER_INDICATOR_URL, {
 			headers,
 		});
 		const response = await res.data.response;
@@ -25,7 +28,7 @@ const getMyIndicatorInfo = async () => {
 const setMyIndicators = async (tagList, userId) => {
 	try {
 		const res = await axios.post(
-			"http://43.202.59.248:8080/api/indicator",
+			SERVER_INDICATOR_URL,
 			{
 				tagList: tagList,
 				userId: userId,
@@ -40,11 +43,9 @@ const setMyIndicators = async (tagList, userId) => {
 };
 
 // GET - 유저 명함정보 조회 (개인정보, 육각형 지표정보)
-const getMyNamecardInfo = async (userId) => {
+const getMyNameCardInfo = async (userId) => {
 	try {
-		const res = await axios.get(
-			`http://43.202.59.248:8080/api/indicator/${userId}`
-		);
+		const res = await axios.get(`${SERVER_INDICATOR_URL}/${userId}`);
 		const response = await res.data.response;
 		return response;
 	} catch (err) {
@@ -55,9 +56,7 @@ const getMyNamecardInfo = async (userId) => {
 // GET - 피드백 받을 유저의 육각형 지표 조회
 const getUserIndicators = async (userId) => {
 	try {
-		const res = await axios.get(
-			`http://43.202.59.248:8080/api/indicator/answer/${userId}`
-		);
+		const res = await axios.get(`${SERVER_INDICATOR_URL}/answer/${userId}`);
 		const response = await res.data.response;
 		return response;
 	} catch (err) {
@@ -68,6 +67,6 @@ const getUserIndicators = async (userId) => {
 export {
 	getMyIndicatorInfo,
 	setMyIndicators,
-	getMyNamecardInfo,
+	getMyNameCardInfo,
 	getUserIndicators,
 };

@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { postFeedbackAnswer } from "../hooks/useAxiosFeedbacks";
 import {
-	getMyNamecardInfo,
+	getMyNameCardInfo,
 	getUserIndicators,
 } from "../hooks/useAxiosIndicator";
 
@@ -33,7 +33,7 @@ function FeedbackFormPage() {
 			.all([
 				getUserIndicators(userId.userId),
 				getUserCustomQuestions(userId.userId, setQuestionDatas),
-				getMyNamecardInfo(userId.userId),
+				getMyNameCardInfo(userId.userId),
 			])
 			.then(
 				axios.spread((res1, res2, res3) => {

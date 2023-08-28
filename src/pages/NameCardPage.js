@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import HexChart from "../components/charts/HexChart";
 import { useParams } from "react-router-dom";
-import { getMyNamecardInfo } from "../hooks/useAxiosIndicator";
+import { getMyNameCardInfo } from "../hooks/useAxiosIndicator";
 
 import { Row, Col, Stack } from "react-bootstrap";
 import "../components/namecards/cards.css";
@@ -11,7 +11,7 @@ function NameCardPage() {
 	const [userInfo, setUserInfo] = useState({});
 
 	useEffect(() => {
-		getMyNamecardInfo(userId.userId).then((res) => {
+		getMyNameCardInfo(userId.userId).then((res) => {
 			setUserInfo({
 				userName: res.userName,
 				introduce: res.introduce,
