@@ -7,6 +7,7 @@ import { Button } from "react-bootstrap";
 
 function MainPage() {
 	const navigate = useNavigate();
+	const [userId, setUserId] = useState(3);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 	useEffect(() => {
@@ -15,6 +16,10 @@ function MainPage() {
 			setIsLoggedIn(true);
 		}
 	}, []);
+
+	const gotoMainPage = () => {
+		navigate(`/name-card/${userId}`);
+	};
 
 	const gotoAuthPage = () => {
 		navigate("/login");
@@ -36,13 +41,15 @@ function MainPage() {
 					<span>나를 소개한다는 의미의 I am</span>
 					<span>타인이 나를 임명한다는 의미의 I(임)M(명)</span>
 				</div>
-				{!isLoggedIn && (
-					<div className="d-flex justify-content-center mt-3">
+				<div className="d-flex justify-content-center mt-3">
+					{isLoggedIn ? (
+						<Button onClick={gotoMainPage}>내 명함 보러가기 👉</Button>
+					) : (
 						<Button onClick={gotoAuthPage}>
 							로그인하고 나만의 명함 만들기 👉
 						</Button>
-					</div>
-				)}
+					)}
+				</div>
 			</div>
 		</div>
 	);

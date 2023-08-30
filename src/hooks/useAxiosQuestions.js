@@ -3,12 +3,14 @@ import axios from "axios";
 const SERVER_QUESTION_URL =
 	process.env.REACT_APP_SERVER_BASE_URL + "/api/question";
 
-const accessToken = localStorage.getItem("accessToken");
+const accessToken = localStorage.getItem("accessToken")
+	? "Bearer " + localStorage.getItem("accessToken")
+	: "";
 
 const headers = {
 	"Content-type": "application/json; charset=UTF-8",
 	Accept: "*/*",
-	"X-AUTH-TOKEN": "Bearer " + accessToken,
+	"X-AUTH-TOKEN": accessToken,
 };
 
 // GET - 유저 설정 질문 조회

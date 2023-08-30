@@ -19,17 +19,14 @@ function UserSignup() {
 			alert("회원가입 정보를 올바르게 입력해주세요!");
 			return;
 		}
-		navigate("/set-tags", { replace: true });
-		// userSignup(email, introduce, name, passwd, phoneNum).then((res) => {
-		// 	if (res) {
-		// 		navigate("/set-tags", { replace: true });
-		// 	}
-		// });
+
 		setEmail("");
 		setPasswd("");
 		setName("");
 		setIntroduce("");
 		setPhoneNum("");
+
+		userSignup(email, introduce, name, passwd, phoneNum, navigate);
 	};
 
 	return (

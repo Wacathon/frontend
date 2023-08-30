@@ -59,7 +59,7 @@ function AppRouter() {
 							<Route path="/" element={<MainPage />} />
 							<Route path="/login" element={<AuthPage />} />
 							<Route path="/signup" element={<AuthPage />} />
-							<Route path="/set-tags" element={<UserTagSetPage />} />
+							<Route path="/tag-setup" element={<UserTagSetPage />} />
 							<Route
 								path="/feedback-form/:userId"
 								element={<FeedbackFormPage />}

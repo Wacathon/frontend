@@ -2,12 +2,14 @@ import axios from "axios";
 
 const SERVER_MEMBER_URL = process.env.REACT_APP_SERVER_BASE_URL + "/api/member";
 
-const accessToken = localStorage.getItem("accessToken");
+const accessToken = localStorage.getItem("accessToken")
+	? "Bearer " + localStorage.getItem("accessToken")
+	: "";
 
 const headers = {
 	"Content-type": "application/json; charset=UTF-8",
 	Accept: "*/*",
-	"X-AUTH-TOKEN": "Bearer " + accessToken,
+	"X-AUTH-TOKEN": accessToken,
 };
 
 // POST - 유저 로그인
@@ -27,6 +29,7 @@ const userLogin = async (email, passwd) => {
 		}
 	} catch (e) {
 		console.error(e);
+		console.error("Error: " + e.response.data.error.message);
 	}
 };
 
@@ -39,7 +42,14 @@ const userLogout = () => {
 };
 
 // POST - 유저 회원가입
-const userSignup = async (email, introduce, name, passwd, phoneNum) => {
+const userSignup = async (
+	email,
+	introduce,
+	name,
+	passwd,
+	phoneNum,
+	navigate
+) => {
 	try {
 		const {
 			data: { success, error },
@@ -51,13 +61,20 @@ const userSignup = async (email, introduce, name, passwd, phoneNum) => {
 			phoneNum,
 		});
 		if (success) {
-			return success;
+			userLogin(email, passwd).then((res) => {
+				if (res) {
+					navigate("/tag-setup", {
+						replace: true,
+					});
+				}
+			});
 		} else {
 			alert("회원가입에 실패하였습니다.");
-			console.log(error);
+			console.log(error.message);
 		}
 	} catch (e) {
 		console.error(e);
+		console.error("Error: " + e.response.data.error.message);
 	}
 };
 

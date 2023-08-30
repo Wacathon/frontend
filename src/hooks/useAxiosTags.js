@@ -2,12 +2,14 @@ import axios from "axios";
 
 const SERVER_TAG_URL = process.env.REACT_APP_SERVER_BASE_URL + "/api/tag";
 
-const accessToken = localStorage.getItem("accessToken");
+const accessToken = localStorage.getItem("accessToken")
+	? "Bearer " + localStorage.getItem("accessToken")
+	: "";
 
 const headers = {
 	"Content-type": "application/json; charset=UTF-8",
 	Accept: "*/*",
-	"X-AUTH-TOKEN": "Bearer " + accessToken,
+	"X-AUTH-TOKEN": accessToken,
 };
 
 // GET - 모든 지표들 조회
