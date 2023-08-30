@@ -31,6 +31,7 @@ function FeedbackCards({ item, pageType, refreshFeedbackList }) {
 					) : (
 						<span>피드백 #{item.id}</span>
 					)}
+					<span>#장점 키워드 태그</span>
 					{pageType === "mypage" && (
 						<Button
 							variant={item.isPinned ? "outline-primary" : "outline-secondary"}

@@ -3,17 +3,12 @@ import MyInfoForm from "../components/profile/MyInfoForm";
 import MyChart from "../components/profile/MyChart";
 import MyQuestionList from "../components/profile/MyQuestionList";
 import FeedbackList from "../components/feedbacks/FeedbackList";
+import { userLogout } from "../hooks/useAxiosAuth";
 
 import "../components/profile/mypage.css";
 import { Button } from "react-bootstrap";
 
 function ProfilePage() {
-	const onLogout = () => {
-		window.localStorage.removeItem("accessToken");
-		window.localStorage.removeItem("refreshToken");
-		window.location.reload();
-	};
-
 	return (
 		<div className="myPage-wrapper">
 			<h4 className="ps-2">🧑‍💻 마이페이지</h4>
@@ -39,7 +34,7 @@ function ProfilePage() {
 				</div>
 				<hr />
 				<div className="d-flex justify-content-end">
-					<Button bg="outline-danger" onClick={onLogout}>
+					<Button bg="outline-danger" onClick={userLogout}>
 						로그아웃
 					</Button>
 				</div>

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import "./route.css";
 import logo from "../components/img/app_logo.png";
-import { getUserProfile } from "../hooks/useAxiosUsers";
+import { getUserProfile } from "../hooks/useAxiosAuth";
 
 function Navigation() {
 	const [userInfo, setUserInfo] = useState({});

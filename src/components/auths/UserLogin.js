@@ -1,11 +1,9 @@
 import React, { useState } from "react";
+import { userLogin } from "../../hooks/useAxiosAuth";
 import Inputs from "../../hooks/useInputs";
 import { Button, Stack } from "react-bootstrap";
-import { userLogin } from "../../hooks/useAxiosUsers";
-import { useNavigate } from "react-router-dom";
 
 function UserLogin() {
-	const navigate = useNavigate();
 	const [email, setEmail] = useState("");
 	const [passwd, setPasswd] = useState("");
 
@@ -15,9 +13,13 @@ function UserLogin() {
 			alert("이메일 / 비밀번호를 올바르게 입력해주세요!");
 			return;
 		}
-		await userLogin(email, passwd, navigate);
-		setEmail("");
-		setPasswd("");
+		userLogin(email, passwd).then((res) => {
+			setEmail("");
+			setPasswd("");
+			if (res) {
+				window.location.replace(process.env.REACT_APP_BASE_URL);
+			}
+		});
 	};
 
 	return (

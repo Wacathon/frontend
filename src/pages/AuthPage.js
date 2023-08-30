@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-
-import logo from "../components/img/app_logo.png";
-import { Container, Row, Col, Form } from "react-bootstrap";
 import UserLogin from "../components/auths/UserLogin";
 import UserSignup from "../components/auths/UserSignup";
 
+import logo from "../components/img/app_logo.png";
+import { Container, Row, Col, Form } from "react-bootstrap";
+
 function AuthPage() {
-	const [isLogin, setIsLogin] = useState(true);
+	const [isLoginForm, setIsLoginForm] = useState(true);
 
 	const onAuthToggle = () => {
-		setIsLogin((prev) => !prev);
+		setIsLoginForm((prev) => !prev);
 	};
 
 	return (
@@ -27,12 +27,12 @@ function AuthPage() {
 				</Col>
 			</Row>
 			<Row className="p-4">
-				<h4>{isLogin ? "로그인" : "회원가입"}</h4>
+				<h4>{isLoginForm ? "로그인" : "회원가입"}</h4>
 				<Form.Switch
 					onChange={onAuthToggle}
-					label={isLogin ? "로그인" : "회원가입"}
+					label={isLoginForm ? "로그인" : "회원가입"}
 				/>
-				{isLogin ? <UserLogin /> : <UserSignup />}
+				{isLoginForm ? <UserLogin /> : <UserSignup />}
 			</Row>
 		</Container>
 	);

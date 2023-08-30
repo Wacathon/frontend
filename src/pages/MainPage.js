@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import "./mainpage.css";
 import logo from "../components/img/app_logo.png";
+import { Button } from "react-bootstrap";
 
 function MainPage() {
+	const navigate = useNavigate();
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+	useEffect(() => {
+		const accessToken = localStorage.getItem("accessToken");
+		if (accessToken) {
+			setIsLoggedIn(true);
+		}
+	}, []);
+
+	const gotoAuthPage = () => {
+		navigate("/login");
+	};
+
 	return (
 		<div className="mainPage-wrapper">
 			<div>
@@ -19,6 +36,13 @@ function MainPage() {
 					<span>나를 소개한다는 의미의 I am</span>
 					<span>타인이 나를 임명한다는 의미의 I(임)M(명)</span>
 				</div>
+				{!isLoggedIn && (
+					<div className="d-flex justify-content-center mt-3">
+						<Button onClick={gotoAuthPage}>
+							로그인하고 나만의 명함 만들기 👉
+						</Button>
+					</div>
+				)}
 			</div>
 		</div>
 	);

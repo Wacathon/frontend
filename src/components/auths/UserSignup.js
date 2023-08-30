@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import Inputs from "../../hooks/useInputs";
 import { Button, Stack } from "react-bootstrap";
-import { userSignup } from "../../hooks/useAxiosUsers";
+import { userSignup } from "../../hooks/useAxiosAuth";
+import { useNavigate } from "react-router-dom";
 
 function UserSignup() {
+	const navigate = useNavigate();
+
 	const [email, setEmail] = useState("");
 	const [passwd, setPasswd] = useState("");
 	const [name, setName] = useState("");
@@ -16,7 +19,12 @@ function UserSignup() {
 			alert("회원가입 정보를 올바르게 입력해주세요!");
 			return;
 		}
-		await userSignup(email, introduce, name, passwd, phoneNum);
+		navigate("/set-tags", { replace: true });
+		// userSignup(email, introduce, name, passwd, phoneNum).then((res) => {
+		// 	if (res) {
+		// 		navigate("/set-tags", { replace: true });
+		// 	}
+		// });
 		setEmail("");
 		setPasswd("");
 		setName("");

@@ -11,7 +11,7 @@ const headers = {
 };
 
 // POST - 유저 로그인
-const userLogin = async (email, passwd, navigator) => {
+const userLogin = async (email, passwd) => {
 	try {
 		const {
 			data: { response, success },
@@ -23,11 +23,18 @@ const userLogin = async (email, passwd, navigator) => {
 			const { accessToken, refreshToken } = response;
 			localStorage.setItem("accessToken", accessToken);
 			localStorage.setItem("refreshToken", refreshToken);
-			navigator("/", { replace: true });
-			window.location.reload();
+			return success;
 		}
 	} catch (e) {
 		console.error(e);
+	}
+};
+
+// 유저 로그아웃
+const userLogout = () => {
+	if (window.confirm("로그아웃 하시겠습니까?")) {
+		window.localStorage.clear();
+		window.location.replace(process.env.REACT_APP_BASE_URL);
 	}
 };
 
@@ -44,8 +51,9 @@ const userSignup = async (email, introduce, name, passwd, phoneNum) => {
 			phoneNum,
 		});
 		if (success) {
-			alert("회원가입이 완료되었습니다!");
+			return success;
 		} else {
+			alert("회원가입에 실패하였습니다.");
 			console.log(error);
 		}
 	} catch (e) {
@@ -77,4 +85,4 @@ const updateUserInfo = async (email, introduce, phoneNum) => {
 	}
 };
 
-export { getUserProfile, updateUserInfo, userLogin, userSignup };
+export { getUserProfile, userLogout, updateUserInfo, userLogin, userSignup };
