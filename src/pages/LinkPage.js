@@ -38,7 +38,7 @@ function LinkPage() {
 	};
 
 	return (
-		<div className="linkPage-wrapper">
+		<div className="wrapper">
 			<div className="mb-2 ps-2">
 				<h4>{userName} 님의 피드백 링크</h4>
 			</div>

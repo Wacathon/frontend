@@ -13,7 +13,7 @@ function AuthPage() {
 	};
 
 	return (
-		<Container fluid className="p-4">
+		<Container fluid className="wrapper">
 			<Row>
 				<Col className="d-flex justify-content-center align-items-center">
 					<img

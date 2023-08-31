@@ -4,6 +4,7 @@ import { Row, Col } from "react-bootstrap";
 import UserInfo from "./UserInfo";
 
 function UserCard() {
+	const [userId, setUserId] = useState(3);
 	const [isFlipped, setIsFlipped] = useState(false);
 
 	const onFlipNameCard = () => {
@@ -25,7 +26,7 @@ function UserCard() {
 							<UserInfo />
 						</Col>
 						<Col className="d-flex justify-content-center align-items-center">
-							<HexChart />
+							<HexChart userId={userId} />
 						</Col>
 					</Row>
 				</div>

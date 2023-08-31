@@ -9,10 +9,11 @@ import LinkPage from "../pages/LinkPage";
 import FeedbackFormPage from "../pages/FeedbackFormPage";
 import ResultPage from "../pages/ResultPage";
 import NameCardPage from "../pages/NameCardPage";
-import UserTagSetPage from "../pages/UserTagSetPage";
+import UserTagSetPage from "../pages/InitSetPage";
 
 import "./route.css";
 import { Button } from "react-bootstrap";
+import InitSetRouter from "./InitSetRouter";
 
 function AppRouter() {
 	const [isLoggedIn, setIsLoggedIn] = useState(
@@ -59,7 +60,7 @@ function AppRouter() {
 							<Route path="/" element={<MainPage />} />
 							<Route path="/login" element={<AuthPage />} />
 							<Route path="/signup" element={<AuthPage />} />
-							<Route path="/tag-setup" element={<UserTagSetPage />} />
+							<Route path="/tag-setup/*" element={<InitSetRouter />} />
 							<Route
 								path="/feedback-form/:userId"
 								element={<FeedbackFormPage />}

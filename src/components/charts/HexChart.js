@@ -9,7 +9,7 @@ import {
 	Legend,
 } from "chart.js";
 import { Radar } from "react-chartjs-2";
-import { getMyIndicatorInfo } from "../../hooks/useAxiosIndicator";
+import { getMyNameCardInfo } from "../../hooks/useAxiosIndicator";
 
 ChartJS.register(
 	RadialLinearScale,
@@ -77,7 +77,7 @@ export const options = {
 
 export const setHexChartData = (tagList) => {
 	const dataSet = tagList.map((item) => {
-		return { label: item.tagName, data: item.avrgTagScore };
+		return { label: item.tagName, data: item.tagScore };
 	});
 	const chartData = {
 		labels: dataSet.map((item) => item.label),
@@ -93,13 +93,13 @@ export const setHexChartData = (tagList) => {
 	return chartData;
 };
 
-function HexChart() {
+function HexChart({ userId }) {
 	const [userData, setUserData] = useState(initData);
 
 	useEffect(() => {
-		getMyIndicatorInfo()
+		getMyNameCardInfo(userId)
 			.then((res) => {
-				const newChartData = setHexChartData(res);
+				const newChartData = setHexChartData(res.scoreList);
 				setUserData(newChartData);
 			})
 			.catch((err) => {

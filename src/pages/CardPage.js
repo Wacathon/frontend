@@ -28,7 +28,7 @@ function CardPage() {
 	}, []);
 
 	return (
-		<div className="cardPage-wrapper">
+		<div className="wrapper">
 			<div className="d-flex flex-column justify-content-center align-items-center p-2">
 				<div className="d-flex flex-column align-items-start">
 					<h4 className="cardPage-user-card-title ps-2">

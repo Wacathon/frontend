@@ -26,7 +26,7 @@ function MainPage() {
 	};
 
 	return (
-		<div className="mainPage-wrapper">
+		<div className="wrapper">
 			<div>
 				<div className="d-flex flex-column justify-content-center align-items-center p-2">
 					<img alt="app_icon" src={logo} width="250" height="250" />

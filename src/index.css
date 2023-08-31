@@ -11,6 +11,7 @@
 :root {
 	--app-primary-color: #3629b7;
 	--app-secondary-color: #6f68b7;
+	--app-background-color: #f7f9fd;
 }
 
 .app-container {
@@ -21,4 +22,14 @@
 
 .back-white {
 	background-color: #fff !important;
+}
+
+.app-background-color {
+	background-color: var(--app-background-color);
+}
+
+.wrapper {
+	margin: 0 auto;
+	overflow: auto;
+	padding: 30px;
 }

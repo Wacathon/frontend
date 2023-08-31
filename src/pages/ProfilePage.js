@@ -10,7 +10,7 @@ import { Button } from "react-bootstrap";
 
 function ProfilePage() {
 	return (
-		<div className="myPage-wrapper">
+		<div className="wrapper">
 			<h4 className="ps-2">🧑‍💻 마이페이지</h4>
 			<div className="myPage-container">
 				<div className="p-2">
