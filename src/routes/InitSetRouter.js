@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import InitSetPage from "../pages/InitSetPage";
-import InitProgress from "../components/init_set/InitProgress";
+import InitProgress from "../components/initSet/InitProgress";
+import NameCardPage from "../pages/NameCardPage";
+
+import "../components/initSet/initSet.css";
 
 function InitSetRouter() {
 	// const [isMember, setIsMember] = useState(false);
@@ -15,11 +18,16 @@ function InitSetRouter() {
 	}, []);
 
 	return (
-		<div>
+		<div className="initSet-wrapper">
 			{isMember ? (
 				<Routes>
 					<Route index element={<InitSetPage />} />
-					<Route path="progress/:progressLevel" element={<InitProgress />} />
+					<Route
+						path="/:userId/progress/:progressLevel"
+						element={<InitProgress />}
+					/>
+					<Route path="/:userId/progress/result" element={<NameCardPage />} />
+					<Route path="/*" element={<InitSetPage />} />
 				</Routes>
 			) : (
 				<div>

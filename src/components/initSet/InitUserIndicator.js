@@ -7,22 +7,11 @@ import {
 	setMyIndicators,
 } from "../../hooks/useAxiosIndicator";
 
-import {
-	Row,
-	Col,
-	Form,
-	Stack,
-	DropdownButton,
-	Button,
-	ProgressBar,
-} from "react-bootstrap";
-import { InputNumber, Slider } from "antd";
+import { Form, Stack, DropdownButton, Button } from "react-bootstrap";
 
-function InitProgress() {
-	const progressLevel = useParams().progressLevel;
-	const [userId, setUserId] = useState(3);
+function InitUserIndicator() {
+	const userId = useParams().userId;
 
-	const [progressPercent, setProgressPercent] = useState(0);
 	const [tagCnt, setTagCnt] = useState(0);
 	const [tagList, setTagList] = useState([]);
 	const [myTagList, setMyTagList] = useState([]);
@@ -124,31 +113,28 @@ function InitProgress() {
 	};
 
 	useEffect(() => {
-		// setTagCnt(0);
 		// setTagData();
 	}, []);
 
 	return (
-		<div className="wrapper">
-			<ProgressBar now={progressPercent} label={`${progressPercent}%`} />
-			<h2>{progressLevel}단계</h2>
-			{/* <div>
-						<h5>나만의 강점 태그 선택 (6개 선택 필수)</h5>
-						<div className="d-flex flex-row justify-content-between p-2">
-							<DropdownButton title="태그 선택" autoClose="outside">
-								{renderDropdownItems()}
-							</DropdownButton>
-							<Stack gap={2} className="mx-4">
-								{renderMyTagList()}
-							</Stack>
-						</div>
-						<div className="d-flex justify-content-end">
-							<Button onClick={setInitTags}>태그 선택 완료</Button>
-							<Button onClick={gotoMainPage}>메인 화면으로</Button>
-						</div>
-					</div> */}
+		<div>
+			<h2>InitUserIndicator</h2>
+			<div>
+				<h5>나만의 강점 태그 선택 (6개 선택 필수)</h5>
+				<div className="d-flex flex-row justify-content-between p-2">
+					<DropdownButton title="태그 선택" autoClose="outside">
+						{renderDropdownItems()}
+					</DropdownButton>
+					<Stack gap={2} className="mx-4">
+						{renderMyTagList()}
+					</Stack>
+				</div>
+				<div className="d-flex justify-content-end">
+					<Button onClick={setInitTags}>태그 선택 완료</Button>
+				</div>
+			</div>
 		</div>
 	);
 }
 
-export default InitProgress;
+export default InitUserIndicator;

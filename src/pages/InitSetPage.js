@@ -1,34 +1,20 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import TagList from "../components/tags/TagList";
-import { getAllTags } from "../hooks/useAxiosTags";
-import {
-	getMyIndicatorInfo,
-	setMyIndicators,
-} from "../hooks/useAxiosIndicator";
-
-import {
-	Row,
-	Col,
-	Form,
-	Stack,
-	DropdownButton,
-	Button,
-	ProgressBar,
-} from "react-bootstrap";
-import { InputNumber, Slider } from "antd";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import "../components/initSet/initSet.css";
+import { Button } from "react-bootstrap";
 
 function InitSetPage() {
 	const navigate = useNavigate();
+	const [userId, setUserId] = useState(3);
 
 	const gotoNextStage = () => {
-		navigate("/tag-setup/progress/1");
+		navigate(`/tag-setup/${userId}/progress/1`);
 	};
 
 	return (
-		<div className="wrapper">
-			<h5>나만의 명함 만들기</h5>
+		<div className="initSet-container">
+			<h3>나만의 명함 만들기</h3>
 			<Button onClick={gotoNextStage}>시작하기</Button>
 		</div>
 	);
