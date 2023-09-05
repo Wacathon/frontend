@@ -9,6 +9,53 @@ import {
 
 import { Form, Stack, DropdownButton, Button } from "react-bootstrap";
 
+export const tag_data = [
+	{
+		tagId: 1,
+		tagName: "리더십",
+	},
+	{
+		tagId: 2,
+		tagName: "커뮤니케이션",
+	},
+	{
+		tagId: 3,
+		tagName: "성실성",
+	},
+	{
+		tagId: 4,
+		tagName: "계획성",
+	},
+	{
+		tagId: 5,
+		tagName: "참여성",
+	},
+	{
+		tagId: 6,
+		tagName: "전문성",
+	},
+	{
+		tagId: 7,
+		tagName: "섬세함",
+	},
+	{
+		tagId: 8,
+		tagName: "열정",
+	},
+	{
+		tagId: 9,
+		tagName: "이타성",
+	},
+	{
+		tagId: 10,
+		tagName: "사교성",
+	},
+	{
+		tagId: 11,
+		tagName: "자기주도적",
+	},
+];
+
 function InitUserIndicator() {
 	const userId = useParams().userId;
 
@@ -17,32 +64,40 @@ function InitUserIndicator() {
 	const [myTagList, setMyTagList] = useState([]);
 
 	const setTagData = () => {
-		axios.all([getMyIndicatorInfo(), getAllTags()]).then(
-			axios.spread((res1, res2) => {
-				const indicatorData = res1.map((item) => {
-					return {
-						tagId: item.tagId,
-						tagName: item.tagName,
-					};
-				});
-				setMyTagList(indicatorData);
-				const tagData = res2.map((item, idx) => {
-					const matchedIdx = indicatorData.findIndex(
-						(el) => el.tagId === item.tagId
-					);
-					if (indicatorData[matchedIdx]) {
-						setTagCnt((prev) => prev + 1);
-					}
-					return {
-						idx,
-						tagId: item.tagId,
-						tagName: item.tagName,
-						isChecked: indicatorData[matchedIdx] ? true : false,
-					};
-				});
-				setTagList(tagData);
-			})
-		);
+		const tagData = tag_data.map((item, idx) => {
+			return {
+				...item,
+				idx,
+				isChecked: false,
+			};
+		});
+		setTagList(tagData);
+		// axios.all([getMyIndicatorInfo(), getAllTags()]).then(
+		// 	axios.spread((res1, res2) => {
+		// 		const indicatorData = res1.map((item) => {
+		// 			return {
+		// 				tagId: item.tagId,
+		// 				tagName: item.tagName,
+		// 			};
+		// 		});
+		// 		setMyTagList(indicatorData);
+		// 		const tagData = res2.map((item, idx) => {
+		// 			const matchedIdx = indicatorData.findIndex(
+		// 				(el) => el.tagId === item.tagId
+		// 			);
+		// 			if (indicatorData[matchedIdx]) {
+		// 				setTagCnt((prev) => prev + 1);
+		// 			}
+		// 			return {
+		// 				idx,
+		// 				tagId: item.tagId,
+		// 				tagName: item.tagName,
+		// 				isChecked: indicatorData[matchedIdx] ? true : false,
+		// 			};
+		// 		});
+		// 		setTagList(tagData);
+		// 	})
+		// );
 	};
 
 	const onTagSelect = (item) => {
@@ -79,7 +134,6 @@ function InitUserIndicator() {
 						type="checkbox"
 						id={item.tagId}
 						label={`${item.tagName}`}
-						checked={item.isChecked}
 						onChange={() => onTagSelect(item)}
 					/>
 				</div>
@@ -113,7 +167,7 @@ function InitUserIndicator() {
 	};
 
 	useEffect(() => {
-		// setTagData();
+		setTagData();
 	}, []);
 
 	return (
