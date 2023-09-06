@@ -55,3 +55,9 @@
 .mb-50px {
 	margin-bottom: 50px;
 }
+
+.initSet-progress-indicator-tags {
+	display: flex;
+	flex-direction: column;
+	width: 550px;
+}

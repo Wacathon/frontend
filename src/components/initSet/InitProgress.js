@@ -4,7 +4,7 @@ import InitUserInfo from "./InitUserInfo";
 import InitUserIndicator from "./InitUserIndicator";
 
 import { ProgressBar } from "react-bootstrap";
-import InitUserHexChart from "./InitUserHexChart";
+import InitUserChartData from "./InitUserChartData";
 import InitProgressComplete from "./InitProgressComplete";
 
 function InitProgress() {
@@ -15,10 +15,12 @@ function InitProgress() {
 		Number(useParams().progressLevel)
 	);
 	const [progressPercent, setProgressPercent] = useState(0);
+	const [progressLabel, setProgressLabel] = useState("");
 
 	useEffect(() => {
 		setProgressLevel(1);
 		setProgressPercent(0);
+		setProgressLabel(`${progressLevel}단계`);
 		navigate(`/tag-setup/${userId}/progress/1`, { replace: true });
 	}, []);
 
@@ -28,6 +30,7 @@ function InitProgress() {
 		} else {
 			setProgressLevel((prev) => prev + 1);
 			setProgressPercent(parseInt((100 / 3) * progressLevel));
+			setProgressLabel(`${progressLevel + 1}단계`);
 			navigate(`/tag-setup/${userId}/progress/${progressLevel + 1}`, {
 				replace: true,
 			});
@@ -41,6 +44,7 @@ function InitProgress() {
 		} else {
 			setProgressLevel((prev) => prev - 1);
 			setProgressPercent(parseInt((100 / 3) * (progressLevel - 2)));
+			setProgressLabel(`${progressLevel - 1}단계`);
 			navigate(`/tag-setup/${userId}/progress/${progressLevel - 1}`, {
 				replace: true,
 			});
@@ -60,7 +64,7 @@ function InitProgress() {
 				);
 			case 3:
 				return (
-					<InitUserHexChart
+					<InitUserChartData
 						gotoNextStage={gotoNextStage}
 						gotoPrevStage={gotoPrevStage}
 					/>
@@ -79,6 +83,7 @@ function InitProgress() {
 
 	return (
 		<div>
+			<h3 className="mx-2">{progressLabel}</h3>
 			<ProgressBar
 				className="mx-2"
 				now={progressPercent}

@@ -7,7 +7,7 @@ import {
 	setMyIndicators,
 } from "../../hooks/useAxiosIndicator";
 
-import { Form, Stack, DropdownButton, Button } from "react-bootstrap";
+import { Button, ToggleButton } from "react-bootstrap";
 
 export const tag_data = [
 	{
@@ -122,21 +122,28 @@ function InitUserIndicator({ gotoNextStage, gotoPrevStage }) {
 
 	const renderMyTagList = () => {
 		return myTagList.map((item) => {
-			return <div key={item.tagId}>{item.tagName}</div>;
+			return (
+				<div key={item.tagId} className="px-1">
+					{item.tagName}
+				</div>
+			);
 		});
 	};
 
-	const renderDropdownItems = () => {
+	const renderTags = () => {
 		return tagList.map((item) => {
 			return (
-				<div key={item.tagId} className="tag-dropdown-item">
-					<Form.Check
-						type="checkbox"
-						id={item.tagId}
-						label={`${item.tagName}`}
-						onChange={() => onTagSelect(item)}
-					/>
-				</div>
+				<ToggleButton
+					key={item.tagId}
+					id={item.tagId}
+					type="checkbox"
+					className="m-2"
+					variant="outline-primary"
+					checked={item.isChecked}
+					onChange={() => onTagSelect(item)}
+				>
+					{item.tagName}
+				</ToggleButton>
 			);
 		});
 	};
@@ -173,20 +180,11 @@ function InitUserIndicator({ gotoNextStage, gotoPrevStage }) {
 	return (
 		<>
 			<div className="initSet-progress-body">
-				<h4>나의 강점을 6개 선택해주세요!</h4>
-				<span>(6개 선택 필수)</span>
-				<div>
-					<div className="d-flex flex-row justify-content-between p-2">
-						<DropdownButton title="태그 선택" autoClose="outside">
-							{renderDropdownItems()}
-						</DropdownButton>
-						<Stack gap={2} className="mx-4">
-							{renderMyTagList()}
-						</Stack>
-					</div>
-					<div className="d-flex justify-content-end">
-						<Button onClick={setInitTags}>태그 선택 완료</Button>
-					</div>
+				<h4>나의 강점들을 선택해주세요!</h4>
+				<h6>(6개 선택 필수)</h6>
+				<div className="initSet-progress-indicator-tags">
+					<div className="mt-2 mb-2">{renderTags()}</div>
+					<div className="d-flex flex-row">나의 태그 :{renderMyTagList()}</div>
 				</div>
 			</div>
 			<div className="initSet-progress-footer">

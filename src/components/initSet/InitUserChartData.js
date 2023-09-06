@@ -31,7 +31,7 @@ export const my_tag_data = [
 	},
 ];
 
-function InitUserHexChart({ gotoNextStage, gotoPrevStage }) {
+function InitUserChartData({ gotoNextStage, gotoPrevStage }) {
 	const userId = useParams().userId;
 
 	const renderMyTags = () => {
@@ -65,4 +65,4 @@ function InitUserHexChart({ gotoNextStage, gotoPrevStage }) {
 	);
 }
 
-export default InitUserHexChart;
+export default InitUserChartData;
