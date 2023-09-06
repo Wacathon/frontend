@@ -56,7 +56,7 @@ export const tag_data = [
 	},
 ];
 
-function InitUserIndicator() {
+function InitUserIndicator({ gotoNextStage, gotoPrevStage }) {
 	const userId = useParams().userId;
 
 	const [tagCnt, setTagCnt] = useState(0);
@@ -171,23 +171,29 @@ function InitUserIndicator() {
 	}, []);
 
 	return (
-		<div>
-			<h2>InitUserIndicator</h2>
-			<div>
-				<h5>나만의 강점 태그 선택 (6개 선택 필수)</h5>
-				<div className="d-flex flex-row justify-content-between p-2">
-					<DropdownButton title="태그 선택" autoClose="outside">
-						{renderDropdownItems()}
-					</DropdownButton>
-					<Stack gap={2} className="mx-4">
-						{renderMyTagList()}
-					</Stack>
-				</div>
-				<div className="d-flex justify-content-end">
-					<Button onClick={setInitTags}>태그 선택 완료</Button>
+		<>
+			<div className="initSet-progress-body">
+				<h4>나의 강점을 6개 선택해주세요!</h4>
+				<span>(6개 선택 필수)</span>
+				<div>
+					<div className="d-flex flex-row justify-content-between p-2">
+						<DropdownButton title="태그 선택" autoClose="outside">
+							{renderDropdownItems()}
+						</DropdownButton>
+						<Stack gap={2} className="mx-4">
+							{renderMyTagList()}
+						</Stack>
+					</div>
+					<div className="d-flex justify-content-end">
+						<Button onClick={setInitTags}>태그 선택 완료</Button>
+					</div>
 				</div>
 			</div>
-		</div>
+			<div className="initSet-progress-footer">
+				<Button onClick={gotoPrevStage}>이전 단계</Button>
+				<Button onClick={gotoNextStage}>다음 단계</Button>
+			</div>
+		</>
 	);
 }
 

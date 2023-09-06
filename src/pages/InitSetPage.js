@@ -14,6 +14,7 @@ function InitSetPage() {
 
 	return (
 		<div className="initSet-container">
+			<h2>👋 익명 님, 환영합니다</h2>
 			<h3>나만의 명함 만들기</h3>
 			<Button onClick={gotoNextStage}>시작하기</Button>
 		</div>

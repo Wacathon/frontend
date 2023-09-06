@@ -3,7 +3,7 @@ import HexChart from "../components/charts/HexChart";
 import { useParams } from "react-router-dom";
 import { getMyNameCardInfo } from "../hooks/useAxiosIndicator";
 
-import { Row, Col, Stack } from "react-bootstrap";
+import { Row, Col, Stack, Button } from "react-bootstrap";
 import "../components/namecards/cards.css";
 
 function NameCardPage() {
@@ -64,6 +64,9 @@ function NameCardPage() {
 						</div>
 					</div>
 				</div>
+			</div>
+			<div className="mt-2">
+				<Button>명함 저장하기</Button>
 			</div>
 		</div>
 	);
