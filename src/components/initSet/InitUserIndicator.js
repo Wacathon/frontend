@@ -184,7 +184,8 @@ function InitUserIndicator({ gotoNextStage, gotoPrevStage }) {
 				<h6>(6개 선택 필수)</h6>
 				<div className="initSet-progress-indicator-tags">
 					<div className="mt-2 mb-2">{renderTags()}</div>
-					<div className="d-flex flex-row">나의 태그 :{renderMyTagList()}</div>
+					<h6>내가 선택한 태그들 ({tagCnt}/6) :</h6>
+					<div className="d-flex flex-row">{renderMyTagList()}</div>
 				</div>
 			</div>
 			<div className="initSet-progress-footer">

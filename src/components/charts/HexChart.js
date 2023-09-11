@@ -77,7 +77,7 @@ export const options = {
 
 export const setHexChartData = (tagList) => {
 	const dataSet = tagList.map((item) => {
-		return { label: item.tagName, data: item.tagScore };
+		return { label: item.tagName, data: item.tagScore || item.avrgTagScore };
 	});
 	const chartData = {
 		labels: dataSet.map((item) => item.label),
