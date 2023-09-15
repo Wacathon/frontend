@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Nav } from "react-bootstrap";
+import { Button, Nav } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 import "./route.css";
-import logo from "../components/img/app_logo.png";
-import { getUserProfile } from "../hooks/useAxiosAuth";
+import logo from "../img/app_logo.png";
+import { getUserProfile, userLogout } from "../hooks/useAxiosAuth";
 
 function Navigation() {
 	const [userInfo, setUserInfo] = useState({});
@@ -12,14 +12,14 @@ function Navigation() {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		getUserProfile().then((data) =>
+		getUserProfile().then((data) => {
 			setUserInfo({
-				// id: data.id,
-				id: 3,
+				id: data.memberId,
 				name: data.name,
 				email: data.email,
-			})
-		);
+			});
+			console.log(data);
+		});
 	}, []);
 
 	const gotoMainPage = () => {
@@ -68,6 +68,7 @@ function Navigation() {
 				<div className="nav-user-info">
 					<span id="name">{userInfo.name}</span>
 					<span id="email">{userInfo.email}</span>
+					<Button onClick={userLogout}>로그아웃</Button>
 				</div>
 			</div>
 		</aside>

@@ -84,9 +84,9 @@ export const setHexChartData = (tagList) => {
 		datasets: [
 			{
 				data: dataSet.map((item) => item.data),
-				backgroundColor: "rgba(255, 99, 132, 0.2)",
-				borderColor: "rgba(255, 99, 132, 1)",
-				borderWidth: 1,
+				backgroundColor: "rgba(0, 0, 77, 0.4)",
+				borderColor: "rgba(0, 0, 77, 1)",
+				borderWidth: 2,
 			},
 		],
 	};

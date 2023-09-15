@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import UserLogin from "../components/auths/UserLogin";
 import UserSignup from "../components/auths/UserSignup";
 
-import logo from "../components/img/app_logo.png";
+import logo from "../img/app_logo.png";
 import { Container, Row, Col, Form } from "react-bootstrap";
 
 function AuthPage() {

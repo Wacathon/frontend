@@ -19,10 +19,13 @@ function MyInfoForm() {
 			alert("정보를 입력해주세요!");
 			return;
 		}
-		await updateUserInfo(email, introduce, phoneNum);
-		alert("정보가 수정되었습니다!");
+		updateUserInfo(email, introduce, true, true, true, phoneNum).then((res) => {
+			if (res) {
+				alert("정보가 수정되었습니다!");
+				window.location.reload();
+			}
+		});
 		setIsEdit(true);
-		window.location.reload();
 	};
 
 	useEffect(() => {
@@ -40,24 +43,26 @@ function MyInfoForm() {
 				{isEdit ? (
 					<div className="p-2">
 						<h5>이름 : {name}</h5>
-						<Inputs
-							inputName="소개"
-							inputValue={introduce}
-							setInputValue={setIntroduce}
-							inputPlaceholder="소개를 입력해주세요"
-						/>
-						<Inputs
-							inputName="연락처"
-							inputValue={phoneNum}
-							setInputValue={setPhoneNum}
-							inputPlaceholder="연락처를 입력해주세요"
-						/>
-						<Inputs
-							inputName="이메일"
-							inputValue={email}
-							setInputValue={setEmail}
-							inputPlaceholder="이메일을 입력해주세요"
-						/>
+						<Stack gap={3}>
+							<Inputs
+								inputName="소개"
+								inputValue={introduce}
+								setInputValue={setIntroduce}
+								inputPlaceholder="소개를 입력해주세요"
+							/>
+							<Inputs
+								inputName="연락처"
+								inputValue={phoneNum}
+								setInputValue={setPhoneNum}
+								inputPlaceholder="연락처를 입력해주세요"
+							/>
+							<Inputs
+								inputName="이메일"
+								inputValue={email}
+								setInputValue={setEmail}
+								inputPlaceholder="이메일을 입력해주세요"
+							/>
+						</Stack>
 					</div>
 				) : (
 					<Stack gap={3} className="pt-2">

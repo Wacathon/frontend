@@ -1,6 +1,8 @@
 import axios from "axios";
 
 const SERVER_MEMBER_URL = process.env.REACT_APP_SERVER_BASE_URL + "/api/member";
+const SERVER_NEW_MEMBER_URL =
+	process.env.REACT_APP_SERVER_NEW_URL + "/api/member";
 
 const accessToken = localStorage.getItem("accessToken")
 	? "Bearer " + localStorage.getItem("accessToken")
@@ -17,7 +19,7 @@ const userLogin = async (email, passwd) => {
 	try {
 		const {
 			data: { response, success },
-		} = await axios.post(`${SERVER_MEMBER_URL}/login`, {
+		} = await axios.post(`${SERVER_NEW_MEMBER_URL}/sign-in`, {
 			email,
 			passwd,
 		});
@@ -53,7 +55,7 @@ const userSignup = async (
 	try {
 		const {
 			data: { success, error },
-		} = await axios.post(`${SERVER_MEMBER_URL}/join`, {
+		} = await axios.post(`${SERVER_NEW_MEMBER_URL}/sign-up`, {
 			email,
 			introduce,
 			name,
@@ -61,13 +63,14 @@ const userSignup = async (
 			phoneNum,
 		});
 		if (success) {
-			userLogin(email, passwd).then((res) => {
-				if (res) {
-					navigate("/tag-setup", {
-						replace: true,
-					});
-				}
-			});
+			console.log("성공!");
+			// userLogin(email, passwd).then((res) => {
+			// 	if (res) {
+			// 		navigate("/tag-setup", {
+			// 			replace: true,
+			// 		});
+			// 	}
+			// });
 		} else {
 			alert("회원가입에 실패하였습니다.");
 			console.log(error.message);
@@ -81,7 +84,7 @@ const userSignup = async (
 // GET - 유저 프로필 조회
 const getUserProfile = async () => {
 	try {
-		const res = await axios.get(`${SERVER_MEMBER_URL}/myProfile`, { headers });
+		const res = await axios.get(SERVER_NEW_MEMBER_URL, { headers });
 		const userInfo = await res.data.response;
 		return userInfo;
 	} catch (err) {
@@ -90,13 +93,34 @@ const getUserProfile = async () => {
 };
 
 // POST - 유저 정보 수정
-const updateUserInfo = async (email, introduce, phoneNum) => {
+const updateUserInfo = async (
+	email,
+	introduce,
+	isPublicEmail,
+	isPublicIntroduce,
+	isPublicPhone,
+	phoneNum
+) => {
 	try {
-		await axios.post(
-			`${SERVER_MEMBER_URL}/introduce`,
-			{ email: email, introduce: introduce, phoneNum: phoneNum },
+		const {
+			data: { success, error },
+		} = await axios.put(
+			SERVER_NEW_MEMBER_URL,
+			{
+				email: email,
+				introduce: introduce,
+				isPublicEmail: isPublicEmail,
+				isPublicIntroduce: isPublicIntroduce,
+				isPublicPhone: isPublicPhone,
+				phoneNum: phoneNum,
+			},
 			{ headers }
 		);
+		if (success) {
+			return success;
+		} else {
+			console.log(error.message);
+		}
 	} catch (err) {
 		console.log(err);
 	}

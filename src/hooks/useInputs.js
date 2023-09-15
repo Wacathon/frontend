@@ -17,15 +17,15 @@ function Inputs({
 	};
 
 	return (
-		<>
-			{inputName && <Form.Label>{inputName}</Form.Label>}
+		<div>
+			{inputName && <Form.Label className="mb-1">{inputName}</Form.Label>}
 			<Form.Control
 				type={inputType || "text"}
 				placeholder={inputPlaceholder}
 				value={inputValue}
 				onChange={onTextChange}
 			/>
-		</>
+		</div>
 	);
 }
 
