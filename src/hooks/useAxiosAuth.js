@@ -1,8 +1,7 @@
 import axios from "axios";
 
-const SERVER_MEMBER_URL = process.env.REACT_APP_SERVER_BASE_URL + "/api/member";
-const SERVER_NEW_MEMBER_URL =
-	process.env.REACT_APP_SERVER_NEW_URL + "/api/member";
+// const SERVER_MEMBER_URL = process.env.REACT_APP_SERVER_BASE_URL + "/api/member";
+const SERVER_MEMBER_URL = process.env.REACT_APP_SERVER_NEW_URL + "/api/member";
 
 const accessToken = localStorage.getItem("accessToken")
 	? "Bearer " + localStorage.getItem("accessToken")
@@ -19,7 +18,7 @@ const userLogin = async (email, passwd) => {
 	try {
 		const {
 			data: { response, success },
-		} = await axios.post(`${SERVER_NEW_MEMBER_URL}/sign-in`, {
+		} = await axios.post(`${SERVER_MEMBER_URL}/sign-in`, {
 			email,
 			passwd,
 		});
@@ -55,7 +54,7 @@ const userSignup = async (
 	try {
 		const {
 			data: { success, error },
-		} = await axios.post(`${SERVER_NEW_MEMBER_URL}/sign-up`, {
+		} = await axios.post(`${SERVER_MEMBER_URL}/sign-up`, {
 			email,
 			introduce,
 			name,
@@ -84,7 +83,7 @@ const userSignup = async (
 // GET - 유저 프로필 조회
 const getUserProfile = async () => {
 	try {
-		const res = await axios.get(SERVER_NEW_MEMBER_URL, { headers });
+		const res = await axios.get(SERVER_MEMBER_URL, { headers });
 		const userInfo = await res.data.response;
 		return userInfo;
 	} catch (err) {
@@ -92,7 +91,7 @@ const getUserProfile = async () => {
 	}
 };
 
-// POST - 유저 정보 수정
+// PUT - 유저 정보 수정
 const updateUserInfo = async (
 	email,
 	introduce,
@@ -105,7 +104,7 @@ const updateUserInfo = async (
 		const {
 			data: { success, error },
 		} = await axios.put(
-			SERVER_NEW_MEMBER_URL,
+			SERVER_MEMBER_URL,
 			{
 				email: email,
 				introduce: introduce,
@@ -126,4 +125,31 @@ const updateUserInfo = async (
 	}
 };
 
-export { getUserProfile, userLogout, updateUserInfo, userLogin, userSignup };
+// PUT - 유저 비밀번호 변경
+const updateUserPasswd = async (newPasswd, originPasswd) => {
+	try {
+		const {
+			data: { success, error },
+		} = await axios.put(
+			`${SERVER_MEMBER_URL}/password`,
+			{ newPasswd: newPasswd, originPasswd: originPasswd },
+			{ headers }
+		);
+		if (success) {
+			return success;
+		} else {
+			console.log(error.message);
+		}
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+export {
+	getUserProfile,
+	userLogout,
+	updateUserInfo,
+	updateUserPasswd,
+	userLogin,
+	userSignup,
+};
