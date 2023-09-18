@@ -27,11 +27,10 @@ function FeedbackCards({ item, pageType, refreshFeedbackList }) {
 				<div className="d-flex justify-content-between align-items-center">
 					{/* <span>피드백 #{idx + 1}</span> */}
 					{item.isPinned ? (
-						<h5 className="m-0">📌 피드백 #{item.id}</h5>
+						<h5 className="m-0">📌 피드백 #{item.answerId}</h5>
 					) : (
 						<span>피드백 #{item.id}</span>
 					)}
-					<span>#장점 키워드 태그</span>
 					{pageType === "mypage" && (
 						<Button
 							variant={item.isPinned ? "outline-primary" : "outline-secondary"}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import InitSetPage from "../pages/InitSetPage";
 import InitProgress from "../components/initSet/InitProgress";
-import NameCardPage from "../pages/NameCardPage";
+import PublicNameCardPage from "../pages/PublicNameCardPage";
 
 import "../components/initSet/initSet.css";
 
@@ -26,7 +26,10 @@ function InitSetRouter() {
 						path="/:userId/progress/:progressLevel"
 						element={<InitProgress />}
 					/>
-					<Route path="/:userId/progress/result" element={<NameCardPage />} />
+					<Route
+						path="/:userId/progress/result"
+						element={<PublicNameCardPage />}
+					/>
 					<Route path="/*" element={<InitSetPage />} />
 				</Routes>
 			) : (

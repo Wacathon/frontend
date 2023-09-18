@@ -4,33 +4,38 @@ import FeedbackCards from "./FeedbackCards";
 
 import "./feedback.css";
 import { Col, Row } from "react-bootstrap";
+import { testUserFeedbackData, testUserInfo } from "../../testData";
 
 function PinnedFeedbackList() {
-	const userId = 3;
+	const [userId, setUserId] = useState(testUserInfo.memberId);
 	const [feedbackData, setFeedbackData] = useState([]);
 
 	useEffect(() => {
-		getFeedbackList(false, userId).then((data) =>
-			setFeedbackData(
-				data
-					.filter((el) => el.pinned === true)
-					.map((item) => {
-						return {
-							id: item.answerId,
-							isPinned: item.pinned,
-							questionTitle: item.questionTitle,
-							title: item.title,
-							content: item.content,
-						};
-					})
-			)
-		);
+		// axios
+		// getFeedbackList(false, userId).then((data) =>
+		// 	setFeedbackData(
+		// 		data
+		// 			.filter((el) => el.pinned === true)
+		// 			.map((item) => {
+		// 				return {
+		// 					answerId: item.answerId,
+		// 					isPinned: item.pinned,
+		// 					questionTitle: item.questionTitle,
+		// 					title: item.title,
+		// 					content: item.content,
+		// 				};
+		// 			})
+		// 	)
+		// );
+
+		// test data
+		setFeedbackData(testUserFeedbackData.filter((el) => el.isPinned === true));
 	}, []);
 
 	return (
 		<Row className="p-2">
 			{feedbackData.map((item, idx) => (
-				<Col key={item.id}>
+				<Col key={item.answerId}>
 					<FeedbackCards item={item} idx={idx} />
 				</Col>
 			))}

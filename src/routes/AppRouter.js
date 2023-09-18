@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import MainPage from "../pages/MainPage";
-import CardPage from "../pages/CardPage";
+import NameCardPage from "../pages/NameCardPage";
 import Navigation from "./Navigation";
 import ProfilePage from "../pages/ProfilePage";
 import AuthPage from "../pages/AuthPage";
 import LinkPage from "../pages/LinkPage";
 import FeedbackFormPage from "../pages/FeedbackFormPage";
 import ResultPage from "../pages/ResultPage";
-import NameCardPage from "../pages/NameCardPage";
+import PublicNameCardPage from "../pages/PublicNameCardPage";
 import InitSetRouter from "./InitSetRouter";
 
 import "./route.css";
@@ -36,11 +36,11 @@ function AppRouter() {
 					<Navigation />
 					<main className="main-wrapper">
 						<Routes>
-							<Route path="/" element={<MainPage />} />
-							<Route path="/name-card/:userId" element={<CardPage />} />
+							<Route path="/" element={<NameCardPage />} />
+							<Route path="/name-card" element={<NameCardPage />} />
 							<Route path="/profile" element={<ProfilePage />} />
 							<Route path="/share-link" element={<LinkPage />} />
-							<Route path="/*" element={<MainPage />} />
+							<Route path="/*" element={<NameCardPage />} />
 						</Routes>
 					</main>
 					<aside className="empty-wrapper"></aside>
@@ -68,7 +68,7 @@ function AppRouter() {
 								path="/feedback-form/:userId/result"
 								element={<ResultPage />}
 							/>
-							<Route path="/card/:userId" element={<NameCardPage />} />
+							<Route path="/card/:userId" element={<PublicNameCardPage />} />
 							<Route path="/*" element={<MainPage />} />
 						</Routes>
 					</div>

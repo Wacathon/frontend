@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Button, Nav } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { getUserProfile, userLogout } from "../hooks/useAxiosAuth";
+import { testUserInfo } from "../testData";
 
 import "./route.css";
 import logo from "../img/app_logo.png";
-import { getUserProfile, userLogout } from "../hooks/useAxiosAuth";
 
 function Navigation() {
 	const [userInfo, setUserInfo] = useState({});
@@ -12,14 +13,17 @@ function Navigation() {
 	const navigate = useNavigate();
 
 	useEffect(() => {
+		// axios
 		getUserProfile().then((data) => {
 			setUserInfo({
 				id: data.memberId,
 				name: data.name,
-				email: data.email,
+				email: testUserInfo.email,
+				// email: data.email,
 			});
-			console.log(data);
 		});
+
+		// test data
 	}, []);
 
 	const gotoMainPage = () => {
@@ -27,7 +31,7 @@ function Navigation() {
 	};
 
 	const gotoCardPage = () => {
-		navigate(`/name-card/${userInfo.id}`);
+		navigate(`/name-card`);
 	};
 
 	const gotoMyPage = () => {

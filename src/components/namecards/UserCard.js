@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import HexChart from "../charts/HexChart";
 import { Row, Col } from "react-bootstrap";
-import UserInfo from "./UserInfo";
+import UserCardInfo from "./UserCardInfo";
+import { testUserInfo } from "../../testData";
 
 function UserCard() {
-	const [userId, setUserId] = useState(3);
+	const [userId, setUserId] = useState(testUserInfo.memberId);
 	const [isFlipped, setIsFlipped] = useState(false);
 
 	const onFlipNameCard = () => {
@@ -23,7 +24,7 @@ function UserCard() {
 				<div className="card-front">
 					<Row>
 						<Col className="d-flex justify-content-center align-items-center">
-							<UserInfo />
+							<UserCardInfo />
 						</Col>
 						<Col className="d-flex justify-content-center align-items-center">
 							<HexChart userId={userId} />

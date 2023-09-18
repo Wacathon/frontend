@@ -10,6 +10,7 @@ import {
 } from "chart.js";
 import { Radar } from "react-chartjs-2";
 import { getMyNameCardInfo } from "../../hooks/useAxiosIndicator";
+import { testUserChartData } from "../../testData";
 
 ChartJS.register(
 	RadialLinearScale,
@@ -66,6 +67,12 @@ export const options = {
 		r: {
 			suggestedMin: 0,
 			suggestedMax: 100,
+			angleLines: {
+				display: false,
+			},
+			pointLabels: {
+				// display: false,
+			},
 		},
 	},
 	plugins: {
@@ -87,6 +94,7 @@ export const setHexChartData = (tagList) => {
 				backgroundColor: "rgba(0, 0, 77, 0.4)",
 				borderColor: "rgba(0, 0, 77, 1)",
 				borderWidth: 2,
+				pointStyle: false,
 			},
 		],
 	};
@@ -97,14 +105,35 @@ function HexChart({ userId }) {
 	const [userData, setUserData] = useState(initData);
 
 	useEffect(() => {
-		getMyNameCardInfo(userId)
-			.then((res) => {
-				const newChartData = setHexChartData(res.scoreList);
-				setUserData(newChartData);
-			})
-			.catch((err) => {
-				console.log(err);
+		// axios
+		// getMyNameCardInfo(userId)
+		// 	.then((res) => {
+		// 		const newChartData = setHexChartData(res.scoreList);
+		// 		setUserData(newChartData);
+		// 	})
+		// 	.catch((err) => {
+		// 		console.log(err);
+		// 	});
+
+		// test data
+		const dataSet = testUserChartData
+			.filter((el) => el.isSelected === true)
+			.map((item) => {
+				return { label: item.tagName, data: item.avrgTagScore };
 			});
+		const chartData = {
+			labels: dataSet.map((item) => item.label),
+			datasets: [
+				{
+					data: dataSet.map((item) => item.data),
+					backgroundColor: "rgba(0, 0, 77, 0.4)",
+					borderColor: "rgba(0, 0, 77, 1)",
+					borderWidth: 2,
+					pointStyle: false,
+				},
+			],
+		};
+		setUserData(chartData);
 	}, []);
 
 	return (
