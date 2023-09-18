@@ -14,16 +14,20 @@ function Navigation() {
 
 	useEffect(() => {
 		// axios
-		getUserProfile().then((data) => {
-			setUserInfo({
-				id: data.memberId,
-				name: data.name,
-				email: testUserInfo.email,
-				// email: data.email,
-			});
-		});
+		// getUserProfile().then((data) => {
+		// 	setUserInfo({
+		// 		id: data.memberId,
+		// 		name: data.name,
+		// 		email: data.email,
+		// 	});
+		// });
 
 		// test data
+		setUserInfo({
+			id: testUserInfo.memberId,
+			name: testUserInfo.name,
+			email: testUserInfo.email,
+		});
 	}, []);
 
 	const gotoMainPage = () => {
@@ -31,7 +35,7 @@ function Navigation() {
 	};
 
 	const gotoCardPage = () => {
-		navigate(`/name-card`);
+		navigate("/name-card");
 	};
 
 	const gotoMyPage = () => {
@@ -43,7 +47,7 @@ function Navigation() {
 	};
 
 	return (
-		<aside className="d-flex flex-column nav-wrapper p-4">
+		<aside className="nav-wrapper">
 			<div className="mt-3 mb-5">
 				<Nav.Link onClick={gotoMainPage} className="d-flex align-items-center">
 					<img
