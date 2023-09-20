@@ -191,14 +191,14 @@
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
-	margin-bottom: 0.75rem;
+	margin-bottom: 1rem;
 }
 
 .nav-user-icon {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-right: 0.25rem;
+	margin-right: 0.625rem;
 	font-size: 1.25rem;
 }
 
