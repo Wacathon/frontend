@@ -12,7 +12,6 @@ import PublicNameCardPage from "../pages/PublicNameCardPage";
 import InitSetRouter from "./InitSetRouter";
 
 import "./route.css";
-import { Button } from "react-bootstrap";
 
 function AppRouter() {
 	const [isLoggedIn, setIsLoggedIn] = useState(
