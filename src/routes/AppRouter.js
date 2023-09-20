@@ -32,26 +32,35 @@ function AppRouter() {
 	return (
 		<>
 			{isLoggedIn ? (
-				<>
-					<Navigation />
-					<main className="main-wrapper">
-						<Routes>
-							<Route path="/" element={<NameCardPage />} />
-							<Route path="/name-card" element={<NameCardPage />} />
-							<Route path="/profile" element={<ProfilePage />} />
-							<Route path="/share-link" element={<LinkPage />} />
-							<Route path="/*" element={<NameCardPage />} />
-						</Routes>
+				<div className="router-0">
+					<aside className="router-nav-0">
+						<Navigation />
+					</aside>
+					<main className="router-main-0">
+						<div className="router-main-1-routes">
+							<Routes>
+								<Route path="/" element={<NameCardPage />} />
+								<Route path="/name-card" element={<NameCardPage />} />
+								<Route path="/profile" element={<ProfilePage />} />
+								<Route path="/share-link" element={<LinkPage />} />
+								<Route path="/*" element={<NameCardPage />} />
+							</Routes>
+						</div>
+						<div className="router-main-1-blank"></div>
 					</main>
-					<aside className="empty-wrapper"></aside>
-					<Button
-						variant="secondary"
-						onClick={scrollToTop}
-						className="scrollTop-btn"
-					>
-						▵
-					</Button>
-				</>
+					<button className="scrollTop-btn" onClick={scrollToTop}>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="36"
+							height="36"
+							viewBox="0 0 36 36"
+							fill="none"
+						>
+							<circle cx="18" cy="18" r="18" fill="#00004D" />
+							<path d="M18 14L23.1962 20H12.8038L18 14Z" fill="white" />
+						</svg>
+					</button>
+				</div>
 			) : (
 				<div className="d-flex justify-content-center">
 					<div className="guest-main-wrapper">
