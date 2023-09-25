@@ -27,9 +27,9 @@ function NameCardPage() {
 		<div className="wrapper">
 			<div className="d-flex flex-column justify-content-center align-items-center p-2">
 				<div className="d-flex flex-column align-items-start">
-					<h4 className="cardPage-user-card-title ps-2">
-						📇 {userName}님의 명함
-					</h4>
+					<span className="cardPage-user-card-title ps-2">
+						<span>{userName}</span>님의 명함이에요.
+					</span>
 					<div>
 						<UserCard />
 					</div>

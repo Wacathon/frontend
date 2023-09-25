@@ -35,9 +35,12 @@ function UserCardInfo() {
 	return (
 		<Stack className="max-width-200">
 			<h5>{cardInfo.introduce}</h5>
-			<h1>{cardInfo.name}</h1>
+			<h2>{cardInfo.name}</h2>
+			<h3>{cardInfo.engName}</h3>
 			<h6>Phone: {cardInfo.phoneNum}</h6>
 			<h6>Email: {cardInfo.email}</h6>
+			<h6>social: {cardInfo.social}</h6>
+			<h6>MBTI: {cardInfo.mbti}</h6>
 		</Stack>
 	);
 }
