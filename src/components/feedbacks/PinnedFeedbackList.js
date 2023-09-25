@@ -33,13 +33,16 @@ function PinnedFeedbackList() {
 	}, []);
 
 	return (
-		<Row className="p-2">
-			{feedbackData.map((item, idx) => (
-				<Col key={item.answerId}>
-					<FeedbackCards item={item} idx={idx} />
-				</Col>
-			))}
-		</Row>
+		<div>
+			<h4 className="cardPage-user-card-title">📌 Pinned Feedbacks</h4>
+			<Row className="p-2">
+				{feedbackData.map((item, idx) => (
+					<Col key={item.answerId}>
+						<FeedbackCards item={item} idx={idx} />
+					</Col>
+				))}
+			</Row>
+		</div>
 	);
 }
 export default PinnedFeedbackList;

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import HexChart from "../charts/HexChart";
-import { Row, Col } from "react-bootstrap";
 import UserCardInfo from "./UserCardInfo";
 import { testUserInfo } from "../../testData";
+
+import "./namecard.css";
+import { Row, Col } from "react-bootstrap";
 
 function UserCard() {
 	const [userId, setUserId] = useState(testUserInfo.memberId);

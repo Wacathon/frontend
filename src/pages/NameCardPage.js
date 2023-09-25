@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import UserCard from "../components/namecards/UserCard";
 import PinnedFeedbackList from "../components/feedbacks/PinnedFeedbackList";
 
-import "../components/namecards/cards.css";
+import "./namecardpage.css";
 import { getUserProfile } from "../hooks/useAxiosAuth";
 import { testUserInfo } from "../testData";
 
@@ -25,19 +25,19 @@ function NameCardPage() {
 
 	return (
 		<div className="wrapper">
-			<div className="d-flex flex-column justify-content-center align-items-center p-2">
-				<div className="d-flex flex-column align-items-start">
-					<span className="cardPage-user-card-title ps-2">
-						<span>{userName}</span>님의 명함이에요.
+			<div className="namecard-0">
+				<div className="namecard-1">
+					<span className="namecard-card-title">
+						<span className="namecard-card-title-name">{userName}</span>님의
+						명함이에요.
 					</span>
 					<div>
 						<UserCard />
 					</div>
 				</div>
-			</div>
-			<div className="mt-3 p-2">
-				<h4 className="cardPage-user-card-title">📌 Pinned Feedbacks</h4>
-				<PinnedFeedbackList />
+				<div>
+					<PinnedFeedbackList />
+				</div>
 			</div>
 		</div>
 	);

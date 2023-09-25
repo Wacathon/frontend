@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { getMyNameCardInfo } from "../hooks/useAxiosIndicator";
 
 import { Row, Col, Stack, Button } from "react-bootstrap";
-import "../components/namecards/cards.css";
+import "../components/namecards/namecard.css";
 
 function PublicNameCardPage() {
 	const userId = useParams();
