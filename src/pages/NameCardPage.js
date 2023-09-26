@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { getUserProfile } from "../hooks/useAxiosAuth";
+import { testUserInfo } from "../testData";
 import UserCard from "../components/namecards/UserCard";
 import PinnedFeedbackList from "../components/feedbacks/PinnedFeedbackList";
 
 import "./namecardpage.css";
-import { getUserProfile } from "../hooks/useAxiosAuth";
-import { testUserInfo } from "../testData";
 
 function NameCardPage() {
 	const [userName, setUserName] = useState("");

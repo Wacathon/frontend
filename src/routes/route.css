@@ -1,7 +1,14 @@
 /* AppRouter */
 :root {
-	--app-sidebar-width: 15.4375rem;
-	--app-blank-width: 100px;
+	--app-sidebar-width: 15rem;
+	--app-blank-width: 5rem;
+}
+
+@media screen and (max-width: 1024px) {
+	:root {
+		--app-sidebar-width: calc(5rem + 10vw);
+		--app-blank-width: 0;
+	}
 }
 
 .router-0 {
@@ -13,6 +20,7 @@
 .router-nav-0 {
 	display: block;
 	width: var(--app-sidebar-width);
+	min-width: 180px;
 	background-color: var(--app-background-color);
 	transition: width 2s ease;
 }
@@ -35,12 +43,6 @@
 .router-main-1-routes {
 	width: 100%;
 	max-width: calc(100% - var(--app-blank-width));
-	height: 100%;
-}
-
-.router-main-1-blank {
-	width: 100px;
-	min-width: 100px;
 	height: 100%;
 }
 /* AppRouter */
@@ -107,21 +109,21 @@
 	align-items: center;
 	width: 100%;
 	min-height: 2.75rem;
-	padding: 0.5rem 0.5rem 0.5rem 3rem;
-	gap: 6.5rem;
+	/* padding: 0.5rem 0.5rem 0.5rem 3rem; */
+	/* gap: 6.5rem; */
 	cursor: pointer;
 	background-color: #f0f3ff;
 }
 .nav-dropdown-menu span {
-	/* position: absolute;
-	left: 2.25rem; */
+	position: absolute;
+	left: 2.25rem;
 	font-size: 1.125rem;
 	color: #363636;
 	line-height: 155.5%;
 }
 .nav-dropdown-menu svg {
-	/* position: absolute;
-	right: 1.25rem; */
+	position: absolute;
+	right: 1.25rem;
 	width: 1rem;
 	height: 1rem;
 	color: #363636;

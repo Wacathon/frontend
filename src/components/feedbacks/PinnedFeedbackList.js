@@ -34,7 +34,7 @@ function PinnedFeedbackList() {
 
 	return (
 		<div>
-			<h4 className="cardPage-user-card-title">📌 Pinned Feedbacks</h4>
+			<h4 className="user-card-title">📌 Pinned Feedbacks</h4>
 			<Row className="p-2">
 				{feedbackData.map((item, idx) => (
 					<Col key={item.answerId}>

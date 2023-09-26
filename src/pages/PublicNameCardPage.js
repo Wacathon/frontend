@@ -35,7 +35,7 @@ function PublicNameCardPage() {
 	return (
 		<div className="d-flex flex-column justify-content-center align-items-center formPage-wrapper back-white">
 			<div>
-				<h4 className="cardPage-user-card-title ps-2">
+				<h4 className="user-card-title ps-2">
 					📇 {userInfo.userName}님의 명함
 				</h4>
 				<div className="user-card-flip-container" onClick={onFlipNameCard}>

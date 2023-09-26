@@ -185,7 +185,7 @@ function FeedbackFormPage() {
 		<Container className="formPage-wrapper">
 			<Row className="mb-3">
 				<Col>
-					<h3 className="cardPage-user-card-title">
+					<h3 className="user-card-title">
 						{userName}님의 피드백을 남겨주세요!
 					</h3>
 				</Col>

@@ -45,7 +45,6 @@ function AppRouter() {
 								<Route path="/*" element={<NameCardPage />} />
 							</Routes>
 						</div>
-						<div className="router-main-1-blank"></div>
 					</main>
 					<button className="scrollTop-btn" onClick={scrollToTop}>
 						<svg
