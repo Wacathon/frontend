@@ -5,6 +5,13 @@ import FeedbackCards from "./FeedbackCards";
 import "./feedback.css";
 import { Stack } from "react-bootstrap";
 
+export const relationEnum = [
+	{ name: "학교 동기, 선후배", type: "SCHOOL_COLLEAGUE", icon: "🏫" },
+	{ name: "직장 동료", type: "COMPANY_COLLEAGUE", icon: "💼" },
+	{ name: "친구", type: "FRIEND", icon: "👯" },
+	{ name: "기타", type: "ETC", icon: "💬" },
+];
+
 function FeedbackList() {
 	const userId = 3;
 	const [feedbackData, setFeedbackData] = useState([]);
@@ -19,6 +26,9 @@ function FeedbackList() {
 						questionTitle: item.questionTitle,
 						title: item.title,
 						content: item.content,
+						relationObj:
+							relationEnum.filter((el) => el.type === item.relationship)[0] ||
+							relationEnum[3],
 					};
 				})
 			)

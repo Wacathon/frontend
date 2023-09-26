@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { getFeedbackList } from "../../hooks/useAxiosFeedbacks";
+import { testUserFeedbackData, testUserInfo } from "../../testData";
 import FeedbackCards from "./FeedbackCards";
+import { relationEnum } from "./FeedbackList";
 
 import "./feedback.css";
-import { Col, Row } from "react-bootstrap";
-import { testUserFeedbackData, testUserInfo } from "../../testData";
 
 function PinnedFeedbackList() {
 	const [userId, setUserId] = useState(testUserInfo.memberId);
@@ -29,19 +29,34 @@ function PinnedFeedbackList() {
 		// );
 
 		// test data
-		setFeedbackData(testUserFeedbackData.filter((el) => el.isPinned === true));
+		setFeedbackData(
+			testUserFeedbackData
+				.filter((el) => el.isPinned === true)
+				.map((item) => {
+					return {
+						...item,
+						relationObj: relationEnum.filter(
+							(el) => el.type === item.relationship
+						)[0],
+					};
+				})
+		);
 	}, []);
 
 	return (
-		<div>
-			<h4 className="user-card-title">📌 Pinned Feedbacks</h4>
-			<Row className="p-2">
-				{feedbackData.map((item, idx) => (
-					<Col key={item.answerId}>
-						<FeedbackCards item={item} idx={idx} />
-					</Col>
-				))}
-			</Row>
+		<div className="user-card-feedback-0">
+			<div className="user-card-feedback-1">
+				<span className="user-card-feedback-title">
+					{testUserInfo.name}님의 Feedback
+				</span>
+				<div className="user-card-feedback-list">
+					{feedbackData.map((item, idx) => (
+						<div key={item.answerId}>
+							<FeedbackCards item={item} idx={idx} />
+						</div>
+					))}
+				</div>
+			</div>
 		</div>
 	);
 }

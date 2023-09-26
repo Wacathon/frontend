@@ -1,3 +1,114 @@
+/* PinnedFeedbackList */
+.user-card-feedback-0 {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 1.5rem;
+	gap: 0.5rem;
+	border-radius: 0.9375rem;
+	background: var(--app-background-color);
+}
+
+.user-card-feedback-1 {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.user-card-feedback-title {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	/* width: 57.5rem;
+	height: 1.5rem; */
+	padding: 0.5rem;
+	gap: 0.5rem;
+
+	color: #000;
+	font-family: Arial;
+	font-size: 1.25rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 1.75rem; /* 140% */
+}
+
+.user-card-feedback-list {
+	display: flex;
+	align-items: flex-start;
+	gap: 1.5rem;
+}
+/* PinnedFeedbackList */
+
+/* FeedbackCards */
+.user-card-feedback-card {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	width: 16.75rem;
+	/* height: 10rem; */
+	padding: 1rem 1.5rem;
+	gap: 0.5rem;
+
+	border-radius: 0.3125rem;
+	background: #fff;
+}
+
+.user-card-feedback-card-line {
+	width: 100%;
+	height: 0.0625rem;
+	flex-shrink: 0;
+	margin: 0;
+	background: #e8e8e8;
+}
+
+.user-card-feedback-card-title {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	gap: 0.75rem;
+	flex: 1 0 0;
+}
+
+.user-card-feedback-card-title #relationship-icon {
+	/* width: 1.5rem;
+	height: 1.5rem; */
+	font-size: 1.5rem;
+}
+
+.user-card-feedback-card-title #relationship-name {
+	color: #012169;
+	font-family: Sandoll GothicNeo1;
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1rem;
+}
+
+.user-card-feedback-card-content {
+	display: flex;
+	flex-direction: column;
+	flex: 1 0 0;
+	gap: 0.25rem;
+}
+
+.user-card-feedback-card-content #feedback-content {
+	color: #363636;
+	font-family: Sandoll GothicNeo1;
+	font-size: 0.9375rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.5625rem; /* 192.308% */
+	/* letter-spacing: -0.03125rem; */
+	word-break: keep-all;
+	word-wrap: break-word;
+}
+/* FeedbackCards */
+
 .feedback-max-width {
 	/* max-width: 270px !important; */
 }

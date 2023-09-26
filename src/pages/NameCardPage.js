@@ -26,7 +26,7 @@ function NameCardPage() {
 	return (
 		<div className="wrapper">
 			<div className="namecard-0">
-				<div className="namecard-1">
+				<div className="namecard-card">
 					<span className="namecard-card-title">
 						<span className="namecard-card-title-name">{userName}</span>님의
 						명함이에요.

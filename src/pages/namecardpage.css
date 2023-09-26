@@ -6,7 +6,8 @@
 	gap: 1.5rem;
 }
 
-.namecard-1 {
+/* namecard */
+.namecard-card {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
