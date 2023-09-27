@@ -1,8 +1,5 @@
 import React from "react";
 import MyInfoForm from "../components/mypage/MyInfoForm";
-import MyChart from "../components/mypage/MyChart";
-import MyQuestionList from "../components/mypage/MyQuestionList";
-import FeedbackList from "../components/feedbacks/FeedbackList";
 import { userLogout } from "../hooks/useAxiosAuth";
 
 import "../components/mypage/mypage.css";
