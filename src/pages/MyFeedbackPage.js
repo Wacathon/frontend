@@ -1,6 +1,6 @@
 import React from "react";
-import MyQuestionList from "../components/mypage/MyQuestionList";
-import FeedbackList from "../components/feedbacks/FeedbackList";
+import MyQuestionList from "../components/questions/MyQuestionList";
+import MyFeedbackList from "../components/feedbacks/MyFeedbackList";
 
 function MyFeedbackPage() {
 	return (
@@ -13,7 +13,7 @@ function MyFeedbackPage() {
 				<hr />
 				<div className="p-2">
 					<h5 className="myPage-container-title">💙 내가 받은 피드백</h5>
-					<FeedbackList />
+					<MyFeedbackList />
 				</div>
 			</div>
 		</div>

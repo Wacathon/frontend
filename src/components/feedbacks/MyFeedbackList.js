@@ -13,7 +13,7 @@ export const relationEnum = [
 	{ name: "기타", type: "ETC", icon: "💬" },
 ];
 
-function FeedbackList() {
+function MyFeedbackList() {
 	const userId = 3;
 	const [feedbackData, setFeedbackData] = useState([]);
 
@@ -74,4 +74,4 @@ function FeedbackList() {
 		</Stack>
 	);
 }
-export default FeedbackList;
+export default MyFeedbackList;

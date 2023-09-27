@@ -3,7 +3,7 @@ import {
 	addUserCustomQuestion,
 	getUserCustomQuestions,
 } from "../../hooks/useAxiosQuestions";
-import MyQuestion from "../questions/MyQuestion";
+import MyQuestion from "./MyQuestion";
 
 import { Button, Form, InputGroup, Stack } from "react-bootstrap";
 import { testUserFeedbackQuestion } from "../../testData";

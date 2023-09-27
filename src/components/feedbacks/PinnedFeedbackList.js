@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getFeedbackList } from "../../hooks/useAxiosFeedbacks";
-import { relationEnum } from "./FeedbackList";
+import { relationEnum } from "./MyFeedbackList";
 import { testUserFeedbackData, testUserInfo } from "../../testData";
 import FeedbackCards from "./FeedbackCards";
 

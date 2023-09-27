@@ -1,5 +1,5 @@
 import React from "react";
-import MyChart from "../components/mypage/MyChart";
+import MyChart from "../components/charts/MyChart";
 
 function MyChartPage() {
 	return (

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { initData, setHexChartData } from "../charts/HexChart";
+import { initData, setHexChartData } from "./HexChart";
 import { getMyIndicatorInfo } from "../../hooks/useAxiosIndicator";
 import EditMyChart from "./EditMyChart";
-import DynamicHexChart from "../charts/DynamicHexChart";
+import DynamicHexChart from "./DynamicHexChart";
 
 import { Row, Col, Stack, Button } from "react-bootstrap";
 import { testUserChartData } from "../../testData";

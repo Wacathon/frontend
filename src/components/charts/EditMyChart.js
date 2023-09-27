@@ -5,8 +5,8 @@ import {
 	getMyIndicatorInfo,
 	setMyIndicators,
 } from "../../hooks/useAxiosIndicator";
-import DynamicHexChart from "../charts/DynamicHexChart";
-import { initData, setHexChartData } from "../charts/HexChart";
+import DynamicHexChart from "./DynamicHexChart";
+import { initData, setHexChartData } from "./HexChart";
 
 import { Button, DropdownButton, Form, Stack } from "react-bootstrap";
 import { testUserChartData } from "../../testData";
