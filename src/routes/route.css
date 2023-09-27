@@ -212,6 +212,10 @@
 	/* justify-content: center; */
 	align-items: center;
 	gap: 0.75rem;
+	cursor: pointer;
+}
+.nav-user-info-1:hover .nav-user-info #name {
+	color: var(--app-hover-color);
 }
 
 .nav-user-icon {

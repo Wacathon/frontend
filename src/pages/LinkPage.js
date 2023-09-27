@@ -1,32 +1,29 @@
 import React, { useState, useEffect, useRef } from "react";
-import axios from "axios";
+import { getUserProfile } from "../hooks/useAxiosAuth";
 import { Card, InputGroup, Form, Button } from "react-bootstrap";
+import { testUserInfo } from "../testData";
+
 import "./linkpage.css";
 
 function LinkPage() {
-	const [userId, setUserId] = useState(3);
+	const [userId, setUserId] = useState(0);
 	const [userName, setUserName] = useState("");
-	const url = "http://localhost:3000";
 	const feedbackUrlRef = useRef();
 
 	useEffect(() => {
-		const accessToken = localStorage.getItem("accessToken");
+		// axios
+		// getUserProfile()
+		// 	.then((res) => {
+		// 		setUserId(res.memberId);
+		// 		setUserName(res.name);
+		// 	})
+		// 	.catch((err) => {
+		// 		console.log(err);
+		// 	});
 
-		const headers = {
-			"Content-type": "application/json; charset=UTF-8",
-			Accept: "*/*",
-			"X-AUTH-TOKEN": "Bearer " + accessToken,
-		};
-
-		axios
-			.get("http://43.202.59.248:8080/api/member/myProfile", { headers })
-			.then((res) => {
-				const result = res.data.response;
-				setUserName(result.name);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+		// test data
+		setUserId(testUserInfo.memberId);
+		setUserName(testUserInfo.name);
 	}, []);
 
 	const onShareClick = () => {
@@ -50,7 +47,7 @@ function LinkPage() {
 								type="text"
 								readOnly
 								ref={feedbackUrlRef}
-								value={`${url}/feedback-form/${userId}`}
+								value={`${process.env.REACT_APP_BASE_URL}/feedback-form/${userId}`}
 							/>
 							<Button variant="secondary" onClick={onShareClick}>
 								링크 복사
