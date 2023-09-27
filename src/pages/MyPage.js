@@ -6,6 +6,7 @@ import FeedbackList from "../components/feedbacks/FeedbackList";
 import { userLogout } from "../hooks/useAxiosAuth";
 
 import "../components/mypage/mypage.css";
+import { Button } from "react-bootstrap";
 
 function MyPage() {
 	return (
@@ -17,25 +18,10 @@ function MyPage() {
 					<MyInfoForm />
 				</div>
 				<hr />
-				<div className="p-2">
-					<h5 className="myPage-container-title">💙 나를 표현하는 육각형</h5>
-					<MyChart />
-				</div>
-				<hr />
-				<div className="p-2">
-					<h5 className="myPage-container-title">💙 내가 만드는 질문</h5>
-					<MyQuestionList />
-				</div>
-				<hr />
-				<div className="p-2">
-					<h5 className="myPage-container-title">💙 내가 받은 피드백</h5>
-					<FeedbackList />
-				</div>
-				<hr />
 				<div className="d-flex justify-content-end">
-					<button bg="outline-danger" onClick={userLogout}>
+					<Button bg="outline-danger" onClick={userLogout}>
 						로그아웃
-					</button>
+					</Button>
 				</div>
 			</div>
 		</div>
