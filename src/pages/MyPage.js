@@ -1,14 +1,14 @@
 import React from "react";
-import MyInfoForm from "../components/profile/MyInfoForm";
-import MyChart from "../components/profile/MyChart";
-import MyQuestionList from "../components/profile/MyQuestionList";
+import MyInfoForm from "../components/mypage/MyInfoForm";
+import MyChart from "../components/mypage/MyChart";
+import MyQuestionList from "../components/mypage/MyQuestionList";
 import FeedbackList from "../components/feedbacks/FeedbackList";
 import { userLogout } from "../hooks/useAxiosAuth";
 
-import "../components/profile/mypage.css";
+import "../components/mypage/mypage.css";
 import { Button } from "react-bootstrap";
 
-function ProfilePage() {
+function MyPage() {
 	return (
 		<div className="wrapper">
 			<h4 className="ps-2">🧑‍💻 마이페이지</h4>
@@ -43,4 +43,4 @@ function ProfilePage() {
 	);
 }
 
-export default ProfilePage;
+export default MyPage;

@@ -3,7 +3,9 @@ import { Route, Routes } from "react-router-dom";
 import MainPage from "../pages/MainPage";
 import NameCardPage from "../pages/NameCardPage";
 import Navigation from "./Navigation";
-import ProfilePage from "../pages/ProfilePage";
+import MyPage from "../pages/MyPage";
+import MyFeedbackPage from "../pages/MyFeedbackPage";
+import MyChartPage from "../pages/MyChartPage";
 import AuthPage from "../pages/AuthPage";
 import LinkPage from "../pages/LinkPage";
 import FeedbackFormPage from "../pages/FeedbackFormPage";
@@ -40,7 +42,9 @@ function AppRouter() {
 							<Routes>
 								<Route path="/" element={<NameCardPage />} />
 								<Route path="/name-card" element={<NameCardPage />} />
-								<Route path="/profile" element={<ProfilePage />} />
+								<Route path="/my-page" element={<MyPage />} />
+								<Route path="/my-chart" element={<MyChartPage />} />
+								<Route path="/my-feedback" element={<MyFeedbackPage />} />
 								<Route path="/share-link" element={<LinkPage />} />
 								<Route path="/*" element={<NameCardPage />} />
 							</Routes>
