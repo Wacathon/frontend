@@ -6,6 +6,7 @@ import {
 import MyQuestion from "../questions/MyQuestion";
 
 import { Button, Form, InputGroup, Stack } from "react-bootstrap";
+import { testUserFeedbackQuestion } from "../../testData";
 
 function MyQuestionList() {
 	const [userId, setUserId] = useState(3);
@@ -13,7 +14,11 @@ function MyQuestionList() {
 	const [questionList, setQuestionList] = useState([]);
 
 	useEffect(() => {
-		getUserCustomQuestions(userId, setQuestionList);
+		// axios
+		// getUserCustomQuestions(userId, setQuestionList);
+
+		// test data
+		setQuestionList(testUserFeedbackQuestion);
 	}, []);
 
 	const onAddQuestion = async () => {

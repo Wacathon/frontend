@@ -42,7 +42,7 @@ function MyQuestion({ question, setQuestionList }) {
 				</>
 			) : (
 				<div className="d-flex justify-content-between align-items-center">
-					<span>{question.title}</span>
+					<span>{question.questionTitle}</span>
 					<div className="d-flex align-items-center">
 						<Button
 							size="sm"

@@ -5,6 +5,7 @@ import EditMyChart from "./EditMyChart";
 import DynamicHexChart from "../charts/DynamicHexChart";
 
 import { Row, Col, Stack, Button } from "react-bootstrap";
+import { testUserChartData } from "../../testData";
 
 function MyChart() {
 	const [indicatorInfo, setIndicatorData] = useState([]);
@@ -13,19 +14,29 @@ function MyChart() {
 	const [isEdited, setIsEdited] = useState(false);
 
 	useEffect(() => {
-		getMyIndicatorInfo().then((data) => {
-			setIndicatorData(
-				data.map((item) => {
-					return {
-						tagId: item.tagId,
-						tagName: item.tagName,
-						avrgTagScore: Number(item.avrgTagScore).toFixed(1),
-					};
-				})
-			);
-			const newChartData = setHexChartData(data);
-			setChartData(newChartData);
-		});
+		// axios
+		// getMyIndicatorInfo().then((data) => {
+		// 	setIndicatorData(
+		// 		data.map((item) => {
+		// 			return {
+		// 				tagId: item.tagId,
+		// 				tagName: item.tagName,
+		// 				avrgTagScore: Number(item.avrgTagScore).toFixed(1),
+		// 			};
+		// 		})
+		// 	);
+		// 	const newChartData = setHexChartData(data);
+		// 	setChartData(newChartData);
+		// });
+
+		// test data
+		const userChartData = testUserChartData.filter(
+			(el) => el.isSelected === true
+		);
+		const hexChartData = setHexChartData(userChartData);
+		setIndicatorData(userChartData);
+		setChartData(hexChartData);
+
 		setIsEdited(false);
 	}, [isEdited]);
 

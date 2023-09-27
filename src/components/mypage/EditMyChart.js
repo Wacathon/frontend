@@ -9,6 +9,7 @@ import DynamicHexChart from "../charts/DynamicHexChart";
 import { initData, setHexChartData } from "../charts/HexChart";
 
 import { Button, DropdownButton, Form, Stack } from "react-bootstrap";
+import { testUserChartData } from "../../testData";
 
 function EditMyChart({ setIsEdit, setIsEdited }) {
 	const userId = 3;
@@ -62,12 +63,14 @@ function EditMyChart({ setIsEdit, setIsEdited }) {
 			}
 			setTagCnt((prev) => prev + 1);
 		}
+
 		const newTagList = [
 			...tagList.slice(0, item.idx),
 			{ ...tagList[item.idx], isChecked: !item.isChecked },
 			...tagList.slice(item.idx + 1, tagList.length),
 		];
 		setTagList(newTagList);
+
 		const filteredNewTagList = newTagList.filter((item) => item.isChecked);
 		setMyTagList(filteredNewTagList);
 		const newChartData = setHexChartData(filteredNewTagList);
@@ -115,15 +118,22 @@ function EditMyChart({ setIsEdit, setIsEdited }) {
 			};
 		});
 		if (window.confirm("태그 정보를 수정하시겠습니까?")) {
-			setMyIndicators(tagList, userId).then((res) => {
-				if (res) {
-					setTagData();
-					setIsEdited(true);
-					alert("태그 정보가 수정되었습니다.");
-				} else {
-					alert("태그 정보 수정에 실패하였습니다.");
-				}
-			});
+			// axios
+			// setMyIndicators(tagList, userId).then((res) => {
+			// 	if (res) {
+			// 		setTagData();
+			// 		setIsEdited(true);
+			// 		alert("태그 정보가 수정되었습니다.");
+			// 	} else {
+			// 		alert("태그 정보 수정에 실패하였습니다.");
+			// 	}
+			// });
+
+			// test data
+			console.log(myTagList);
+			setIsEdited(true);
+			alert("태그 정보가 수정되었습니다.");
+
 			setIsEdit(false);
 		} else {
 			setIsEdit(false);
@@ -132,8 +142,27 @@ function EditMyChart({ setIsEdit, setIsEdited }) {
 	};
 
 	useEffect(() => {
-		setTagCnt(0);
-		setTagData();
+		// axios
+		// setTagCnt(0);
+		// setTagData();
+
+		// test data
+		const userChartData = testUserChartData.filter(
+			(el) => el.isSelected === true
+		);
+		const hexChartData = setHexChartData(userChartData);
+		setTagList(
+			testUserChartData.map((item, idx) => {
+				return {
+					idx: idx,
+					isChecked: item.isSelected,
+					...item,
+				};
+			})
+		);
+		setChartData(hexChartData);
+		setMyTagList(userChartData);
+		setTagCnt(userChartData.length);
 	}, []);
 
 	return (

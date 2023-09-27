@@ -6,7 +6,6 @@ import FeedbackList from "../components/feedbacks/FeedbackList";
 import { userLogout } from "../hooks/useAxiosAuth";
 
 import "../components/mypage/mypage.css";
-import { Button } from "react-bootstrap";
 
 function MyPage() {
 	return (
@@ -34,9 +33,9 @@ function MyPage() {
 				</div>
 				<hr />
 				<div className="d-flex justify-content-end">
-					<Button bg="outline-danger" onClick={userLogout}>
+					<button bg="outline-danger" onClick={userLogout}>
 						로그아웃
-					</Button>
+					</button>
 				</div>
 			</div>
 		</div>

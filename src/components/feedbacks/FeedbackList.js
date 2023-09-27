@@ -4,6 +4,7 @@ import FeedbackCards from "./FeedbackCards";
 
 import "./feedback.css";
 import { Stack } from "react-bootstrap";
+import { testUserFeedbackData } from "../../testData";
 
 export const relationEnum = [
 	{ name: "학교 동기, 선후배", type: "SCHOOL_COLLEAGUE", icon: "🏫" },
@@ -17,21 +18,37 @@ function FeedbackList() {
 	const [feedbackData, setFeedbackData] = useState([]);
 
 	const refreshFeedbackList = () => {
-		getFeedbackList(false, userId).then((data) =>
-			setFeedbackData(
-				data.map((item) => {
-					return {
-						id: item.answerId,
-						isPinned: item.pinned,
-						questionTitle: item.questionTitle,
-						title: item.title,
-						content: item.content,
-						relationObj:
-							relationEnum.filter((el) => el.type === item.relationship)[0] ||
-							relationEnum[3],
-					};
-				})
-			)
+		// axios
+		// getFeedbackList(false, userId).then((data) =>
+		// 	setFeedbackData(
+		// 		data.map((item) => {
+		// 			return {
+		// 				id: item.answerId,
+		// 				isPinned: item.pinned,
+		// 				questionTitle: item.questionTitle,
+		// 				title: item.title,
+		// 				content: item.content,
+		// 				relationObj:
+		// 					relationEnum.filter((el) => el.type === item.relationship)[0] ||
+		// 					relationEnum[3],
+		// 			};
+		// 		})
+		// 	)
+		// );
+
+		// test data
+		setFeedbackData(
+			testUserFeedbackData.map((item) => {
+				return {
+					id: item.answerId,
+					isPinned: item.isPinned,
+					questionTitle: item.questionTitle,
+					content: item.content,
+					relationObj:
+						relationEnum.filter((el) => el.type === item.relationship)[0] ||
+						relationEnum[3],
+				};
+			})
 		);
 	};
 
