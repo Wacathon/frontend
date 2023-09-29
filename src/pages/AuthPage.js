@@ -4,6 +4,7 @@ import UserLogin from "../components/auths/UserLogin";
 import UserSignup from "../components/auths/UserSignup";
 
 import logo from "../img/app_logo.png";
+import authImg from "../img/app_auth_page_img.png";
 import "../components/auths/auth.css";
 
 function AuthPage() {
@@ -27,16 +28,24 @@ function AuthPage() {
 
 	return (
 		<div className="auth-container">
-			<div className="wrapper">
-				<div className="d-flex justify-content-center align-items-center">
-					<img
-						alt="app_icon"
-						src={logo}
-						width="50"
-						height="50"
-						className="d-inline-block me-1"
-					/>
-					<h1 className="m-0">IM</h1>
+			<div className="auth-0">
+				<div className="auth-0-0">
+					<div className="auth-logo-container">
+						<img alt="app_icon" src={logo} className="auth-logo" />
+					</div>
+					<span className="auth-logo-text">IM</span>
+				</div>
+				<div className="auth-0-1">
+					<span className="auth-introduce-text">
+						반갑습니다,
+						<br />
+						개쩌는 명함 서비스 IM 입니다.
+					</span>
+				</div>
+			</div>
+			<div className="auth-1">
+				<div className="auth-img-container">
+					<img alt="app_auth_page_img" src={authImg} className="auth-img" />
 				</div>
 				<div className="auth-box">
 					<div className="auth-box-toggle-container">

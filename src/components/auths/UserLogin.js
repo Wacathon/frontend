@@ -26,20 +26,25 @@ function UserLogin() {
 		<div>
 			<div className="auth-sign-form-input">
 				<Inputs
+					inputId="email"
 					inputName="이메일"
 					inputType="email"
 					inputValue={email}
 					setInputValue={setEmail}
 					inputPlaceholder="이메일을 입력해주세요."
+					inputAutoType="email"
+					isRequired={true}
 				/>
 			</div>
 			<div className="auth-sign-form-input">
 				<Inputs
+					inputId="passwd"
 					inputName="비밀번호"
 					inputType="password"
 					inputValue={passwd}
 					setInputValue={setPasswd}
 					inputPlaceholder="비밀번호를 입력해주세요."
+					isRequired={true}
 				/>
 			</div>
 			<button className="auth-sign-btn" onClick={onLoginClick}>

@@ -64,20 +64,23 @@ function AppRouter() {
 					</button>
 				</div>
 			) : (
-				<Routes>
-					<Route path="/" element={<MainPage />} />
-					<Route path="/auth/:signMethod" element={<AuthPage />} />
-					{/* <Route path="/auth/sign-in" element={<AuthPage />} />
-							<Route path="/auth/sign-up" element={<AuthPage />} /> */}
-					<Route path="/tag-setup/*" element={<InitSetRouter />} />
-					<Route path="/feedback-form/:userId" element={<FeedbackFormPage />} />
-					<Route
-						path="/feedback-form/:userId/result"
-						element={<ResultPage />}
-					/>
-					<Route path="/card/:userId" element={<PublicNameCardPage />} />
-					<Route path="/*" element={<MainPage />} />
-				</Routes>
+				<div className="router-1">
+					<Routes>
+						<Route path="/" element={<MainPage />} />
+						<Route path="/auth/:signMethod" element={<AuthPage />} />
+						<Route path="/tag-setup/*" element={<InitSetRouter />} />
+						<Route
+							path="/feedback-form/:userId"
+							element={<FeedbackFormPage />}
+						/>
+						<Route
+							path="/feedback-form/:userId/result"
+							element={<ResultPage />}
+						/>
+						<Route path="/card/:userId" element={<PublicNameCardPage />} />
+						<Route path="/*" element={<MainPage />} />
+					</Routes>
+				</div>
 			)}
 		</>
 	);

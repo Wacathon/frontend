@@ -1,13 +1,16 @@
 import React from "react";
 
 function Inputs({
+	inputId,
 	inputName,
 	inputType,
 	inputValue,
 	setInputValue,
 	inputPlaceholder,
+	inputAutoType,
+	isRequired,
 }) {
-	const onTextChange = (e) => {
+	const onValueChange = (e) => {
 		const {
 			target: { value },
 		} = e;
@@ -16,13 +19,15 @@ function Inputs({
 
 	return (
 		<>
-			{inputName && <label htmlFor={inputName}>{inputName}</label>}
+			{inputName && <label htmlFor={inputId}>{inputName}</label>}
 			<input
-				id={inputName}
+				id={inputId}
+				required={isRequired || false}
 				type={inputType || "text"}
 				placeholder={inputPlaceholder}
 				value={inputValue}
-				onChange={onTextChange}
+				autoComplete={inputAutoType || "off"}
+				onChange={onValueChange}
 			/>
 		</>
 	);
