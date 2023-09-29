@@ -23,23 +23,29 @@ function UserLogin() {
 	};
 
 	return (
-		<Stack gap={3}>
-			<Inputs
-				inputName="이메일"
-				inputType="email"
-				inputValue={email}
-				setInputValue={setEmail}
-				inputPlaceholder="이메일을 입력해주세요."
-			/>
-			<Inputs
-				inputName="비밀번호"
-				inputType="password"
-				inputValue={passwd}
-				setInputValue={setPasswd}
-				inputPlaceholder="비밀번호를 입력해주세요."
-			/>
-			<Button onClick={onLoginClick}>로그인</Button>
-		</Stack>
+		<div>
+			<div className="auth-sign-form-input">
+				<Inputs
+					inputName="이메일"
+					inputType="email"
+					inputValue={email}
+					setInputValue={setEmail}
+					inputPlaceholder="이메일을 입력해주세요."
+				/>
+			</div>
+			<div className="auth-sign-form-input">
+				<Inputs
+					inputName="비밀번호"
+					inputType="password"
+					inputValue={passwd}
+					setInputValue={setPasswd}
+					inputPlaceholder="비밀번호를 입력해주세요."
+				/>
+			</div>
+			<button className="auth-sign-btn" onClick={onLoginClick}>
+				로그인
+			</button>
+		</div>
 	);
 }
 

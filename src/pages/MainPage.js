@@ -22,7 +22,7 @@ function MainPage() {
 	};
 
 	const gotoAuthPage = () => {
-		navigate("/login");
+		navigate("/auth/sign-in");
 	};
 
 	return (

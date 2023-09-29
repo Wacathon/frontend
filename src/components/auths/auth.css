@@ -1,0 +1,109 @@
+/* AuthPage */
+.auth-container {
+	width: 100%;
+	height: 100%;
+	min-height: 100vh;
+	background-color: var(--app-primary-color);
+}
+
+.auth-box {
+	display: flex;
+	flex-direction: column;
+	max-width: 32.1875rem;
+	height: 100%;
+	/* min-height: 28.8125rem; */
+	flex-shrink: 0;
+	border-radius: 0.625rem;
+	background-color: #fff;
+}
+
+.auth-box-toggle-container {
+	display: flex;
+	flex-direction: row;
+}
+
+.auth-box-toggle {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 50%;
+	height: 4.5625rem;
+	flex-shrink: 0;
+	border-radius: 0.625rem 0rem 0.3125rem 0rem;
+	cursor: pointer;
+}
+.auth-box-toggle span {
+	font-family: Sandoll GothicNeo1;
+	font-size: 1.25rem;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 1.75rem;
+}
+
+.auth-box-sign-in {
+	border-radius: 0.625rem 0rem 0.3125rem 0rem;
+}
+.auth-box-sign-up {
+	border-radius: 0rem 0.625rem 0rem 0rem;
+}
+
+.auth-toggle-true {
+	background-color: #fff;
+}
+.auth-toggle-true span {
+	color: var(--app-primary-color);
+}
+
+.auth-toggle-false {
+	background-color: #f8f8f8;
+}
+.auth-toggle-false span {
+	color: #000;
+}
+
+.auth-box-sign-form {
+	padding: 1.5rem 3rem 4.25rem 3rem;
+}
+/* AuthPage */
+
+/* UserLogin & UserSignup */
+.auth-sign-form-input {
+	margin: 1.75rem 0;
+}
+
+.auth-sign-form-input input {
+	width: 100%;
+	min-height: 2.75rem;
+	border-radius: 0.3125rem;
+	border: 1px solid #c7c3c3;
+	background: var(--, #fff);
+	flex-shrink: 0;
+}
+.auth-sign-form-input input::placeholder {
+	padding: 0.5rem;
+	color: var(--_2, #c7c3c3);
+	font-family: Sandoll GothicNeo1;
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.75rem;
+}
+
+.auth-sign-form-input label {
+	margin-bottom: 0.25rem;
+	color: var(--app-primary-color);
+	font-family: Sandoll GothicNeo1;
+	font-size: 1.125rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 1.75rem;
+}
+
+.auth-sign-btn {
+	width: 100%;
+	min-height: 2.75rem;
+	color: #fff;
+	border-radius: 0.3125rem;
+	background: var(--app-primary-color);
+}
+/* UserLogin & UserSignup */

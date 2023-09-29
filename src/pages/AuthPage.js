@@ -1,21 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import UserLogin from "../components/auths/UserLogin";
 import UserSignup from "../components/auths/UserSignup";
 
 import logo from "../img/app_logo.png";
-import { Container, Row, Col, Form } from "react-bootstrap";
+import "../components/auths/auth.css";
 
 function AuthPage() {
 	const [isLoginForm, setIsLoginForm] = useState(true);
+	const signMethod = useParams().signMethod;
+	const navigate = useNavigate();
 
-	const onAuthToggle = () => {
-		setIsLoginForm((prev) => !prev);
+	useEffect(() => {
+		setIsLoginForm(signMethod === "sign-in" ? true : false);
+	}, []);
+
+	const onLoginFormClick = () => {
+		navigate("/auth/sign-in", { replace: true });
+		setIsLoginForm(true);
+	};
+
+	const onSignupFormClick = () => {
+		navigate("/auth/sign-up", { replace: true });
+		setIsLoginForm(false);
 	};
 
 	return (
-		<Container fluid className="wrapper">
-			<Row>
-				<Col className="d-flex justify-content-center align-items-center">
+		<div className="auth-container">
+			<div className="wrapper">
+				<div className="d-flex justify-content-center align-items-center">
 					<img
 						alt="app_icon"
 						src={logo}
@@ -24,17 +37,32 @@ function AuthPage() {
 						className="d-inline-block me-1"
 					/>
 					<h1 className="m-0">IM</h1>
-				</Col>
-			</Row>
-			<Row className="p-4">
-				<h4>{isLoginForm ? "로그인" : "회원가입"}</h4>
-				<Form.Switch
-					onChange={onAuthToggle}
-					label={isLoginForm ? "로그인" : "회원가입"}
-				/>
-				{isLoginForm ? <UserLogin /> : <UserSignup />}
-			</Row>
-		</Container>
+				</div>
+				<div className="auth-box">
+					<div className="auth-box-toggle-container">
+						<div
+							className={`auth-box-toggle auth-box-sign-in auth-toggle-${
+								signMethod === "sign-in"
+							}`}
+							onClick={onLoginFormClick}
+						>
+							<span>로그인</span>
+						</div>
+						<div
+							className={`auth-box-toggle auth-box-sign-up auth-toggle-${
+								signMethod === "sign-up"
+							}`}
+							onClick={onSignupFormClick}
+						>
+							<span>회원가입</span>
+						</div>
+					</div>
+					<div className="auth-box-sign-form">
+						{isLoginForm ? <UserLogin /> : <UserSignup />}
+					</div>
+				</div>
+			</div>
+		</div>
 	);
 }
 

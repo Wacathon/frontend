@@ -45,7 +45,7 @@ const userLogout = () => {
 // POST - 유저 회원가입
 const userSignup = async (
 	email,
-	introduce,
+	// introduce,
 	name,
 	passwd,
 	phoneNum,
@@ -56,7 +56,7 @@ const userSignup = async (
 			data: { success, error },
 		} = await axios.post(`${SERVER_MEMBER_URL}/sign-up`, {
 			email,
-			introduce,
+			// introduce,
 			name,
 			passwd,
 			phoneNum,

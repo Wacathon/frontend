@@ -64,26 +64,20 @@ function AppRouter() {
 					</button>
 				</div>
 			) : (
-				<div className="d-flex justify-content-center">
-					<div className="guest-main-wrapper">
-						<Routes>
-							<Route path="/" element={<MainPage />} />
-							<Route path="/login" element={<AuthPage />} />
-							<Route path="/signup" element={<AuthPage />} />
-							<Route path="/tag-setup/*" element={<InitSetRouter />} />
-							<Route
-								path="/feedback-form/:userId"
-								element={<FeedbackFormPage />}
-							/>
-							<Route
-								path="/feedback-form/:userId/result"
-								element={<ResultPage />}
-							/>
-							<Route path="/card/:userId" element={<PublicNameCardPage />} />
-							<Route path="/*" element={<MainPage />} />
-						</Routes>
-					</div>
-				</div>
+				<Routes>
+					<Route path="/" element={<MainPage />} />
+					<Route path="/auth/:signMethod" element={<AuthPage />} />
+					{/* <Route path="/auth/sign-in" element={<AuthPage />} />
+							<Route path="/auth/sign-up" element={<AuthPage />} /> */}
+					<Route path="/tag-setup/*" element={<InitSetRouter />} />
+					<Route path="/feedback-form/:userId" element={<FeedbackFormPage />} />
+					<Route
+						path="/feedback-form/:userId/result"
+						element={<ResultPage />}
+					/>
+					<Route path="/card/:userId" element={<PublicNameCardPage />} />
+					<Route path="/*" element={<MainPage />} />
+				</Routes>
 			)}
 		</>
 	);
