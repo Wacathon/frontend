@@ -6,9 +6,9 @@ import { testUserInfo } from "../testData";
 import "./route.css";
 import logo from "../img/app_logo.png";
 
-function Navigation() {
+function Navigation({ isMenuOpened, showMenu }) {
 	const [userInfo, setUserInfo] = useState({});
-	const [isMenuOpened, setIsMenuOpened] = useState(false);
+	const [isDropdownOpened, setIsDropdownOpened] = useState(false);
 
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -31,7 +31,7 @@ function Navigation() {
 		});
 
 		if (location.pathname !== "/") {
-			setIsMenuOpened(true);
+			setIsDropdownOpened(true);
 			onOpenMenu();
 			changeMenuColor(location.pathname.slice(1));
 		}
@@ -72,12 +72,12 @@ function Navigation() {
 	};
 
 	const onOpenMenu = () => {
-		setIsMenuOpened((prev) => !prev);
+		setIsDropdownOpened((prev) => !prev);
 		const svg = document.querySelector(".nav-dropdown-menu svg");
 		const menuHeight = document.querySelector(".nav-menu-list-0");
 		const menuList = document.querySelector(".nav-menu-list-1");
 
-		if (!isMenuOpened) {
+		if (!isDropdownOpened) {
 			svg.classList.add("nav-dropdown-animation");
 			menuList.classList.add("nav-menu-animation");
 			menuHeight.classList.add("nav-menu-height");
@@ -95,6 +95,7 @@ function Navigation() {
 					<img alt="app_icon" className="nav-logo-img" src={logo} />
 					<span>IM</span>
 				</a>
+				{isMenuOpened && <button onClick={showMenu}>X</button>}
 				<div className="nav-dropdown">
 					<div className="nav-dropdown-menu" onClick={onOpenMenu}>
 						<span>Menu</span>

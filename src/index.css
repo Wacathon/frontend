@@ -8,7 +8,7 @@
 	--app-primary-color: #00004d;
 	--app-secondary-color: #6f68b7;
 	--app-background-color: #fafbff;
-	--app-hover-color: #6565b5;
+	--app-hover-color: #373774;
 	--app-visited-color: #6565b5;
 }
 
@@ -20,7 +20,7 @@ div > a {
 	text-decoration: none;
 }
 
-div > button {
+button {
 	background: none;
 	outline: none;
 	appearance: none;

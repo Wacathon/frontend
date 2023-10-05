@@ -1,12 +1,14 @@
 /* AppRouter */
 :root {
-	--app-sidebar-width: 15rem;
-	--app-blank-width: 5rem;
+	--app-sidebar-width: 260px;
+	--app-sidebar-max-width: 350px;
+	--app-blank-width: 150px;
 }
 
 @media screen and (max-width: 1024px) {
 	:root {
-		--app-sidebar-width: calc(5rem + 10vw);
+		/* --app-sidebar-width: 60vw; */
+		/* --app-sidebar-width: 0; */
 		--app-blank-width: 0;
 	}
 }
@@ -26,9 +28,8 @@
 .router-nav-0 {
 	display: block;
 	width: var(--app-sidebar-width);
-	min-width: 180px;
 	background-color: var(--app-background-color);
-	transition: width 2s ease;
+	transition: width 1s ease-in-out;
 }
 
 .router-main-0 {
@@ -37,6 +38,25 @@
 	max-width: calc(100% - var(--app-sidebar-width));
 	margin: 0;
 	min-height: 100vh;
+	/* transition: max-width 1s ease-in-out; */
+}
+
+@media screen and (max-width: 1024px) {
+	.router-main-0 {
+		max-width: 100%;
+	}
+}
+@media screen and (min-width: 1400px) {
+	.router-nav-0 {
+		/* width: var(--app-sidebar-max-width); */
+	}
+}
+
+.router-main-1-routes {
+	width: 100%;
+	/* max-width: calc(100% - var(--app-blank-width)); */
+	height: 100%;
+	/* transition: max-width 700ms ease; */
 }
 
 .guest-main-wrapper {
@@ -46,18 +66,57 @@
 	width: 80%;
 	min-height: 100vh;
 }
-.router-main-1-routes {
-	width: 100%;
-	max-width: calc(100% - var(--app-blank-width));
-	height: 100%;
+
+/* .router-main-1-blank {
+	width: var(--app-blank-width);
 }
+@media screen and (max-width: 1024px) {
+	.router-main-1-blank {
+		display: none;
+	}
+} */
+
+/* .router-nav-opened {
+	z-index: 5;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: var(--app-sidebar-width);
+	min-width: 180px;
+} */
 /* AppRouter */
+
+/* Navbar */
+.nav-navbar {
+}
+
+.nav-backdrop {
+	background-color: #0009;
+	position: fixed;
+	right: 0;
+	transition-property: opacity, visibility;
+	opacity: 0;
+	transition-duration: var(--ifm-transition-fast);
+	transition-timing-function: ease-in-out;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	visibility: hidden;
+}
+
+.navbar-show {
+	opacity: 1;
+	visibility: visible;
+}
+/* Navbar */
 
 /* Navigation */
 .nav-0 {
 	position: sticky;
 	position: -webkit-sticky;
 	top: 0;
+	width: 100%;
 	height: 100%;
 	max-height: 100vh;
 }
@@ -65,8 +124,15 @@
 .nav-1 {
 	display: flex;
 	flex-direction: column;
-	max-width: var(--app-sidebar-width);
+	/* max-width: var(--app-sidebar-width); */
+	width: 100%;
 	height: 100%;
+	background-color: #fff;
+}
+@media screen and (max-width: 1024px) {
+	.nav-1 {
+		max-width: none;
+	}
 }
 
 /* logo */
@@ -263,6 +329,9 @@
 	font-weight: 400;
 	line-height: 1.75rem;
 }
+.nav-user-info-0 #logout-btn:hover {
+	background-color: var(--app-hover-color);
+}
 /* Navigation */
 
 /* Scroll Button */
@@ -271,4 +340,7 @@
 	position: fixed;
 	right: 2rem;
 	bottom: 2rem;
+}
+.scrollTop-btn > svg > circle:hover {
+	fill: var(--app-hover-color);
 }

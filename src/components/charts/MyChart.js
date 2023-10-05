@@ -4,6 +4,7 @@ import { getMyIndicatorInfo } from "../../hooks/useAxiosIndicator";
 import EditMyChart from "./EditMyChart";
 import DynamicHexChart from "./DynamicHexChart";
 
+import "./chart.css";
 import { Row, Col, Stack, Button } from "react-bootstrap";
 import { testUserChartData } from "../../testData";
 

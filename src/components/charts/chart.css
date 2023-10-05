@@ -1,0 +1,13 @@
+.myChart-wrapper {
+	display: flex;
+	flex-direction: column;
+}
+
+.myChart-chart-container {
+	max-width: 300px;
+}
+
+.tag-dropdown-item {
+	padding: 0.5rem 0.875rem;
+	min-width: 200px;
+}
