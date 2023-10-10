@@ -5,7 +5,7 @@
 	--app-blank-width: 150px;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 992px) {
 	:root {
 		/* --app-sidebar-width: 60vw; */
 		/* --app-sidebar-width: 0; */
@@ -41,7 +41,7 @@
 	/* transition: max-width 1s ease-in-out; */
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 992px) {
 	.router-main-0 {
 		max-width: 100%;
 	}
@@ -70,14 +70,14 @@
 /* .router-main-1-blank {
 	width: var(--app-blank-width);
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 992px) {
 	.router-main-1-blank {
 		display: none;
 	}
 } */
 
 /* .router-nav-opened {
-	z-index: 5;
+	z-index: 1;
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -89,25 +89,97 @@
 
 /* Navbar */
 .nav-navbar {
+	z-index: 2;
+	position: sticky;
+	position: -webkit-sticky;
+	top: 0;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 3.75rem;
+	padding: 0.5rem 1rem;
+	background-color: var(--app-primary-color);
+	box-shadow: 0px 1px 3px rgba(0, 0, 77, 0.5);
+}
+
+.navbar-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
 }
 
 .nav-backdrop {
-	background-color: #0009;
 	position: fixed;
-	right: 0;
-	transition-property: opacity, visibility;
-	opacity: 0;
-	transition-duration: var(--ifm-transition-fast);
-	transition-timing-function: ease-in-out;
 	top: 0;
 	bottom: 0;
 	left: 0;
+	right: 0;
+	opacity: 0;
 	visibility: hidden;
+	transition-property: opacity, visibility;
+	transition-duration: 100ms;
+	transition-timing-function: ease-in-out;
+	background-color: rgba(0, 0, 0, 0.5);
 }
 
-.navbar-show {
+.backdrop-show {
 	opacity: 1;
 	visibility: visible;
+	transition-property: opacity, visibility;
+	transition-duration: 100ms;
+	transition-timing-function: ease-in-out;
+}
+
+.nav-side-menu {
+	z-index: 3;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 70%;
+	opacity: 0;
+	visibility: hidden;
+	transform: translateX(-100%);
+	transition-property: opacity, visibility, transform;
+	transition-duration: 300ms;
+	transition-timing-function: ease-in-out;
+	background-color: #d9d9d9;
+}
+
+.side-menu-animation {
+	opacity: 1;
+	visibility: visible;
+	transform: translateX(0);
+	transition-property: opacity, visibility, transform;
+	transition-duration: 300ms;
+	transition-timing-function: ease-in-out;
+}
+
+.navbar-menu-btn {
+}
+
+.navbar-blank {
+	width: 2rem;
+	height: 2rem;
+	background-color: #d9d9d9;
+}
+
+.navbar-logo {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+.navbar-logo img {
+	width: auto;
+	height: 100%;
+	/* height: 1.875rem; */
+}
+.navbar-logo span {
+	color: #fff;
+	font-size: 1.875rem;
+	font-style: normal;
+	font-weight: 600;
 }
 /* Navbar */
 
@@ -129,7 +201,7 @@
 	height: 100%;
 	background-color: #fff;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 992px) {
 	.nav-1 {
 		max-width: none;
 	}
@@ -141,8 +213,9 @@
 	top: 2.75rem;
 	left: 2.25rem;
 	display: flex;
+	align-items: center;
 	gap: 0.5rem;
-	height: 2rem;
+	/* height: 2rem; */
 }
 .nav-logo-0 span {
 	display: flex;
@@ -157,8 +230,9 @@
 }
 
 .nav-logo-img {
-	width: inherit;
-	height: inherit;
+	width: 1.65388rem;
+	height: 1.90544rem;
+	flex-shrink: 0;
 }
 
 .nav-logo-text {
@@ -186,6 +260,7 @@
 	min-height: 2.75rem;
 	/* padding: 0.5rem 0.5rem 0.5rem 3rem; */
 	/* gap: 6.5rem; */
+	color: #363636;
 	cursor: pointer;
 	background-color: #f0f3ff;
 }
@@ -193,7 +268,7 @@
 	position: absolute;
 	left: 2.25rem;
 	font-size: 1.125rem;
-	color: #363636;
+	color: inherit;
 	line-height: 155.5%;
 }
 .nav-dropdown-menu svg {
@@ -201,10 +276,16 @@
 	right: 1.25rem;
 	width: 1rem;
 	height: 1rem;
-	color: #363636;
 	flex-shrink: 0;
 	transform: rotate(-90deg);
 	transition: transform 300ms ease-in-out;
+}
+
+.nav-dropdown-menu:hover,
+.nav-dropdown-menu:hover svg > path {
+	color: var(--app-primary-color);
+	fill: var(--app-primary-color);
+	transition: color fill 300ms ease-in-out;
 }
 
 .nav-dropdown-animation {
@@ -336,7 +417,7 @@
 
 /* Scroll Button */
 .scrollTop-btn {
-	z-index: 5;
+	z-index: 1;
 	position: fixed;
 	right: 2rem;
 	bottom: 2rem;

@@ -1,41 +1,43 @@
-import React from "react";
-import logo from "../img/app_logo.png";
+import React, { useState } from "react";
+import logo from "../img/app_logo.svg";
 
 function Navbar() {
+	const [isSideMenuOpened, setIsSideMenuOpened] = useState(false);
+
+	const toggleSideMenu = () => {
+		const backdrop = document.querySelector(".nav-backdrop");
+		const sideMenu = document.querySelector(".nav-side-menu");
+		if (isSideMenuOpened) {
+			backdrop.classList.remove("backdrop-show");
+			sideMenu.classList.remove("side-menu-animation");
+			setIsSideMenuOpened(false);
+		} else {
+			backdrop.classList.add("backdrop-show");
+			sideMenu.classList.add("side-menu-animation");
+			setIsSideMenuOpened(true);
+		}
+	};
+
 	return (
-		<nav>
-			<div className="nav-navbar">
-				<button>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="36"
-						height="36"
-						viewBox="0 0 36 36"
-						fill="none"
-					>
-						<circle cx="18" cy="18" r="18" fill="#757575" />
-						<path d="M18 14L23.1962 20H12.8038L18 14Z" fill="white" />
-					</svg>
-				</button>
-				<img alt="app_logo" src={logo} width="50" height="50" />
-				<span>IM</span>
-				<button>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="36"
-						height="37"
-						viewBox="0 0 36 37"
-						fill="none"
-					>
-						<circle cx="18" cy="18.5" r="18" fill="#00004D" />
-						<path
-							d="M14.999 20.5675H21.0013C21.7261 20.5675 22.0902 20.2209 22.0902 19.5345V15.4655C22.0902 14.7791 21.7261 14.4325 21.0013 14.4325H14.999C14.2777 14.4325 13.9102 14.7757 13.9102 15.4655V19.5345C13.9102 20.2243 14.2777 20.5675 14.999 20.5675ZM16.5108 17.5816C16.0392 17.5816 15.6543 17.2118 15.6543 16.7585C15.6543 16.3087 16.0392 15.9354 16.5108 15.9354C16.979 15.9354 17.3639 16.3087 17.3639 16.7585C17.3639 17.2118 16.979 17.5816 16.5108 17.5816ZM15.0059 20.031C14.673 20.031 14.4684 19.8377 14.4684 19.5111V19.3079L15.533 18.4148C15.6856 18.2848 15.852 18.2181 16.008 18.2181C16.1745 18.2181 16.3513 18.2848 16.5039 18.4214L17.1697 18.9946L18.8237 17.5816C18.9971 17.435 19.1878 17.3684 19.382 17.3684C19.5727 17.3684 19.7703 17.4383 19.9368 17.585L21.5318 19.0046V19.5178C21.5318 19.8377 21.3238 20.031 20.9944 20.031H15.0059Z"
-							fill="#FFFFFF"
-						/>
-					</svg>
-				</button>
+		<nav className="nav-navbar">
+			<div className="navbar-container">
+				<button
+					className="navbar-menu-btn navbar-blank"
+					onClick={toggleSideMenu}
+				></button>
+				<div className="navbar-logo">
+					<div>
+						<img alt="app_logo" src={logo} />
+					</div>
+					<span>IM</span>
+				</div>
+				<button className="navbar-blank"></button>
 			</div>
-			<div className="nav-backdrop"></div>
+			<div className="nav-backdrop" role="presentation"></div>
+			<div className="nav-side-menu">
+				<h2>Side Menu</h2>
+				<button onClick={toggleSideMenu}>X</button>
+			</div>
 		</nav>
 	);
 }

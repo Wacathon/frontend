@@ -4,7 +4,7 @@ import { getUserProfile, userLogout } from "../hooks/useAxiosAuth";
 import { testUserInfo } from "../testData";
 
 import "./route.css";
-import logo from "../img/app_logo.png";
+import logo from "../img/app_logo.svg";
 
 function Navigation({ isMenuOpened, showMenu }) {
 	const [userInfo, setUserInfo] = useState({});

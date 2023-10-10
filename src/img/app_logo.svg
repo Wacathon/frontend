@@ -1,0 +1,55 @@
+<svg width="27" height="31" viewBox="0 0 27 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="27" height="31" fill="#F5F5F5"/>
+<g id="&#235;&#170;&#168;&#235;&#176;&#148;&#236;&#157;&#188;">
+<path d="M-7070 -1985C-7070 -1986.1 -7069.1 -1987 -7068 -1987H16872C16873.1 -1987 16874 -1986.1 16874 -1985V7753C16874 7754.1 16873.1 7755 16872 7755H-7068C-7069.11 7755 -7070 7754.1 -7070 7753V-1985Z" fill="#FAFBFF"/>
+<g id="Card_Navy_&#235;&#176;&#152;&#236;&#157;&#145;&#237;&#152;&#149; &#235;&#160;&#136;&#236;&#157;&#180;&#236;&#149;&#132;&#236;&#155;&#131;" clip-path="url(#clip0_0_1)" filter="url(#filter0_d_0_1)">
+<rect width="1440" height="1024" transform="translate(-42 -43)" fill="white"/>
+<g id="Menu bar">
+<rect width="247" height="1024" transform="translate(-42 -43)" fill="#FAFBFF"/>
+<g id="logo_menu_card">
+<g id="logo_menu">
+<g id="im_logo">
+<g id="logo_im">
+<g id="logo">
+<g id="_?&#235;&#141;&#137;&#236;&#148;&#160;??1" clip-path="url(#clip1_0_1)">
+<path id="Vector" d="M4.20347 29.1165L0.5 30.9818H7.90825L4.20347 29.1165Z" fill="#39486E"/>
+<path id="Vector_2" d="M23.2577 29.1216L19.5542 30.987H26.9624L23.2577 29.1216Z" fill="#39486E"/>
+<g id="Group">
+<path id="Vector_3" d="M4.01484 4.56875C5.1384 4.56875 6.04922 3.65793 6.04922 2.53438C6.04922 1.41082 5.1384 0.5 4.01484 0.5C2.89129 0.5 1.98047 1.41082 1.98047 2.53438C1.98047 3.65793 2.89129 4.56875 4.01484 4.56875Z" fill="#141E3F"/>
+<path id="Vector_4" d="M7.23489 7.3717L4.16455 8.46802L12.0775 30.6288L15.1478 29.5325L7.23489 7.3717Z" fill="#39486E"/>
+<path id="Vector_5" d="M12.3637 29.5602L15.4341 30.6565L23.357 8.46752L20.2867 7.3712L12.3637 29.5602Z" fill="#39486E"/>
+<path id="Vector_6" d="M5.8476 7.40527H2.5874V30.9806H5.8476V7.40527Z" fill="#141E3F"/>
+<path id="Vector_7" d="M24.8969 7.40527H21.6367V30.9806H24.8969V7.40527Z" fill="#141E3F"/>
+<path id="Vector_8" d="M13.7381 25.6301L12.0625 30.6608H15.4137L13.7381 25.6301Z" fill="#60739A"/>
+<path id="Vector_9" d="M5.47314 7.39485L5.84492 13.225L7.18774 7.38965L5.47314 7.39485Z" fill="#60739A"/>
+<path id="Vector_10" d="M21.9939 7.38954L21.6195 13.247L20.2715 7.37134L21.9939 7.38954Z" fill="#60739A"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<path d="M-7068 -1986H16872V-1988H-7068V-1986ZM16873 -1985V7753H16875V-1985H16873ZM16872 7754H-7068V7756H16872V7754ZM-7069 7753V-1985H-7071V7753H-7069ZM-7068 7754C-7068.55 7754 -7069 7753.55 -7069 7753H-7071C-7071 7754.66 -7069.66 7756 -7068 7756V7754ZM16873 7753C16873 7753.55 16872.6 7754 16872 7754V7756C16873.7 7756 16875 7754.66 16875 7753H16873ZM16872 -1986C16872.6 -1986 16873 -1985.55 16873 -1985H16875C16875 -1986.66 16873.7 -1988 16872 -1988V-1986ZM-7068 -1988C-7069.66 -1988 -7071 -1986.66 -7071 -1985H-7069C-7069 -1985.55 -7068.55 -1986 -7068 -1986V-1988Z" fill="black" fill-opacity="0.1"/>
+</g>
+<defs>
+<filter id="filter0_d_0_1" x="-62" y="-53" width="1600" height="1184" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="60" dy="70"/>
+<feGaussianBlur stdDeviation="40"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.111233 0 0 0 0 0.120546 0 0 0 0 0.179167 0 0 0 0.1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
+</filter>
+<clipPath id="clip0_0_1">
+<rect width="1440" height="1024" fill="white" transform="translate(-42 -43)"/>
+</clipPath>
+<clipPath id="clip1_0_1">
+<rect width="26.4625" height="30.487" fill="white" transform="translate(0.5 0.5)"/>
+</clipPath>
+</defs>
+</svg>

@@ -26,7 +26,7 @@ function AppRouter() {
 	const debouncedPcWidth = useDebounce(isPcWidth, 500);
 
 	const handleResize = () => {
-		if (window.innerWidth > 1024) {
+		if (window.innerWidth > 992) {
 			setIsPcWidth(true);
 		} else {
 			setIsPcWidth(false);
