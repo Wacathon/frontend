@@ -22,7 +22,6 @@ function AppRouter() {
 		localStorage.getItem("accessToken") ? true : false
 	);
 	const [isPcWidth, setIsPcWidth] = useState(true);
-	const [isMenuOpened, setIsMenuOpened] = useState(false);
 	const debouncedPcWidth = useDebounce(isPcWidth, 500);
 
 	const handleResize = () => {
@@ -31,10 +30,6 @@ function AppRouter() {
 		} else {
 			setIsPcWidth(false);
 		}
-	};
-
-	const showMenu = () => {
-		setIsMenuOpened((prev) => !prev);
 	};
 
 	const scrollToTop = () => {

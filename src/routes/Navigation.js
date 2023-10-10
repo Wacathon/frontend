@@ -6,7 +6,7 @@ import { testUserInfo } from "../testData";
 import "./route.css";
 import logo from "../img/app_logo.svg";
 
-function Navigation({ isMenuOpened, showMenu }) {
+function Navigation({ toggleSideMenu }) {
 	const [userInfo, setUserInfo] = useState({});
 	const [isDropdownOpened, setIsDropdownOpened] = useState(false);
 
@@ -46,29 +46,14 @@ function Navigation({ isMenuOpened, showMenu }) {
 		clickedList.classList.add("nav-menu-list-1-visited");
 	};
 
-	const gotoCardPage = async () => {
-		changeMenuColor("name-card");
-		navigate("/name-card");
-	};
-
-	const gotoMyPage = () => {
-		changeMenuColor("my-page");
-		navigate("/my-page");
-	};
-
-	const gotoMyChartPage = () => {
-		changeMenuColor("my-chart");
-		navigate("/my-chart");
-	};
-
-	const gotoFeedbackPage = () => {
-		changeMenuColor("my-feedback");
-		navigate("/my-feedback");
-	};
-
-	const gotoLinkPage = () => {
-		changeMenuColor("share-link");
-		navigate("/share-link");
+	const gotoPage = (pageName) => {
+		changeMenuColor(pageName);
+		toggleSideMenu && toggleSideMenu();
+		navigate(`/${pageName}`);
+		window.scrollTo({
+			top: 0,
+			behavior: "instant",
+		});
 	};
 
 	const onOpenMenu = () => {
@@ -95,7 +80,7 @@ function Navigation({ isMenuOpened, showMenu }) {
 					<img alt="app_icon" className="nav-logo-img" src={logo} />
 					<span>IM</span>
 				</a>
-				{isMenuOpened && <button onClick={showMenu}>X</button>}
+				{toggleSideMenu && <button onClick={toggleSideMenu}>X</button>}
 				<div className="nav-dropdown">
 					<div className="nav-dropdown-menu" onClick={onOpenMenu}>
 						<span>Menu</span>
@@ -113,7 +98,7 @@ function Navigation({ isMenuOpened, showMenu }) {
 					<div className="nav-menu-list-0">
 						<nav className="nav-menu-list-1">
 							<ul>
-								<li id="name-card" onClick={gotoCardPage}>
+								<li id="name-card" onClick={() => gotoPage("name-card")}>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										width="25"
@@ -147,7 +132,7 @@ function Navigation({ isMenuOpened, showMenu }) {
 									</svg>
 									<span>Card</span>
 								</li>
-								<li id="my-page" onClick={gotoMyPage}>
+								<li id="my-page" onClick={() => gotoPage("my-page")}>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										width="25"
@@ -169,11 +154,11 @@ function Navigation({ isMenuOpened, showMenu }) {
 									</svg>
 									<span>My Page</span>
 								</li>
-								<li id="my-chart" onClick={gotoMyChartPage}>
+								<li id="my-chart" onClick={() => gotoPage("my-chart")}>
 									📊
 									<span>My chart</span>
 								</li>
-								<li id="my-feedback" onClick={gotoFeedbackPage}>
+								<li id="my-feedback" onClick={() => gotoPage("my-feedback")}>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										width="25"
@@ -232,7 +217,7 @@ function Navigation({ isMenuOpened, showMenu }) {
 									</svg>
 									<span>Feedback</span>
 								</li>
-								<li id="share-link" onClick={gotoLinkPage}>
+								<li id="share-link" onClick={() => gotoPage("share-link")}>
 									🔗
 									<span>Share Link</span>
 								</li>
@@ -241,7 +226,7 @@ function Navigation({ isMenuOpened, showMenu }) {
 					</div>
 				</div>
 				<div className="nav-user-info-0">
-					<div className="nav-user-info-1" onClick={gotoMyPage}>
+					<div className="nav-user-info-1" onClick={() => gotoPage("my-page")}>
 						<div className="nav-user-icon">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
