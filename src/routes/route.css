@@ -88,6 +88,7 @@
 /* AppRouter */
 
 /* Navbar */
+/* navbar */
 .nav-navbar {
 	z-index: 2;
 	position: sticky;
@@ -109,6 +110,7 @@
 	width: 100%;
 }
 
+/* backdrop */
 .nav-backdrop {
 	position: fixed;
 	top: 0;
@@ -131,13 +133,14 @@
 	transition-timing-function: ease-in-out;
 }
 
+/* side menu */
 .nav-side-menu {
 	/* z-index: 3; */
 	position: fixed;
 	top: 0;
 	bottom: 0;
 	left: 0;
-	width: 70%;
+	width: 73vw;
 	overflow-y: auto;
 	opacity: 0;
 	visibility: hidden;
@@ -151,7 +154,7 @@
 .side-menu-animation {
 	opacity: 1;
 	visibility: visible;
-	transform: translateX(0);
+	transform: translateZ(0);
 	transition-property: opacity, visibility, transform;
 	transition-duration: 300ms;
 	transition-timing-function: ease-in-out;
@@ -160,7 +163,7 @@
 .scroll-lock {
 	position: fixed;
 	width: 100%;
-	/* height: 100%; */
+	height: 100%;
 	overflow: hidden;
 	overflow-y: scroll;
 }
@@ -216,11 +219,18 @@
 	}
 }
 
+.nav-header {
+	display: flex;
+	justify-content: space-between;
+	padding: 3rem 2.5rem;
+	padding-bottom: 4rem;
+}
+
 /* logo */
 .nav-logo-0 {
-	position: absolute;
+	/* position: absolute;
 	top: 2.75rem;
-	left: 2.25rem;
+	left: 2.25rem; */
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
@@ -251,10 +261,15 @@
 	line-height: 93.333%;
 }
 
+.nav-close-btn {
+	font-size: 1.75rem;
+	color: #757575;
+}
+
 /* dropdown menu */
 .nav-dropdown {
-	position: absolute;
-	top: 8rem;
+	/* position: absolute;
+	top: 8rem; */
 	display: flex;
 	flex-direction: column;
 	flex: wrap;
@@ -426,7 +441,7 @@
 
 /* Scroll Button */
 .scrollTop-btn {
-	z-index: 1;
+	/* z-index: 1; */
 	position: fixed;
 	right: 2rem;
 	bottom: 2rem;

@@ -33,7 +33,7 @@ function UserCardInfo() {
 
 	return (
 		<div className="user-card-info-0">
-			<hr className="user-card-info-line" />
+			<div className="user-card-info-line" />
 			<div className="user-card-info-introduce">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -46,12 +46,12 @@ function UserCardInfo() {
 				</svg>
 				<span id="introduce-text">{cardInfo.introduce}</span>
 			</div>
-			<hr className="user-card-info-line" />
+			<div className="user-card-info-line" />
 			<div className="user-card-info-name">
 				<span id="kor-name">{cardInfo.name}</span>
 				<span id="eng-name">{cardInfo.engName}</span>
 			</div>
-			<hr className="user-card-info-line" />
+			<div className="user-card-info-line" />
 			<div className="user-card-info-details">
 				<div>
 					<span id="detail-title">Phone</span>

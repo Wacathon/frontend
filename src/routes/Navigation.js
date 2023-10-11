@@ -76,11 +76,17 @@ function Navigation({ toggleSideMenu }) {
 	return (
 		<div className="nav-0">
 			<div className="nav-1">
-				<a href="/" className="nav-logo-0">
-					<img alt="app_icon" className="nav-logo-img" src={logo} />
-					<span>IM</span>
-				</a>
-				{toggleSideMenu && <button onClick={toggleSideMenu}>X</button>}
+				<div className="nav-header">
+					<a href="/" className="nav-logo-0">
+						<img alt="app_icon" className="nav-logo-img" src={logo} />
+						<span>IM</span>
+					</a>
+					{toggleSideMenu && (
+						<button className="nav-close-btn" onClick={toggleSideMenu}>
+							X
+						</button>
+					)}
+				</div>
 				<div className="nav-dropdown">
 					<div className="nav-dropdown-menu" onClick={onOpenMenu}>
 						<span>Menu</span>
