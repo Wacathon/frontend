@@ -1,10 +1,14 @@
 import React, { useState } from "react";
-import logo from "../img/app_logo.svg";
+import { useNavigate } from "react-router-dom";
 import Navigation from "./Navigation";
+
+import logo from "../img/app_logo.svg";
 
 function Navbar() {
 	const [isSideMenuOpened, setIsSideMenuOpened] = useState(false);
 	const [currentScrollY, setCurrentScrollY] = useState(0);
+
+	const navigate = useNavigate();
 
 	const preventScroll = () => {
 		const newScrollY = window.scrollY;
@@ -46,6 +50,14 @@ function Navbar() {
 		}
 	};
 
+	const gotoMyPage = () => {
+		navigate("/my-page");
+		window.scrollTo({
+			top: 0,
+			behavior: "instant",
+		});
+	};
+
 	return (
 		<nav className="nav-navbar">
 			<div className="navbar-container">
@@ -53,13 +65,14 @@ function Navbar() {
 					className="navbar-menu-btn navbar-blank"
 					onClick={toggleSideMenu}
 				></button>
-				<div className="navbar-logo">
-					<div>
-						<img alt="app_logo" src={logo} />
-					</div>
+				<a href="/" className="navbar-logo">
+					<img alt="app_icon" className="nav-logo-img" src={logo} />
 					<span>IM</span>
-				</div>
-				<button className="navbar-blank"></button>
+				</a>
+				<button
+					className="navbar-my-page-btn navbar-blank"
+					onClick={gotoMyPage}
+				></button>
 			</div>
 			<div className="nav-backdrop" role="presentation"></div>
 			<div className="nav-side-menu">
