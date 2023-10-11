@@ -14,18 +14,11 @@ function Navbar() {
 		const newScrollY = window.scrollY;
 		document.body.classList.add("scroll-lock");
 		document.body.style.top = `-${newScrollY}px`;
-		// const appContainer = document.querySelector(".app-container");
-		// document.body.style.position = "relative";
-		// appContainer.classList.add("scroll-lock");
-		// appContainer.style.top = `-${newScrollY}px`;
 		setCurrentScrollY(newScrollY);
 	};
 
 	const allowScroll = () => {
 		document.body.classList.remove("scroll-lock");
-		// document.body.style.position = "unset";
-		// document.body.style.position = "unset";
-		// appContainer.classList.remove("scroll-lock");
 		window.scrollTo({
 			top: currentScrollY,
 			behavior: "instant",
