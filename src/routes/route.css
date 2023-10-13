@@ -354,7 +354,7 @@
 	list-style: none;
 }
 .nav-menu-list-1 li:hover {
-	color: var(--app-hover-color);
+	color: var(--menu-hover-color);
 }
 
 .nav-menu-list-1 span {
@@ -395,7 +395,7 @@
 	cursor: pointer;
 }
 .nav-user-info-1:hover .nav-user-info #name {
-	color: var(--app-hover-color);
+	color: var(--menu-hover-color);
 }
 
 .nav-user-icon {
@@ -425,7 +425,7 @@
 	font-size: 1rem;
 	line-height: 175%;
 	/* border-radius: 0.3125rem; */
-	background-color: var(--app-primary-color);
+	background-color: var(--btn-default-color);
 
 	color: #fff;
 	font-family: Sandoll GothicNeo1;
@@ -435,7 +435,7 @@
 	line-height: 1.75rem;
 }
 .nav-user-info-0 #logout-btn:hover {
-	background-color: var(--app-hover-color);
+	background-color: var(--btn-hover-color);
 }
 /* Navigation */
 
@@ -447,5 +447,5 @@
 	bottom: 2rem;
 }
 .scrollTop-btn > svg > circle:hover {
-	fill: var(--app-hover-color);
+	fill: var(--btn-hover-color);
 }

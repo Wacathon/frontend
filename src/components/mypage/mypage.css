@@ -41,7 +41,7 @@
 	padding: 0.5rem 1rem;
 	flex-shrink: 0;
 	border-radius: 0.3125rem;
-	background-color: var(--app-primary-color);
+	background-color: var(--btn-default-color);
 
 	color: #fff;
 	font-family: Poppins;
@@ -50,10 +50,18 @@
 	font-weight: 500;
 	line-height: 1.75rem;
 }
+.my-page-btn:hover {
+	background-color: var(--btn-hover-color);
+}
+
 .my-page-pw-btn {
 	color: #fff;
 	background-color: rgb(140, 23, 23);
 }
+.my-page-pw-btn:hover {
+	background-color: rgb(191, 45, 45);
+}
+
 .my-page-undo-btn {
 	color: #fff;
 	background-color: #363636;

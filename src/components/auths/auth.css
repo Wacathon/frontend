@@ -178,7 +178,7 @@
 	min-height: 3.25rem;
 	margin-top: 2rem;
 	border-radius: 0.3125rem;
-	background: var(--app-primary-color);
+	background: var(--btn-default-color);
 	color: #fff;
 	font-family: Sandoll GothicNeo1;
 	font-size: 1.25rem;
