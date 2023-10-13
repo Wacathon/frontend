@@ -1,18 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import MyInfoForm from "../components/mypage/MyInfoForm";
 import { userLogout } from "../hooks/useAxiosAuth";
 
 import "../components/mypage/mypage.css";
+import { testUserInfo } from "../testData";
 
 function MyPage() {
+	const [userName, setUserName] = useState(testUserInfo.name);
+
 	const changePasswd = () => {
 		console.log("change pw");
 	};
 
 	return (
 		<div className="wrapper">
+			<span className="my-page-title">
+				<span id="user-name">{userName}</span>님의 마이페이지에요.
+			</span>
 			<div className="my-page-0">
-				<span className="my-page-title">My Page</span>
 				<div className="my-page-info">
 					<MyInfoForm />
 					<div className="my-page-btn-box">

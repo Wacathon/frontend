@@ -75,7 +75,7 @@ function Navigation({ toggleSideMenu }) {
 
 	return (
 		<div className="nav-0">
-			<div className="nav-1">
+			<div className="nav-1-1">
 				<div className="nav-header">
 					<a href="/" className="nav-logo-0">
 						<img alt="app_icon" className="nav-logo-img" src={logo} />
@@ -231,6 +231,8 @@ function Navigation({ toggleSideMenu }) {
 						</nav>
 					</div>
 				</div>
+			</div>
+			<div className="nav-1-2">
 				<div className="nav-user-info-0">
 					<div className="nav-user-info-1" onClick={() => gotoPage("my-page")}>
 						<div className="nav-user-icon">
