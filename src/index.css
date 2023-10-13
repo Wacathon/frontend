@@ -23,14 +23,6 @@ div > a {
 	text-decoration: none;
 }
 
-button {
-	background: none;
-	outline: none;
-	appearance: none;
-	border: none;
-	white-space: nowrap;
-}
-
 .app-container {
 	width: 100%;
 	height: 100%;
@@ -47,3 +39,40 @@ button {
 	overflow: auto;
 	padding: 1.5rem;
 }
+
+/* button */
+button {
+	color: #fff;
+
+	transition-property: background-color;
+	transition-duration: 150ms;
+	transition-timing-function: ease-in-out;
+
+	background: none;
+	outline: none;
+	appearance: none;
+	border: none;
+	white-space: nowrap;
+}
+
+.primary-btn {
+	background: var(--btn-default-color);
+}
+.primary-btn:hover {
+	background-color: var(--btn-hover-color);
+}
+
+.cancel-btn {
+	background-color: #363636;
+}
+.cancel-btn:hover {
+	background-color: #757575;
+}
+
+.danger-btn {
+	background-color: rgb(140, 23, 23);
+}
+.danger-btn:hover {
+	background-color: rgb(191, 45, 45);
+}
+/* button */

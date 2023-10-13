@@ -16,13 +16,10 @@ function MyPage() {
 				<div className="my-page-info">
 					<MyInfoForm />
 					<div className="my-page-btn-box">
-						<button
-							onClick={changePasswd}
-							className="my-page-btn my-page-pw-btn"
-						>
+						<button onClick={changePasswd} className="my-page-btn danger-btn">
 							비밀번호 변경
 						</button>
-						<button onClick={userLogout} className="my-page-btn">
+						<button onClick={userLogout} className="my-page-btn primary-btn">
 							로그아웃
 						</button>
 					</div>

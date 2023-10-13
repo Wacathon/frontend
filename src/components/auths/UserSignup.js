@@ -138,7 +138,7 @@ function UserSignup() {
 					<span className="auth-agreement-required-text">동의</span>
 				</label>
 			</div>
-			<button className="auth-sign-btn" onClick={onSignupClick}>
+			<button className="auth-sign-btn primary-btn" onClick={onSignupClick}>
 				회원가입
 			</button>
 		</div>

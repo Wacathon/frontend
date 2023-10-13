@@ -446,6 +446,13 @@
 	right: 2rem;
 	bottom: 2rem;
 }
+
+.scrollTop-btn > svg > circle {
+	transition-property: fill;
+	transition-duration: 150ms;
+	transition-timing-function: ease-in-out;
+}
 .scrollTop-btn > svg > circle:hover {
 	fill: var(--btn-hover-color);
 }
+/* Scroll Button */

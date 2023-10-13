@@ -47,7 +47,7 @@ function UserLogin() {
 					isRequired={true}
 				/>
 			</div>
-			<button className="auth-sign-btn" onClick={onLoginClick}>
+			<button className="auth-sign-btn primary-btn" onClick={onLoginClick}>
 				로그인
 			</button>
 		</div>

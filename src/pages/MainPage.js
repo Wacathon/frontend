@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import "./mainpage.css";
-import logo from "../img/app_logo.png";
+import logo from "../img/app_logo.svg";
 import { Button } from "react-bootstrap";
 
 function MainPage() {

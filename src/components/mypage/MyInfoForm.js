@@ -116,18 +116,15 @@ function MyInfoForm() {
 			<div className="my-page-btn-box">
 				{isEdit ? (
 					<>
-						<button
-							onClick={toggleEdit}
-							className="my-page-btn my-page-undo-btn"
-						>
+						<button onClick={toggleEdit} className="my-page-btn cancel-btn">
 							취소
 						</button>
-						<button onClick={onEditClick} className="my-page-btn">
+						<button onClick={onEditClick} className="my-page-btn primary-btn">
 							수정 완료
 						</button>
 					</>
 				) : (
-					<button onClick={toggleEdit} className="my-page-btn">
+					<button onClick={toggleEdit} className="my-page-btn primary-btn">
 						수정
 					</button>
 				)}
