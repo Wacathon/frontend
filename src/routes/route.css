@@ -319,10 +319,8 @@
 
 .nav-dropdown-menu:hover,
 .nav-dropdown-menu:hover svg > path {
-	color: red;
-	fill: red;
-	/* color: var(--app-primary-color);
-	fill: var(--app-primary-color); */
+	color: var(--menu-hover-color);
+	fill: var(--menu-hover-color);
 
 	transition-property: color, fill;
 	transition-duration: 150ms;
@@ -393,7 +391,7 @@
 }
 
 .nav-menu-list-1-visited {
-	color: var(--app-visited-color) !important;
+	color: var(--menu-visited-color) !important;
 }
 
 .nav-menu-height {

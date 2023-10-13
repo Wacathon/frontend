@@ -12,10 +12,10 @@
 	/* button */
 	--btn-default-color: #00004d;
 	--btn-hover-color: #51519a;
-	--app-visited-color: #6565b5;
 
 	/* menu */
-	--menu-hover-color: red;
+	--menu-hover-color: #6565b5;
+	--menu-visited-color: #505093;
 }
 
 body {

@@ -243,6 +243,7 @@
 	line-height: 1.75rem;
 }
 .auth-agreement-required-text #star-text {
-	color: red;
+	/* color: red; */
+	color: rgb(140, 23, 23);
 }
 /* UserLogin & UserSignup */
