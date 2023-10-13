@@ -252,7 +252,7 @@ function Navigation({ toggleSideMenu }) {
 							<span id="name">{userInfo.name}</span>
 						</div>
 					</div>
-					<button id="logout-btn" onClick={userLogout}>
+					<button id="logout-btn" className="primary-btn" onClick={userLogout}>
 						로그아웃
 					</button>
 				</div>

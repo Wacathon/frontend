@@ -13,6 +13,9 @@
 	--btn-default-color: #00004d;
 	--btn-hover-color: #51519a;
 	--app-visited-color: #6565b5;
+
+	/* menu */
+	--menu-hover-color: red;
 }
 
 body {
@@ -42,8 +45,6 @@ div > a {
 
 /* button */
 button {
-	color: #fff;
-
 	transition-property: background-color;
 	transition-duration: 150ms;
 	transition-timing-function: ease-in-out;
@@ -56,6 +57,7 @@ button {
 }
 
 .primary-btn {
+	color: #fff;
 	background: var(--btn-default-color);
 }
 .primary-btn:hover {
@@ -63,6 +65,7 @@ button {
 }
 
 .cancel-btn {
+	color: #fff;
 	background-color: #363636;
 }
 .cancel-btn:hover {
@@ -70,6 +73,7 @@ button {
 }
 
 .danger-btn {
+	color: #fff;
 	background-color: rgb(140, 23, 23);
 }
 .danger-btn:hover {
