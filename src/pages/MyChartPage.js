@@ -1,6 +1,5 @@
 import React from "react";
 import MyChart from "../components/charts/MyChart";
-import { Button } from "react-bootstrap";
 
 function MyChartPage() {
 	return (
