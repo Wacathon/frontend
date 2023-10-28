@@ -21,7 +21,7 @@ function UserCard() {
 	};
 
 	return (
-		<div className="user-card-flip-container" onClick={onFlipNameCard}>
+		<div className="user-card-container">
 			<div className="card-box">
 				<div>
 					<UserCardInfo />
@@ -30,26 +30,28 @@ function UserCard() {
 					<HexChart userId={userId} />
 				</div>
 			</div>
-			{/* 뒤집히는 카드 */}
-			{/* <div className="user-card-container">
-					<div className="card-front">
-						<div>
-							<UserCardInfo />
-						</div>
-						<div className="user-card-chart">
-							<HexChart userId={userId} />
-						</div>
-					</div>
-					<div className="card-back">
-						<div>
-							<UserCardInfo />
-						</div>
-						<div className="user-card-chart">
-							<HexChart userId={userId} />
-						</div>
-					</div>
-				</div> */}
 		</div>
+		// 뒤집히는 카드
+		// <div className="card-flip-box" onClick={onFlipNameCard}>
+		// 	<div className="user-card-container">
+		// 			<div className="card-front">
+		// 				<div>
+		// 					<UserCardInfo />
+		// 				</div>
+		// 				<div className="user-card-chart">
+		// 					<HexChart userId={userId} />
+		// 				</div>
+		// 			</div>
+		// 			<div className="card-back">
+		// 				<div>
+		// 					<UserCardInfo />
+		// 				</div>
+		// 				<div className="user-card-chart">
+		// 					<HexChart userId={userId} />
+		// 				</div>
+		// 			</div>
+		// 		</div>
+		// </div>
 	);
 }
 
